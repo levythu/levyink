@@ -1,0 +1,72 @@
+#topInk {
+    position:absolute;
+    width:100%;
+    top:0px;
+    left:0px;
+    background: #444444;
+}
+#followedFrame {
+    position:relative;
+    height:2000px;
+    width:95%;
+    top:0px;
+    margin: auto;
+    background: #EEEEEE;
+}
+#latitle {
+    position: absolute;
+    bottom: 1px;
+    left: 20px;
+    right: 20px;
+}
+#bigtitle {
+    font-family: "Perpetua-b";
+    font-size: 100px;
+    color: white;
+    white-space: nowrap;
+}
+#smalltitle {
+    font-family: "Perpetua-b";
+    font-size: 30px;
+    color: white;
+    white-space: nowrap;
+}
+
+#direct-panel {
+    position: absolute;
+    right: 20px;
+    width: 300px;
+    bottom: 0px;
+    height: 35px;
+}
+.direct-panel-item {
+    float:left;
+    width: 96px;
+    height:100%;
+
+    border-top: 3px solid rgba(255,255,255,0.3);
+}
+.direct-panel-item:hover {
+    border-top: 3px solid rgba(255,255,255,0.7);
+}
+.direct-panel-chosen {
+    border-top: 3px solid rgba(255,255,255,1);
+}
+.direct-panel-divisor
+{
+    float:left;
+    width: 6px;
+    height:100%;
+}
+.direct-panel-item-text {
+    text-align: center;
+    font-family: "Perpetua-b";
+    font-size: 20px;
+    color: white;
+
+    position: absolute;
+    bottom: 0px;
+    width: 96px;
+}
+.direct-panel-item-mask {
+}

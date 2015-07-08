@@ -1,0 +1,10 @@
+.transit_in_opacity {
+    transition: opacity 0.30s ease-in-out;
+    -webkit-transition: opacity 0.30s ease-in-out;
+    -moz-transition: opacity 0.30s ease-in-out;
+}
+.transit_in_border {
+    transition: border 0.30s ease-in-out;
+    -webkit-transition: border 0.30s ease-in-out;
+    -moz-transition: border 0.30s ease-in-out;
+}

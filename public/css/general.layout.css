@@ -1,0 +1,13 @@
+.element_stretch {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+}
+.element_rel_stretch {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
