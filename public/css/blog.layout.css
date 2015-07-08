@@ -4,6 +4,7 @@
     top:0px;
     left:0px;
     background: #444444;
+    overflow: hidden;
 }
 #followedFrame {
     position:relative;
