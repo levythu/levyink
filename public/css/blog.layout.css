@@ -11,7 +11,7 @@
     width:95%;
     top:0px;
     margin: auto;
-    background: #EEEEEE;
+    background: #FFFFFF;
 }
 #latitle {
     position: absolute;
@@ -50,6 +50,9 @@
     border-top: 3px solid rgba(255,255,255,0.7);
 }
 .direct-panel-chosen {
+    border-top: 3px solid rgba(255,255,255,1);
+}
+.direct-panel-chosen:hover {
     border-top: 3px solid rgba(255,255,255,1);
 }
 .direct-panel-divisor

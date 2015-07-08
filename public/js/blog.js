@@ -14,6 +14,8 @@ $(document).ready(function()
     $("#topInk").css("width","100%");
 
     $(window).resize(updateLayout);
+    bindDirectEvent();
+
     updateLayout();
 });
 
@@ -74,4 +76,24 @@ function topInk_onResize()
             }
         }
     }
+}
+function scroll2Top()
+{
+    $("html, body").animate({scrollTop: $("#latitle")[0].offsetTop-60}, 400);
+}
+function bindDirectEvent()
+{
+    var ls=["tab_me","tab_blog","tab_mess"];
+    for (var i=0;i<ls.length;i++)
+    {
+        (function(nm){
+            $("#"+nm).click(function()
+            {
+                $(".direct-panel-item").removeClass("direct-panel-chosen");
+                $("#"+nm).addClass("direct-panel-chosen");
+                scroll2Top();
+            });
+        })(ls[i]);
+    }
+
 }
