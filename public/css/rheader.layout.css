@@ -75,19 +75,36 @@
 }
 
 #footer {
+    margin-top: 20px;
     border-top: 1px solid #AAAAAA;
     max-width: 42em;
     width: 100%;
     margin: auto;
+    font: 1.3em "custom-content1", Times;
+    color: #888888;
+}
+#footer p {
+    width: 100%;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    color: #AAAAAA;
 }
 
 #toTop {
     position: fixed;
     z-index: 100;
     right: 2em;
-    width: 2em;
-    height: 2em;
-    top: 0;
+    width: 4em;
+    height: 4em;
+    top: -4em;
     background-color: #000000;
     opacity: 0.7;
+}
+.mid-white-glyph {
+    font-size: 2em;
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    color: #FFFFFF;
 }

@@ -1,12 +1,20 @@
 .transit_in_opacity {
     transition: opacity 0.30s ease-in-out;
     -webkit-transition: opacity 0.30s ease-in-out;
+    -ms-transition: opacity 0.30s ease-in-out;
     -moz-transition: opacity 0.30s ease-in-out;
 }
 .transit_in_border {
     transition: border 0.30s ease-in-out;
     -webkit-transition: border 0.30s ease-in-out;
+    -ms-transition: border 0.30s ease-in-out;
     -moz-transition: border 0.30s ease-in-out;
+}
+.transit_in_position {
+    transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
+    -webkit-transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
+    -ms-transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
+    -moz-transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
 }
 
 .no-indent-ul {

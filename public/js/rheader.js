@@ -1,4 +1,7 @@
-var blog_js={};
+var blog_js=
+{
+    totop_hide_timer: 0
+};
 
 $(document).ready(function()
 {
@@ -18,16 +21,30 @@ $(document).ready(function()
     {
         scroll2Top();
     });
+    if ($.isTouchCapable()==true)
+    {
+        $("body").taphold(function()
+        {
+            clearTimeout(blog_js.totop_hide_timer);
+            $("#toTop").css("top","0em");
+            blog_js.totop_hide_timer=setTimeout(function()
+            {
+                $("#toTop").css("top","-4em");
+            },3000);
+        });
+        $("#toTop").tap(function()
+        {
+            clearTimeout(blog_js.totop_hide_timer);
+            $("#toTop").css("top","-4em");
+            scroll2Top();
+        });
+    }
     bindDirectEvent();
 
     updateLayout();
 
     if (getParameterByName('toTop')!="")
-        setTimeout(function(){scroll2Top()}, 500);;
-    if ($.isTouchCapable()==true)
-    {
-        
-    }
+        setTimeout(function(){scroll2Top()}, 500);
 });
 
 function updateLayout()
