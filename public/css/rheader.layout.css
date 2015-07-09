@@ -21,13 +21,13 @@
     right: 20px;
 }
 #bigtitle {
-    font-family: "Perpetua-b";
+    font-family: "Perpetua-b","Times";
     font-size: 100px;
     color: white;
     white-space: nowrap;
 }
 #smalltitle {
-    font-family: "Perpetua-b";
+    font-family: "Perpetua-b","Times";
     font-size: 30px;
     color: white;
     white-space: nowrap;
@@ -64,7 +64,7 @@
 }
 .direct-panel-item-text {
     text-align: center;
-    font-family: "Perpetua-b";
+    font-family: "Perpetua-b","Times";
     font-size: 20px;
     color: white;
 
