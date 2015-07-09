@@ -7,7 +7,7 @@
         background:#fefefe;
 	}
 #contentMain {
-	font: 1.3em "Vollkorn", "华文宋体", Palatino, Times;
+	font: 1.3em "custom-content1", Times;
 	color: #333;
 	line-height: 1.4;
 	text-align: justify;
@@ -21,10 +21,11 @@
 	}
 #contentMain h2 {
 	font-weight: normal;
+    border-bottom: 1px solid #AAAAAA;
 	}
 #contentMain h3 {
 	font-weight: normal;
-	font-style: bold;
+	font-weight: bold;
 	margin-top:3em;
 	}
 #contentMain p {

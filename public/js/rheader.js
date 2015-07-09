@@ -14,9 +14,13 @@ $(document).ready(function()
     $("#topInk").css("width","100%");
 
     $(window).resize(updateLayout);
+    $("body").dblclick(function(){scroll2Top()});
     bindDirectEvent();
 
     updateLayout();
+
+    if (getParameterByName('toTop')!="")
+        setTimeout(function(){scroll2Top()}, 500);;
 });
 
 function updateLayout()
@@ -95,7 +99,7 @@ function bindDirectEvent()
             {
                 scroll2Top();
                 if (lc!=getLatestPath(window.location.href))
-                    window.location.href=lc;
+                    window.location.href=lc+"?toTop=1";
             });
         })(ls[i],loc[i]);
     }
