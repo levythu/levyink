@@ -14,7 +14,7 @@ $(document).ready(function()
     $("#topInk").css("width","100%");
 
     $(window).resize(updateLayout);
-    $("body").dblclick(function(){scroll2Top()});
+    $("body").doubletap(function(){scroll2Top()});
     bindDirectEvent();
 
     updateLayout();
@@ -98,6 +98,7 @@ function bindDirectEvent()
         (function(nm,lc){
             $("#"+nm).tap(function()
             {
+                alert(213);
                 if (lc!=getLatestPath(window.location.href))
                     window.location.href=lc+"?toTop=1";
                 else
