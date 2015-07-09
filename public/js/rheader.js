@@ -14,7 +14,11 @@ $(document).ready(function()
     $("#topInk").css("width","100%");
 
     $(window).resize(updateLayout);
-    $("body").doubletap(function(){scroll2Top()});
+    $("body").doubletap(function(e,touch)
+    {
+        console.log(touch.interval);
+        scroll2Top()
+    });
     bindDirectEvent();
 
     updateLayout();
