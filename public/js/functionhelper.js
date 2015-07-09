@@ -16,7 +16,7 @@ function getLatestPath(str)
     t=t[0];
     if (t.length>0)
         t=t.substr(1);
-    if (t.endsWith("?"))
+    if (t[t.length-1]=="?")
         t=t.substr(0,t.length-1);
     return t;
 }
