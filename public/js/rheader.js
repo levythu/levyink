@@ -24,6 +24,10 @@ $(document).ready(function()
 
     if (getParameterByName('toTop')!="")
         setTimeout(function(){scroll2Top()}, 500);;
+    if ($.isTouchCapable()==true)
+    {
+        
+    }
 });
 
 function updateLayout()
