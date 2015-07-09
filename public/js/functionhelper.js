@@ -9,7 +9,7 @@ function trimStringToNum(str)
 }
 function getLatestPath(str)
 {
-    while (str.endsWith("/"))
+    while (str[str.length-1]=="/")
         str=str.substr(0,str.length-1);
     var t=(/(\/[a-zA-Z_0-9.]*$|\/[a-zA-Z_0-9.]*\?)/.exec(str));
     if (t==null) return;
