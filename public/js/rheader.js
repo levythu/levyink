@@ -98,7 +98,7 @@ function bindDirectEvent()
         (function(nm,lc){
             $("#"+nm).tap(function()
             {
-                alert(213);
+                alert(getLatestPath(window.location.href)+"\n"+lc);
                 if (lc!=getLatestPath(window.location.href))
                     window.location.href=lc+"?toTop=1";
                 else
