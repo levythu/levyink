@@ -18,7 +18,6 @@ $(document).ready(function()
     bindDirectEvent();
 
     updateLayout();
-    alert($.isTouchCapable());
 
     if (getParameterByName('toTop')!="")
         setTimeout(function(){scroll2Top()}, 500);;
