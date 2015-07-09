@@ -14,10 +14,9 @@ $(document).ready(function()
     $("#topInk").css("width","100%");
 
     $(window).resize(updateLayout);
-    $("body").doubletap(function(e,touch)
+    $("body").dblclick(function()
     {
-        console.log(touch.interval);
-        scroll2Top()
+        scroll2Top();
     });
     bindDirectEvent();
 
