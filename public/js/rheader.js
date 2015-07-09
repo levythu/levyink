@@ -81,8 +81,9 @@ function topInk_onResize()
                      .css("text-align","center");
     }
     $("#topInk").css("height",contentWidth*topInkH2W);
-    $("#followedFrame").css("top",contentWidth*topInkH2W);
+    $("#followedFrame").css("top",contentWidth*topInkH2W+50);
 
+    //adjust fontsize dynamically
     {
         var isShrink=false;
         var fontsize=trimStringToNum($("#bigtitle").css("font-size"));
