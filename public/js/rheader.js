@@ -95,10 +95,12 @@ function bindDirectEvent()
     for (var i=0;i<ls.length;i++)
     {
         (function(nm,lc){
-            $("#"+nm).click(function()
+            $("#"+nm).tap(function()
             {
                 if (lc!=getLatestPath(window.location.href))
                     window.location.href=lc+"?toTop=1";
+                else
+                    scroll2Top();
             });
         })(ls[i],loc[i]);
     }

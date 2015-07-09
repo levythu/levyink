@@ -1,6 +1,6 @@
 function action2Location()
 {
-    $(".action2Location").click(function()
+    $(".action2Location").tap(function()
     {
         if ($(this).attr("lvnewpage")==undefined)
             window.location=$(this).attr("lvaction");
