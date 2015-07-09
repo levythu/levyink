@@ -97,7 +97,6 @@ function bindDirectEvent()
         (function(nm,lc){
             $("#"+nm).click(function()
             {
-                scroll2Top();
                 if (lc!=getLatestPath(window.location.href))
                     window.location.href=lc+"?toTop=1";
             });
