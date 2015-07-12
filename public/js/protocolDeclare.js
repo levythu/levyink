@@ -21,6 +21,7 @@ function(str)
     str=str.replace(/\n/g,"%ESC-N%");
     str=str.replace(/\"/g,"%ESC-QUOTE%");
     str=str.replace(/\'/g,"%ESC-SINGLE_QUOTE%");
+    return str;
 };
 protocolInfo.descape=
 function(str)
@@ -30,4 +31,5 @@ function(str)
     str=str.replace(/%ESC-N%/g,"\n");
     str=str.replace(/%ESC-R-N%/g,"\r\n");
     str=str.replace(/%ESC-PERCENT%/g,"%");
+    return str;
 };

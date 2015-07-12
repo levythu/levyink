@@ -27,3 +27,12 @@ function getParameterByName(name)
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+function formatDate(ms)
+{
+    var t=new Date(ms);
+    return ""+t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate()+" "+t.getHours()+":"+t.getMinutes();
+}
+function formatContent(str)
+{
+    return str;
+}

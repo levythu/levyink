@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no" />
-    <title>Levy's Ink</title>
+    <title>Blog - Levy's Ink</title>
 
 	<link href="css/general.font.css" rel='stylesheet' type='text/css'>
 	<link href="css/general.layout.css" rel='stylesheet' type='text/css'>
@@ -57,7 +57,8 @@
     </div>
 	<div id="followedFrame">
 		<div id="contentMain">
-			<h1>Blog List</h1>
+			<h1 class="inlineb">Blog List</h1>
+			<h1 class="inlineb" id="headline"></h1>
 			<div id="loadingFrame" class="transit_in_size">
 				<div id="heightMeasure">
 					<div class="looseText">
@@ -79,52 +80,62 @@
 			</div>
 			<div id="blogentry_template">
 				<div class="blogentry_tem_con">
-					<span class="icon-bookmark leftmost tem_cata" style="color:rgb(232,17,35)">Catalog</span>
+					<span class="icon-bookmark leftmost tem_cata_tag" style="color:rgb(232,17,35)"><span class="tem_cata">Catalog</span></span>
 					<div class="afterfloat">
 					</div>
-					<div class="blogentry_tem_title blogTitle">Title</div>
+					<div class="blogentry_tem_title blogTitle tem_title">Title</div>
+					<div class="line1px"></div>
 					<div class="peripheralTitle">
-						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
-						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
-						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
+						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em tem_time">2015-07-12 9:25</span></span>
+						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em tem_auth">Levy</span></span>
+						<span class="icon-bubbles4 inlineb tem_com"><span class="codeStyle indent1em reserve4em tem_com_c">15 comments</span></span>
 					</div>
-					<p>Content here</p>
+					<p class="tem_cont">Content here</p>
 				</div>
 			</div>
 			<div id="blogboard">
-				<!--
-				<div class="blogentry_tem_con">
-					<span class="icon-bookmark leftmost" style="color:rgb(232,17,35)">技术日志</span>
-					<div class="afterfloat">
+			</div>
+			<div class="em-2-placeholder">
+			</div>
+			<div>
+				<div id="lastPage" class="bigButton disButton dirButton">
+					<div>
+						&lt; Next
 					</div>
-					<div class="blogentry_tem_title blogTitle">中文字体剪裁组件</div>
-					<div class="peripheralTitle">
-						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
-						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
-						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
-					</div>
-					<p>对于互联网而言，自定义字体从来不是一个陌生的东西，IE 4 从 1997 年起就已经支持在浏览器中嵌入自定义的字体。而这一种技术被 Goolge Fonts 等免费字体服务推到了一个新的高度。前端工程师借助于 @font-face ， 可以轻松的在网页上使用各种字体，基本已经成为国外网页设计的标配了...</p>
 				</div>
-				<div class="blogentry_tem_div">
-				</div>
-				<div class="blogentry_tem_con">
-					<span class="icon-bookmark leftmost" style="color:rgb(232,17,35)">技术日志</span>
-					<div class="afterfloat">
+				<div id="nextPage" class="bigButton activeButton dirButton">
+					<div>
+						Last &gt;
 					</div>
-					<div class="blogentry_tem_title blogTitle">中文字体剪裁组件</div>
-					<div class="peripheralTitle">
-						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
-						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
-						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
-					</div>
-					<p>对于互联网而言，自定义字体从来不是一个陌生的东西，IE 4 从 1997 年起就已经支持在浏览器中嵌入自定义的字体。而这一种技术被 Goolge Fonts 等免费字体服务推到了一个新的高度。前端工程师借助于 @font-face ， 可以轻松的在网页上使用各种字体，基本已经成为国外网页设计的标配了...</p>
 				</div>
-				-->
+				<div class="afterfloat">
+				</div>
 			</div>
 		</div>
 		<div id="footer">
 			<p>By Levy, 2015. Copyright reserved.</p>
 			<div class="px-20-placeholder"></div>
+		</div>
+	</div>
+
+	<div id="floatBack" class="transit_in_opacity">
+		<div id="choosePage" class="codeStyle">
+			<div id="cp_container">
+				<div>Please select the page you are gonna visit:</div>
+				<div class="em-2-placeholder"></div>
+				<div id="choiceBoxTemplate">
+					<div class="choiceBox transit_all"><span class="cbcontent">1</span></div>
+				</div>
+				<div id="choiceBoxSet">
+					<div class="choiceBox transit_all"><span class="cbcontent">1</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">2</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">3</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">4</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">5</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">6</span></div>
+					<div class="choiceBox transit_all"><span class="cbcontent">7</span></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

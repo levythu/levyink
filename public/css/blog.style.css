@@ -2,7 +2,7 @@
 }
 .blogentry_tem_div {
     height: 2em;
-    border-bottom: 1px solid #CDCDCD;
+    border-bottom: 1px solid transparent;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -28,7 +28,8 @@
 }
 
 .codeStyle {
-    font-family: 'Lucida Console', Monaco, monospace;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
 }
 .blogTitle {
     font-size: 1.8em;
@@ -42,6 +43,9 @@
     border-bottom: 1.6em solid transparent;
     border-top: 2em solid transparent;
 }
+.line1px {
+    border-bottom: 1px solid #CDCDCD;
+}
 .blog_title_div {
     height: 2em;
 }
@@ -53,6 +57,13 @@
 }
 .reserve4em {
     border-right: 4em solid transparent;
+}
+.blogentry_titleboard {
+    background-color: white;
+    box-shadow: 0.2em 0.2em 0.1em grey;
+}
+.tem_cata {
+    font-family: "custom-content1", "stsong", Times;
 }
 
 .looseText {
@@ -84,4 +95,89 @@
 #loadingFrame_pic {
     width: 1em;
     height: 1em;
+}
+
+.em-2-placeholder {
+    height: 2em;
+}
+.bigButton {
+    box-shadow: 0.1em 0.1em 0.05em grey;
+    border-radius: 0.1em;
+    text-align: center;
+    width: 5em;
+    height: 2em;
+    border: 1px solid #CDCDCD;
+    position: relative;
+    cursor:default;
+    transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
+    -webkit-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
+    -ms-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
+    -moz-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
+}
+.activeButton {
+    top: 0;
+    color: black;
+    background-color: white;
+}
+.activeButton:hover {
+    top: -0.2em;
+    background-color: white;
+}
+.disButton {
+    color: #AAAAAA;
+    background-color: #EEEEEE;
+}
+#lastPage {
+    float: left;
+}
+#nextPage {
+    float: right;
+}
+
+#choosePage {
+    position: absolute;
+    border-radius: 0.3em;
+    border: 1px solid white;
+    box-shadow:0px 0px 0.2em white;
+    width: 50%;
+    color: white;
+    min-width: 320px;
+}
+.choiceBox {
+    border-radius: 0.3em;
+    border: 1px solid white;
+    box-shadow:0px 0px 0.2em white;
+    text-align: center;
+    width: 2em;
+    height: 2em;
+    margin-right: 1.2em;
+    margin-bottom: 1.2em;
+    display: inline-block;
+    cursor:default;
+}
+.choiceBox:hover {
+    border: 1px solid #00bcf2;
+    color: #00bcf2;
+    box-shadow:0px 0px 0.2em #00bcf2;
+}
+.bluechoiceBox {
+    border: 1px solid #00bcf2;
+    color: #00bcf2;
+    box-shadow:0px 0px 0.2em #00bcf2;
+}
+.cbcontent {
+    position: relative;
+    text-align: center;
+    left: 0;
+    width: 100%;
+    top:0.5em;
+}
+#cp_container {
+    border: 0.5em solid transparent;
+}
+#choiceBoxTemplate {
+    visibility: hidden;
+    overflow: hidden;
+    width: 0;
+    height: 0;
 }
