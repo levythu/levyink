@@ -123,10 +123,7 @@ function bindDirectEvent()
         (function(nm,lc){
             $("#"+nm).tap(function()
             {
-                if (lc!=getLatestPath(window.location.href))
-                    window.location.href=lc+"?toTop=1";
-                else
-                    scroll2Top();
+                window.location.href=lc+"?toTop=1";
             });
         })(ls[i],loc[i]);
     }

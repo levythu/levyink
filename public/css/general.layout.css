@@ -16,3 +16,7 @@
     width: 100%;
     height: 20px;
 }
+.ful_collapse {
+    height: 0;
+    overflow: hidden;
+}

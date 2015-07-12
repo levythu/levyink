@@ -109,10 +109,10 @@
     border: 1px solid #CDCDCD;
     position: relative;
     cursor:default;
-    transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
-    -webkit-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
-    -ms-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
-    -moz-transition: top 0.30s ease-in-out,bottom 0.30s ease-out;
+    transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -webkit-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -ms-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -moz-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
 }
 .activeButton {
     top: 0;
@@ -121,6 +121,7 @@
 }
 .activeButton:hover {
     top: -0.2em;
+    color: #2484c1;
     background-color: white;
 }
 .disButton {
@@ -180,4 +181,12 @@
     overflow: hidden;
     width: 0;
     height: 0;
+}
+
+#condline {
+    font-weight: normal;
+	font-weight: bold;
+	margin-top:1em;
+    border-top: 0.5em solid transparent;
+    border-bottom: 0.5em solid transparent;
 }
