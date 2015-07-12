@@ -28,6 +28,12 @@
     -ms-transition: width 0.30s ease-in-out,height 0.30s ease-in-out;
     -moz-transition: width 0.30s ease-in-out,height 0.30s ease-in-out;
 }
+.transit_in_bgcolor {
+    transition: backgound-color 0.30s ease-in-out;
+    -webkit-transition: backgound-color 0.30s ease-in-out;
+    -ms-transition: backgound-color 0.30s ease-in-out;
+    -moz-transition: backgound-color 0.30s ease-in-out;
+}
 .transit_all {
     transition: all 0.30s ease-in-out;
     -webkit-transition: all 0.30s ease-in-out;

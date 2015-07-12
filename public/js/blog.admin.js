@@ -1,0 +1,54 @@
+var blog_admin_js=
+{
+    isInAdminMode: false,
+    KEY_Q: 81
+}
+
+$(document).ready(newComer);
+function newComer()
+{
+    $("head").append($("<link href='css/blog.admin.css' rel='stylesheet' type='text/css'>"));
+    $("#topInk").prepend(
+        $("<div id='superButton' class='transit_all'>").html
+        (
+            '<span class="icon-flag mid-4-2-glyph"></span>'
+        ).tap(toggleMode)
+    );
+
+    $(window).resize(me_admin_ui);
+    document.onkeydown=keyboardHook;
+
+    setTimeout(me_admin_ui,200);
+}
+function toggleMode()
+{
+    if (blog_admin_js.isInAdminMode)
+    {
+        blog_admin_js.isInAdminMode=false;
+        $("#superButton").removeClass("adminSu");
+    }
+    else
+    {
+        blog_admin_js.isInAdminMode=true;
+        $("#superButton").addClass("adminSu");
+    }
+}
+function keyboardHook(e)
+{
+	var keyPressed=e.keyCode;
+    switch (keyPressed)
+	{
+	case blog_admin_js.KEY_Q:
+		toggleMode();
+        e.preventDefault();
+		break;
+    }
+}
+function me_admin_ui()
+{
+    var uwidth=$(window).width();
+    if (uwidth<700)
+        $("#superButton").css("right",(uwidth-$("#superButton")[0].offsetWidth)/2);
+    else
+        $("#superButton").css("right","5em");
+}
