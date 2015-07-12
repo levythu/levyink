@@ -31,5 +31,3 @@ function(str)
     str=str.replace(/%ESC-R-N%/g,"\r\n");
     str=str.replace(/%ESC-PERCENT%/g,"%");
 };
-
-module.exports=protocolInfo;

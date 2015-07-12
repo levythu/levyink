@@ -10,11 +10,18 @@
 	<link href="css/general.layout.css" rel='stylesheet' type='text/css'>
 	<link href="css/general.effect.css" rel='stylesheet' type='text/css'>
 	<link href="css/rheader.layout.css" rel='stylesheet' type='text/css'>
+	<link href="css/foghorn.css" rel='stylesheet' type='text/css'>
+	<link href="iconfont/icomoon/style.css" rel='stylesheet' type='text/css'>
+	<link href="iconfont/icomoon-sns/style.css" rel='stylesheet' type='text/css'>
+	<link href="css/blog.style.css" rel='stylesheet' type='text/css'>
 
 	<script type="text/javascript" src="js/jquery/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery/jquery.mobile-events.min.js"></script>
+	<script type="text/javascript" src="js/protocolDeclare.js"></script>
 	<script type="text/javascript" src="js/functionhelper.js"></script>
+	<script type="text/javascript" src="js/effecthelper.js"></script>
 	<script type="text/javascript" src="js/rheader.js"></script>
+	<script type="text/javascript" src="js/blog.js"></script>
 </head>
 <body>
 	<div id="toTop" class="transit_in_position">
@@ -50,6 +57,70 @@
     </div>
 	<div id="followedFrame">
 		<div id="contentMain">
+			<h1>Blog List</h1>
+			<div id="loadingFrame" class="transit_in_size">
+				<div id="heightMeasure">
+					<div class="looseText">
+						<img src="image/signs/loading.svg" id="loadingFrame_pic" />
+						&nbsp;Loading data from server, please wait...
+					</div>
+				</div>
+			</div>
+			<div id="errorFrame" class="transit_in_size">
+				<div id="heightMeasure2">
+					<div class="looseText">
+						<span class="icon-sad"></span>
+						&nbsp;Sorry, there seem to be some problems. Try to refresh the page or try it later.
+					</div>
+				</div>
+			</div>
+
+			<div class="blog_title_div">
+			</div>
+			<div id="blogentry_template">
+				<div class="blogentry_tem_con">
+					<span class="icon-bookmark leftmost tem_cata" style="color:rgb(232,17,35)">Catalog</span>
+					<div class="afterfloat">
+					</div>
+					<div class="blogentry_tem_title blogTitle">Title</div>
+					<div class="peripheralTitle">
+						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
+						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
+						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
+					</div>
+					<p>Content here</p>
+				</div>
+			</div>
+			<div id="blogboard">
+				<!--
+				<div class="blogentry_tem_con">
+					<span class="icon-bookmark leftmost" style="color:rgb(232,17,35)">技术日志</span>
+					<div class="afterfloat">
+					</div>
+					<div class="blogentry_tem_title blogTitle">中文字体剪裁组件</div>
+					<div class="peripheralTitle">
+						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
+						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
+						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
+					</div>
+					<p>对于互联网而言，自定义字体从来不是一个陌生的东西，IE 4 从 1997 年起就已经支持在浏览器中嵌入自定义的字体。而这一种技术被 Goolge Fonts 等免费字体服务推到了一个新的高度。前端工程师借助于 @font-face ， 可以轻松的在网页上使用各种字体，基本已经成为国外网页设计的标配了...</p>
+				</div>
+				<div class="blogentry_tem_div">
+				</div>
+				<div class="blogentry_tem_con">
+					<span class="icon-bookmark leftmost" style="color:rgb(232,17,35)">技术日志</span>
+					<div class="afterfloat">
+					</div>
+					<div class="blogentry_tem_title blogTitle">中文字体剪裁组件</div>
+					<div class="peripheralTitle">
+						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em">2015-07-12 9:25</span></span>
+						<span class="icon-bubbles4 inlineb"><span class="codeStyle indent1em reserve4em">15 comments</span></span>
+						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em">Levy</span></span>
+					</div>
+					<p>对于互联网而言，自定义字体从来不是一个陌生的东西，IE 4 从 1997 年起就已经支持在浏览器中嵌入自定义的字体。而这一种技术被 Goolge Fonts 等免费字体服务推到了一个新的高度。前端工程师借助于 @font-face ， 可以轻松的在网页上使用各种字体，基本已经成为国外网页设计的标配了...</p>
+				</div>
+				-->
+			</div>
 		</div>
 		<div id="footer">
 			<p>By Levy, 2015. Copyright reserved.</p>
