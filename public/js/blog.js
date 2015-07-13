@@ -7,7 +7,8 @@ var blog_js=
     totalblog: 0,
     triggeredMove: false,
     searchStr: "filter=none",
-    this_name: "blog.html"
+    this_name: "blog.html",
+    search_Res: []
 };
 
 $(document).ready(function()
@@ -52,10 +53,17 @@ $(document).ready(function()
         scroll2Top();
         refreshData();
     });
+    $("#refbut").tap(function()
+    {
+        refreshData();
+        $("#refbut").addClass("nonexist");
+        $("#refbut").html("");
+    });
 
     detQuery();
     refreshData();
-    updateUI();
+
+    $(window).trigger("resize");
 });
 
 function detQuery()
@@ -128,6 +136,8 @@ function getEmphasis(id)
 {
     if (id==10)
         return "[置顶] ";
+    else if (id<0)
+        return "[隐藏] ";
     return "";
 }
 function analyzeData(data)
@@ -150,7 +160,7 @@ function analyzeData(data)
         return;
     }
     blog_js.totalblog=res.blog_in_total;
-    entries=res.content;
+    blog_js.search_Res=entries=res.content;
 
     for (var i=0;i<entries.length;i++)
     {
@@ -175,6 +185,8 @@ function analyzeData(data)
             entries[i].author+"</a>"
         );
         newNode.find(".tem_cont").text(formatContent(protocolInfo.descape(entries[i].preview)));
+
+        if (entries[i].order<0) newNode.css("color","#BBBBBB");
 
         $("#blogboard").append(newNode);
 
@@ -208,7 +220,9 @@ function analyzeData(data)
 
     $("#headline").text(" - Page "+(blog_js.nowPage+1));
 
-    updateUI();
+    $("body").trigger("finishAjaxBlog");
+
+    $(window).trigger("resize");
     hideLoading();
 }
 function fetchData(callback)
@@ -221,4 +235,9 @@ function fetchData(callback)
         console.log("Failed to fetch data; now organizing re-fetch...");
         fetchData(arguments);
     });
+}
+function showRef()
+{
+    $("#refbut").html("&nbsp;&nbsp;&nbsp;&nbsp;<span class='icon-spinner11 inlineb' style='font-size:1.3em'></span>");
+    $("#refbut").removeClass("nonexist");
 }

@@ -20,3 +20,33 @@
     height: 0;
     overflow: hidden;
 }
+.whtCanvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(255,255,255,0.8);
+    color: black;
+    z-index: 50;
+}
+.strechWidth {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+.looseRow {
+    line-height: 300%;
+}
+.glybutton {
+    text-align: center;
+}
+.glybutton:hover {
+    color: rgb(255,185,0);
+}
+.glybutton_c {
+    font-size: 3em;
+}
+.glybutton_chosen {
+    color: rgb(255,185,0);
+}

@@ -42,7 +42,7 @@ $(document).ready(function()
     $("#floatBack").tap(hideBlack);
     bindDirectEvent();
 
-    updateLayout();
+    $(window).trigger("resize");
 
     if (getParameterByName('toTop')!="")
         setTimeout(function(){scroll2Top()}, 500);

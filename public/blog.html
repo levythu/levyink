@@ -58,8 +58,11 @@
     </div>
 	<div id="followedFrame">
 		<div id="contentMain">
-			<h1 class="inlineb">Blog List</h1>
-			<h1 class="inlineb" id="headline"></h1>
+			<div style="text-align:left">
+				<h1 class="inlineb">Blog List</h1>
+				<h1 class="inlineb" id="headline"></h1>
+				<h1 class="inlineb transit_all nonexist" id="refbut"></h1>
+			</div>
 			<div class="ful_collapse" id="condline">
 				<span class='icon-search inlineb' style='font-size:1.3em'></span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
 				<span id="condline_c">@ 生活</span>
@@ -85,17 +88,29 @@
 			</div>
 			<div id="blogentry_template">
 				<div class="blogentry_tem_con">
-					<span class="icon-bookmark leftmost tem_cata_tag" style="color:rgb(232,17,35)"><span class="tem_cata">Catalog</span></span>
-					<div class="afterfloat">
+					<div class="tem_idf">
+						<span class="icon-bookmark leftmost tem_cata_tag" style="color:rgb(232,17,35)"><span class="tem_cata">Catalog</span></span>
+						<div class="afterfloat">
+						</div>
+						<div class="blogentry_tem_title blogTitle tem_title">Title</div>
+						<div class="line1px"></div>
+						<div class="peripheralTitle">
+							<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em tem_time">2015-07-12 9:25</span></span>
+							<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em tem_auth">Levy</span></span>
+							<span class="icon-bubbles4 inlineb tem_com"><span class="codeStyle indent1em reserve4em tem_com_c">15 comments</span></span>
+						</div>
+						<p class="tem_cont">Content here</p>
 					</div>
-					<div class="blogentry_tem_title blogTitle tem_title">Title</div>
-					<div class="line1px"></div>
-					<div class="peripheralTitle">
-						<span class="icon-clock inlineb"><span class="codeStyle indent1em reserve4em tem_time">2015-07-12 9:25</span></span>
-						<span class="icon-user inlineb"><span class="codeStyle indent1em reserve4em tem_auth">Levy</span></span>
-						<span class="icon-bubbles4 inlineb tem_com"><span class="codeStyle indent1em reserve4em tem_com_c">15 comments</span></span>
+
+					<div class="tem_man whtCanvas nonexist transit_in_opacity">
+						<div class="absCenter strechWidth looseRow" >
+							<div class="glybutton transit_in_color"><span class="icon-pushpin glybutton_c nonexist"></span></div>
+							<div class="glybutton transit_in_color"><span class="icon-pushpin glybutton_c tem_pushpin"></span></div>
+							<div class="glybutton transit_in_color"><span class="icon-eye glybutton_c tem_hide"></span></div>
+							<div class="glybutton transit_in_color"><span class="icon-pencil glybutton_c tem_edit"></span></div>
+							<div class="glybutton transit_in_color"><span class="icon-pushpin glybutton_c nonexist"></span></div>
+						</div>
 					</div>
-					<p class="tem_cont">Content here</p>
 				</div>
 			</div>
 			<div id="blogboard">

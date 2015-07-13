@@ -1,4 +1,5 @@
 .blogentry_tem_con {
+    position: relative;
 }
 .blogentry_tem_div {
     height: 2em;
@@ -101,12 +102,12 @@
     height: 2em;
 }
 .bigButton {
-    box-shadow: 0.1em 0.1em 0.05em grey;
+    box-shadow: 0 0 0.1em black;
     border-radius: 0.1em;
     text-align: center;
     width: 5em;
     height: 2em;
-    border: 1px solid #CDCDCD;
+    border: 1px solid black;
     position: relative;
     cursor:default;
     transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
@@ -125,6 +126,7 @@
     background-color: white;
 }
 .disButton {
+    border-color: #EEEEEE;
     color: #AAAAAA;
     background-color: #EEEEEE;
 }
@@ -189,4 +191,10 @@
 	margin-top:1em;
     border-top: 0.5em solid transparent;
     border-bottom: 0.5em solid transparent;
+}
+#refbut {
+    color: #888888;
+}
+#refbut:hover {
+    color: #AAAAAA;
 }

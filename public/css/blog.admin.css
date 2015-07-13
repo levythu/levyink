@@ -10,7 +10,7 @@
     top: 0;
     right: 5em;
     color: white;
-    z-index: 100;
+    z-index: 50;
     cursor: default;
 }
 .adminSu {
@@ -34,4 +34,27 @@
     position: absolute;
     top: 0.5em;
     left: 0.5em;
+}
+
+.addFrame {
+    width: 100%;
+    border-radius: 0.3em;
+    border: 0.2em #AAAAAA dotted;
+    color: #AAAAAA;
+    overflow: hidden;
+    opacity: 0;
+    height: 0em;
+    text-align: center;
+    cursor: default;
+}
+.addFrame:hover {
+    color: black;
+    border-color: black;
+}
+.addFrame_c {
+    font-size: 2em;
+}
+.dashBorder {
+    border-radius: 0.3em;
+    border: 0.2em #AAAAAA dotted;
 }

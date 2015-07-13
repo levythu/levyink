@@ -41,6 +41,25 @@ function action2Location()
             window.open($(this).attr("lvaction"));
     });
 }
+function effectHelper_adj()
+{
+    $(".absCenter").each(function(id,dom)
+    {
+        $(dom).css("position","absolute")
+              .css("left",(dom.parentNode.offsetWidth-dom.offsetWidth)*0.5)
+              .css("top",(dom.parentNode.offsetHeight-dom.offsetHeight)*0.5);
+    });
+    $(".absCenter").each(function(id,dom)
+    {
+        $(dom).css("position","absolute")
+              .css("left",(dom.parentNode.offsetWidth-dom.offsetWidth)*0.5)
+              .css("top",(dom.parentNode.offsetHeight-dom.offsetHeight)*0.5);
+    });
+}
+$(document).ready(function()
+{
+    $(window).resize(effectHelper_adj);
+});
 /*
 $(document).ready(function()
 {

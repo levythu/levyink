@@ -68,3 +68,8 @@
     text-decoration: none !important;
     color: inherit !important;
 }
+
+.nonexist {
+    opacity: 0;
+    pointer-events:none;
+}
