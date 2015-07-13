@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Perpetua-b';
+    src: url('../font/PER.TTF');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: custom-content1;
+	src: local("Vollkorn"),url('../font/Vollkorn-Regular.ttf');
+	unicode-range: U+00-024F;
+}
+@font-face {
+	font-family: custom-content1;
+	src: local("stsong");
+	unicode-range: U+4E00-9FFF;
+}

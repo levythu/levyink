@@ -43,6 +43,7 @@ $(document).ready(function()
     bindDirectEvent();
 
     $(window).trigger("resize");
+    $("html").load(function(){$(window).trigger("resize");});
 
     if (getParameterByName('toTop')!="")
         setTimeout(function(){scroll2Top()}, 500);

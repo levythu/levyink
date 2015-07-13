@@ -1,0 +1,97 @@
+.fullScreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+#topBar {
+    background: #343434;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 4em;
+}
+#profileArea {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #EEEEEE;
+
+}
+#previewArea {
+    z-index: 1;
+    height: 100%;
+    right:0;
+    width: 48.5%;
+    top: 0;
+    position: absolute;
+    overflow: auto;
+}
+#editArea {
+    z-index: 2;
+    position: relative;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
+}
+#dBar {
+    position: relative;
+    background-color: #fefefe;
+}
+#morgan {
+    float: left;
+    font-family: "Perpetua-b","Times";
+    color: white;
+    border: 0.5em solid transparent;
+    font-size: 2em;
+}
+#tbglobal {
+    float: right;
+    font-size: 2em;
+    border: 0.5em solid transparent;
+    color: white;
+    letter-spacing: 0.3em;
+}
+.inb {
+    display: inline-block;
+}
+#sourceCon {
+    z-index: 5;
+    width: 48.5%;
+    height: 100%;
+}
+#sourceTA {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    font-family: inherit;
+    font-size: 1.1em;
+    line-height: 150%;
+    width: 100%;
+    height: 100%;
+}
+#fullCanvas {
+    font-family: "simHei", "微软雅黑", "黑体", sans-serif;
+}
+
+.glyph-option {
+    color: #888888;
+}
+.glyph-option:hover {
+    color: #CCCCCC;
+}
+.glyph-option-chosen:hover,
+.glyph-option-chosen {
+    color: white;
+}
+.glyph-button-orange:hover {
+    color: rgb(255,140,0);
+}

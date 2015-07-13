@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no" />
+    <title>Editor - Levy's Ink</title>
+
+    <link href="css/general.font.css" rel='stylesheet' type='text/css'>
+	<link href="css/general.effect.css" rel='stylesheet' type='text/css'>
+    <link href="css/editor.layout.css" rel='stylesheet' type='text/css'>
+    <link href="css/foghorn.forpreview.css" rel='stylesheet' type='text/css'>
+	<link href="iconfont/icomoon/style.css" rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript" src="js/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.mobile-events.min.js"></script>
+	<script type="text/javascript" src="js/protocolDeclare.js"></script>
+	<script type="text/javascript" src="js/functionhelper.js"></script>
+	<script type="text/javascript" src="js/effecthelper.js"></script>
+	<script type="text/javascript" src="js/showdown/showdown.min.js"></script>
+	<script type="text/javascript" src="js/editor.js"></script>
+</head>
+<body>
+    <div class="fullScreen" id="fullCanvas">
+        <div id="topBar">
+			<div id="morgan" class="transit_in_opacity">
+				Levy's Ink
+			</div>
+			<div id="tbglobal">
+				<span class="inb icon-checkmark glyph-button-orange transit_in_color" id="saveBut" title="Save and Back"></span> |
+				<span class="inb transit_in_color glyph-option icon-pencil2 glyph-option-chosen" title="Edit View" id="opt_edit"></span>
+				<span class="inb transit_in_color glyph-option icon-info" title="Profile View" id="opt_prof"></span>
+				<span class="inb transit_in_color glyph-option icon-lab" title="Preview" id="opt_prev"></span>
+			</div>
+        </div>
+        <div id="dBar">
+			<div id="editArea">
+				<div id="sourceCon" class="unifiedInch transit_all">
+					<textarea id="sourceTA" class="flatTextArea"></textarea>
+				</div>
+				<div id="previewArea" class="unifiedInch transit_all">
+					<div id="preViewCont" class="mdPre">
+					</div>
+				</div>
+	        </div>
+	        <div id="profileArea" class="nonexist transit_all">
+	        </div>
+		</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+
+body {
+    background:#fefefe;
+}
+.mdPre {
+        padding:1.2em;
+        margin:auto;
+        max-width:42em;
+        background:#fefefe;
+	}
+.mdPre {
+	font: 1.1em;
+	color: #333;
+	line-height: 1.4;
+	text-align: justify;
+    word-break: break-all;
+	}
+/* Typography
+-------------------------------------------------------- */
+
+.mdPre h1 {
+	margin-top: 0;
+	font-weight: normal;
+	}
+.mdPre h2 {
+	font-weight: normal;
+    border-bottom: 1px solid #AAAAAA;
+	}
+.mdPre h3 {
+	font-weight: normal;
+	font-weight: bold;
+	margin-top:3em;
+	}
+.mdPre p {
+	margin-top:0;
+	-webkit-hypens:auto;
+	-moz-hypens:auto;
+	hyphens:auto;
+	}
+.mdPre ul {
+	list-style: square;
+	padding-left:1.2em;
+	}
+.mdPre ol {
+	padding-left:1.2em;
+	}
+.mdPre blockquote {
+	margin-left: 1em;
+	padding-left: 1em;
+	border-left: 1px solid #ddd;
+	}
+.mdPre code {
+	font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+	font-size: .9em;
+	background: white;
+	}
+.mdPre a {
+	color: #2484c1;
+	text-decoration: none;
+	}
+.mdPre a:hover {
+	text-decoration: underline;
+	}
+.mdPre a img {
+	border:none;
+	}
+.mdPre h1 a, .mdPre h1 a:hover {
+	color: #333;
+	text-decoration: none;
+	}
+.mdPre hr {
+	color : #ddd;
+	height : 1px;
+	margin: 2em 0;
+	border-top : solid 1px #ddd;
+	border-bottom : none;
+	border-left: 0;
+	border-right: 0;
+	}
+.mdPre p#heart{
+	font-size: 2em;
+	line-height: 1;
+	text-align: center;
+	color: #ccc;
+	}
+.mdPre .red {
+	color:#B50000;
+	}
