@@ -50,3 +50,7 @@
 .glybutton_chosen {
     color: rgb(255,185,0);
 }
+
+.inlineblock {
+    display: inline-block;
+}

@@ -1,0 +1,17 @@
+#preInfo {
+        padding-left:1em;
+        padding-right:1em;
+        margin:auto;
+        max-width:42em;
+        background:#fefefe;
+    	color: #333;
+    	text-align: justify;
+        word-break: break-all;
+        font-size: 1.3em;
+}
+.byline {
+    color: #AAAAAA;
+}
+.placeholder-3em {
+    height: 3em;
+}

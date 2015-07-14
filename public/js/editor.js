@@ -42,6 +42,7 @@ $(document).ready(function()
         //TODO: clean local storage.
     });
     $("html").load(function(){$(window).trigger("resize");});
+    setInterval(function(){$(window).trigger("resize");},2000);
 
     $(window).trigger("resize");
     loadData();
