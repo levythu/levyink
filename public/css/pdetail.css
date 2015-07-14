@@ -10,8 +10,11 @@
         font-size: 1.3em;
 }
 .byline {
-    color: #AAAAAA;
+    color: #888888;
 }
 .placeholder-3em {
+    height: 3em;
+}
+.placeholder-1-5em {
     height: 3em;
 }
