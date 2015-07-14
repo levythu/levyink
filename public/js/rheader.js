@@ -118,7 +118,7 @@ function scroll2Top(disableAnime)
 function bindDirectEvent()
 {
     var ls=["tab_me","tab_blog","tab_mess"];
-    var loc=["me.html","blog.html","mess.html"];
+    var loc=[function_helper.url_me,function_helper.url_blog,function_helper.url_mess];
     for (var i=0;i<ls.length;i++)
     {
         (function(nm,lc){

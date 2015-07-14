@@ -16,6 +16,12 @@
     -ms-transition: color 0.30s ease-in-out;
     -moz-transition: color 0.30s ease-in-out;
 }
+.transit_in_boxshadow {
+    transition: box-shadow 0.30s ease-in-out;
+    -webkit-transition: box-shadow 0.30s ease-in-out;
+    -ms-transition: box-shadow 0.30s ease-in-out;
+    -moz-transition: box-shadow 0.30s ease-in-out;
+}
 .transit_in_position {
     transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
     -webkit-transition: left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;

@@ -7,7 +7,6 @@ var blog_js=
     totalblog: 0,
     triggeredMove: false,
     searchStr: "filter=none",
-    this_name: "blog.html",
     search_Res: []
 };
 
@@ -56,8 +55,11 @@ $(document).ready(function()
     $("#refbut").tap(function()
     {
         refreshData();
-        $("#refbut").addClass("nonexist");
-        $("#refbut").html("");
+        $("#refbut").addClass("nonexist-noblock");
+    });
+    $("#condline").tap(function()
+    {
+        window.location=function_helper.url_blog+"?toTop=1";
     });
 
     detQuery();
@@ -75,13 +77,13 @@ function detQuery()
     {
         blog_js.searchStr="filter=catalog&key="+ct;
         $("#condline_c").html("@<span style='color:#707070'>"+ct+"</span>");
-        $("#condline").removeClass("ful_collapse");
+        $("#condline").removeClass("nonexist-noblock");
     }
     else if (sb=="author")
     {
         blog_js.searchStr="filter=author&key="+ct;
         $("#condline_c").html("by <span style='color:#707070'>"+ct+"</span>");
-        $("#condline").removeClass("ful_collapse");
+        $("#condline").removeClass("nonexist-noblock");
     }
 }
 function updateUI()
@@ -167,7 +169,7 @@ function analyzeData(data)
         var newNode=$("#blogentry_template > ").clone();
         newNode.find(".tem_cata_tag").css("color",dispenseColor(entries[i].catalog));
         newNode.find(".tem_cata").html(
-            "<a class='nil_a' href='"+blog_js.this_name+"?toTop=1&searchby=catalog&key="+entries[i].catalog+"'>"+
+            "<a class='nil_a' href='"+function_helper.url_blog+"?toTop=1&searchby=catalog&key="+entries[i].catalog+"'>"+
             entries[i].catalog+"</a>");
         newNode.find(".tem_title").html("<a class='no_effect_a transit_in_color' href='"+
             entries[i].url+
@@ -181,7 +183,7 @@ function analyzeData(data)
         else
             newNode.find(".tem_com").remove();
         newNode.find(".tem_auth").html(
-            "<a class='no_effect_a' href='"+blog_js.this_name+"?toTop=1&searchby=author&key="+entries[i].author+"'>"+
+            "<a class='no_effect_a' href='"+function_helper.url_blog+"?toTop=1&searchby=author&key="+entries[i].author+"'>"+
             entries[i].author+"</a>"
         );
         newNode.find(".tem_cont").text(formatContent(protocolInfo.descape(entries[i].preview)));
@@ -238,6 +240,6 @@ function fetchData(callback)
 }
 function showRef()
 {
-    $("#refbut").html("&nbsp;&nbsp;&nbsp;&nbsp;<span class='icon-spinner11 inlineb' style='font-size:1.3em'></span>");
-    $("#refbut").removeClass("nonexist");
+    $("#refbut").html("&nbsp;&nbsp;&nbsp;&nbsp;<span class='icon-spinner11 inlineb' style='font-size:1.3em'></span>")
+    $("#refbut").removeClass("nonexist-noblock");
 }

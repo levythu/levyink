@@ -192,6 +192,11 @@
     border-top: 0.5em solid transparent;
     border-bottom: 0.5em solid transparent;
 }
+#condline:hover {
+    box-shadow: 0 0 0.5em red;
+    border-radius: 0.2em;
+}
+
 #refbut {
     color: #888888;
 }

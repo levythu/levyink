@@ -1,3 +1,11 @@
+var function_helper=
+{
+    url_blog: "blog.html",
+    url_editor: "editor.html",
+    url_me: "me.html",
+    url_mess: "mess.html",
+}
+
 function trimStringToNum(str)
 {
     var t=(/^\d*/.exec(str));
