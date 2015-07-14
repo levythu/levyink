@@ -46,7 +46,6 @@ $(document).ready(function()
     loadData();
     if (editor_js.docName==="")
     {
-        restoreContent();
         setInterval(backupContent,10000);
     }
 });
@@ -101,8 +100,11 @@ function restoreContent()
 function loadData()
 {
     if (editor_js.docName==="")
+    {
+        restoreContent();
+        hideCover();
         return;
-    showCover("Fetching data from server, please wait...");
+    }
 }
 function showCover(showWord)
 {
