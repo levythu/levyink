@@ -10,6 +10,16 @@ var db=model.db;
 var r_au=require("./rest_au");
 var r_nau=require("./rest_nau");
 
+router.get("/login",function(req, res)
+{
+    req.session.author="levy";
+    res.send("Logined.")
+});
+router.get("/logout",function(req, res)
+{
+    req.session.author=undefined;
+    res.send("Logouted.")
+});
 router.use('/authorized', function(req, res, next)
 {
     if (req.session.author==null)

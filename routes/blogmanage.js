@@ -4,8 +4,9 @@ var router = express.Router();
 var protocol=require("../models/protocols");
 var protocolInfo=require("../models/protocolDeclare");
 
-var blogmanage=require("./blogmanage");
+router.get('/list', function(req, res)
+{
 
-router.use("/blog",blogmanage);
+});
 
 module.exports = router;
