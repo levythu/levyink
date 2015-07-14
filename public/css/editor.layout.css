@@ -95,3 +95,11 @@
 .glyph-button-orange:hover {
     color: rgb(255,140,0);
 }
+
+#upperCanvas {
+    background: rgba(0,0,0,0.7);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+}

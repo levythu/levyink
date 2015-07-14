@@ -43,6 +43,7 @@ $(document).ready(function()
     $("html").load(function(){$(window).trigger("resize");});
 
     $(window).trigger("resize");
+    loadData();
     if (editor_js.docName==="")
     {
         restoreContent();
@@ -95,4 +96,21 @@ function restoreContent()
     if (localStorage.getItem("localback")==undefined) return;
     $("#sourceTA")[0].value=localStorage.getItem("localback");
     renderMD();
+}
+
+function loadData()
+{
+    if (editor_js.docName==="")
+        return;
+    showCover("Fetching data from server, please wait...");
+}
+function showCover(showWord)
+{
+    $("#promptWord").text(showWord);
+    $(window).trigger("resize");
+    $("#upperCanvas").removeClass("nonexist");
+}
+function hideCover()
+{
+    $("#upperCanvas").addClass("nonexist");
 }

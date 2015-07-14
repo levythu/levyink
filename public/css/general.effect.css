@@ -107,3 +107,7 @@
 .flatTextArea:focus {
     background: white;
 }
+
+.normalCursor {
+    cursor: default;
+}

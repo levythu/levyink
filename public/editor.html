@@ -22,11 +22,11 @@
 <body>
     <div class="fullScreen" id="fullCanvas">
         <div id="topBar">
-			<div id="morgan" class="transit_in_opacity">
+			<div id="morgan" class="transit_in_opacity normalCursor">
 				Levy's Ink
 			</div>
 			<div id="tbglobal">
-				<span class="inb icon-checkmark glyph-button-orange transit_in_color" id="saveBut" title="Save and Back"></span> |
+				<span class="inb icon-checkmark glyph-button-orange transit_in_color" id="saveBut" title="Save and Go back"></span> |
 				<span class="inb transit_in_color glyph-option icon-pencil2 glyph-option-chosen" title="Edit View" id="opt_edit"></span>
 				<span class="inb transit_in_color glyph-option icon-info" title="Profile View" id="opt_prof"></span>
 				<span class="inb transit_in_color glyph-option icon-lab" title="Preview" id="opt_prev"></span>
@@ -46,6 +46,13 @@
 	        </div>
 		</div>
     </div>
+	<div class="fullScreen transit_in_opacity nonexist" id="upperCanvas">
+		<div id="upperContent" class="absCenter">
+			<img src="image/signs/loading-w.svg" id="loadingFrame_pic" />
+			<br/><br/>
+			<span id="promptWord">Fetching data from server, please wait...</span>
+		</div>
+	</div>
 
 </body>
 </html>
