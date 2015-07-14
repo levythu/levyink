@@ -50,6 +50,13 @@ $(document).ready(function()
         setInterval(backupContent,10000);
         $(window).bind("beforeunload", backupContent);
     }
+    else
+    {
+        $(window).bind("beforeunload", function()
+        {
+            return "Are you sure to quit? All the progress will get lost.";
+        });
+    }
 });
 
 function updateUI()
