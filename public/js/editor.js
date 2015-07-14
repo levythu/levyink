@@ -36,6 +36,7 @@ $(document).ready(function()
             $("#previewArea")[0].scrollHeight*$("#sourceTA").scrollTop()/$("#sourceTA")[0].scrollHeight
         );
     });
+    enableTab('sourceTA');
     $("#saveBut").tap(function()
     {
         //TODO: clean local storage.
@@ -47,6 +48,7 @@ $(document).ready(function()
     if (editor_js.docName==="")
     {
         setInterval(backupContent,10000);
+        $(window).bind("beforeunload", backupContent);
     }
 });
 
@@ -115,4 +117,39 @@ function showCover(showWord)
 function hideCover()
 {
     $("#upperCanvas").addClass("nonexist");
+}
+
+function enableTab(id) {
+    var el = document.getElementById(id);
+    el.onkeydown = function(e)
+    {
+        if (e.keyCode === 9)
+        {
+            var val = this.value,
+                start = this.selectionStart,
+                end = this.selectionEnd;
+            if ((start===0 || val[start-1]=="\n") && (end==val.length || val[end]=="\n" || val[end]=="\r"))
+            {
+                var tp=val.substring(start,end);
+                this.value=val.substring(0, start)+tp.replace(/(^|\r\n|\n)/g,"$1\t")+val.substring(end);
+                this.selectionStart=start;
+                this.selectionEnd=end+tp.match(/(^|\r\n|\n)/g).length;
+            }
+            else
+            {
+                if (document.queryCommandSupported('insertText'))
+                {
+                    document.execCommand('insertText', false, "\t");
+                }
+                else
+                {
+                    this.value = val.substring(0, start) + '\t' + val.substring(end);
+                    this.selectionStart = this.selectionEnd = start + 1;
+                }
+            }
+            renderMD();
+
+            return false;
+        }
+    };
 }
