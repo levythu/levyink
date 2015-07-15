@@ -11,6 +11,13 @@ var protocolInfo=
             INVALID_USER:1001,
 
             INVALID_PARAMETER: 2000,
+            INVALID_POST_CONTENT: 2001,
+
+            REDUNDANCY_POST: 3000,
+            CREATION_FAIL: 3001,
+            GET_LIST_FAIL: 3002,
+            NO_SUCH_DOCS: 3003,
+            UPDATE_FAIL: 3004,         
 
             DB_ERROR: 17000,
 
