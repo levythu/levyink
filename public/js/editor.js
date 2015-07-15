@@ -16,8 +16,10 @@ var editor_js=
     abstract_length:300,
     API_INFO:"/rest/authorized/blog/create",
     API_INFO2:"/rest/authorized/blog/update",
+    API_GET:"/rest/nonauthorized/blog/passage",
 
-    tmpToken:""
+    tmpToken:"",
+    saved:false
 };
 
 $(document).ready(function()
@@ -81,12 +83,13 @@ $(document).ready(function()
             {
                 $("#sourceTA")[0].value="";
                 backupContent();
-                showCover("Post success!",false);
-                setTimeout(function()
-                {
-                    window.location=url;
-                },2000);
             }
+            editor_js.saved=true;
+            showCover("Post success!",false);
+            setTimeout(function()
+            {
+                window.location=url;
+            },2000);
         });
     });
     $("html").load(function(){$(window).trigger("resize");});
@@ -103,7 +106,9 @@ $(document).ready(function()
     {
         $(window).bind("beforeunload", function()
         {
-            return "Are you sure to quit? All the progress will get lost.";
+            if (editor_js.saved==false)
+                return "Are you sure to quit? All the progress will get lost.";
+            
         });
     }
 });
@@ -162,6 +167,43 @@ function loadData()
         restoreContent();
         hideCover();
         return;
+    }
+    else
+    {
+        $.get(editor_js.API_GET+"?pid="+editor_js.docName,function(data)
+        {
+            var rs;
+            try
+            {
+                rs=JSON.parse(data);
+            }
+            catch (e)
+            {
+                showCover("Uh... There are fatal problems when fetching data, so editor cannot open. Sorry. CODE="
+                    +protocolInfo.generalRes.statusCode.FRONT_END_ERROR,false);
+            }
+            if (rs.status>=protocolInfo.LEAST_ERR)
+            {
+                showCover("Uh... There are fatal problems when fetching data, so editor cannot open. Sorry. CODE="
+                    +rs.status,false);
+            }
+            var cont=protocolInfo.ansisecure(rs.content);
+            $("#ptitle")[0].value=cont.title;
+            $("#pcata")[0].value=cont.catalog;
+            if (cont.order==-1)
+            {
+                $("#phide").addClass("checkBox_white_chosen");
+            }
+            else if (cont.order==10)
+            {
+                $("#ptop").addClass("checkBox_white_chosen");
+            }
+            $("#pau")[0].value=cont.author;
+            $("#ptag")[0].value=cont.tag.join(" ");
+            $("#sourceTA")[0].value=cont.content;
+            renderMD();
+            hideCover();
+        });
     }
 }
 function showCover(showWord,isp)
@@ -245,28 +287,29 @@ function postIt(callb)
     showCover("Communicating with server, wait a moment...");
     fillProfile();
     gleanAbstract();
-    var postBody;
+    var postBody=
+    {
+        title: $("#ptitle")[0].value,
+        catalog: $("#pcata")[0].value,
+        preview: editor_js.abstract,
+        order: $("#phide").hasClass("checkBox_white_chosen")?-1:($("#ptop").hasClass("checkBox_white_chosen")?10:0),
+        author: $("#pau")[0].value,
+        tag: $("#ptag")[0].value.split(" ").filter(function(p){return p!=""}),
+        reftime: $("#preftime").hasClass("checkBox_white_chosen"),
+        content: $("#sourceTA")[0].value,
+        token: editor_js.tmpToken
+    };
+    var dst;
     if (editor_js.docName=="")
     {
-        postBody=
-        {
-            title: $("#ptitle")[0].value,
-            catalog: $("#pcata")[0].value,
-            preview: editor_js.abstract,
-            order: $("#phide").hasClass("checkBox_white_chosen")?-1:($("#ptop").hasClass("checkBox_white_chosen")?10:0),
-            author: $("#pau")[0].value,
-            tag: $("#ptag")[0].value.split(" ").filter(function(p){return p!=""}),
-            reftime: $("#preftime").hasClass("checkBox_white_chosen"),
-            content: $("#sourceTA")[0].value,
-            token: editor_js.tmpToken
-        };
+        dst=editor_js.API_INFO;
     }
     else
     {
-        postBody={}; //TODO
+        dst=editor_js.API_INFO2+"?pid="+editor_js.docName;
     }
 
-    $.post(editor_js.API_INFO,
+    $.post(dst,
     {
         val: JSON.stringify(protocolInfo.secure(postBody))
     },function(data)

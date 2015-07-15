@@ -58,9 +58,9 @@ function checkExist(tpid,yescall,nocall)
 }
 function checkInData(obj,isnew,callback)
 {
+    var insList=["title","catalog","preview","order","author","tag","content"];
     if (isnew)
     {
-        var insList=["title","catalog","preview","order","author","tag","content"];
         lock.acquire("rest.blog.create.null",function()
         {
             stat.checkEssays(function(num)
@@ -101,7 +101,30 @@ function checkInData(obj,isnew,callback)
             });
         });
     }
+    else
+    {
+        lock.acquire("rest.blog.update."+obj.destination,function()
+        {
+            var toInsert={};
+            for (var i=0;i<insList.length;i++)
+                toInsert[insList[i]]=obj[insList[i]];
+            if (obj.reftime===true)
+                toInsert.pubtime=(new Date()).getTime();
 
+            db[model.BLOG].update({pid:obj.destination},{$set:toInsert},{},
+                function(err,rec)
+                {
+                    if (err || rec.length==0)
+                    {
+                        callback(false);
+                        lock.release("rest.blog.update."+obj.destination);
+                        return;
+                    }
+                    lock.release("rest.blog.update."+obj.destination);
+                    callback(obj.destination);
+                });
+        });
+    }
 }
 router.post('/create', function(req, res)
 {
@@ -129,6 +152,43 @@ router.post('/create', function(req, res)
         {
             res.send(JSON.stringify({
                 "status": protocolInfo.generalRes.statusCode.CREATION_FAIL,
+                "content": null
+            }));
+            return;
+        }
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.NORMAL,
+            "content": protocolInfo.secure({url:puburl.blogpage.replace(/%PID%/g,result)})
+        }));
+    });
+});
+router.post('/update', function(req, res)
+{
+    if (req.query.pid==undefined || req.query.pid=="")
+    {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
+            "content": null
+        }));
+        return;
+    }
+    var bdy=verify(req.body);
+    if (bdy===false)
+    {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_POST_CONTENT,
+            "content": null
+        }));
+        return;
+    }
+    bdy.destination=req.query.pid;
+
+    checkInData(bdy,false,function(result)
+    {
+        if (result===false)
+        {
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.UPDATE_FAIL,
                 "content": null
             }));
             return;

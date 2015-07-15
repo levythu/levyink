@@ -102,6 +102,7 @@
      border-radius: 0.1em;
      background: #F3F3F3;
      -webkit-appearance:none;
+     tab-size: 4;
 }
 .flatTextArea:hover,
 .flatTextArea:active,
