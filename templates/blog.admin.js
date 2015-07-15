@@ -44,8 +44,12 @@ function newComer()
             });
             tnode.find(".tem_edit").tap(function()
             {
-                //TODO
+                window.location=function_helper.url_editor+"?pid="+contxt.pid;
             });
+        });
+        $(".addFrame").tap(function()
+        {
+            window.location=function_helper.url_editor;
         });
         blog_admin_js.modified=false;
         if (blog_admin_js.isInAdminMode) toggleMode();
