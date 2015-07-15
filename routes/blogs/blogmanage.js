@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var protocol=require("../models/protocols");
-var protocolInfo=require("../models/protocolDeclare");
-var model=require("../models/db");
+var protocol=require("../../models/protocols");
+var protocolInfo=require("../../models/protocolDeclare");
+var model=require("../../models/db");
 var db=model.db;
 
 var searchable=["catalog","author"];

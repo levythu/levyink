@@ -4,7 +4,7 @@ var router = express.Router();
 var protocol=require("../models/protocols");
 var protocolInfo=require("../models/protocolDeclare");
 
-var blogmanage=require("./blogmanage");
+var blogmanage=require("./blogs/blogmanage");
 
 router.use("/blog",blogmanage);
 
