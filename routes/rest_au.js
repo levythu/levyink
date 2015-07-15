@@ -8,4 +8,9 @@ var blogmanage=require("./blogmanage");
 
 router.use("/blog",blogmanage);
 
+router.get('/', function(req, res, next)
+{
+    res.send("hello from au!");
+});
+
 module.exports = router;

@@ -229,13 +229,13 @@ function analyzeData(data)
 }
 function fetchData(callback)
 {
-    $.get("/fakeds/blogds?fetchstart="+blog_js.nowPage*blog_js.fetchcount+"&fetchcount"+blog_js.fetchcount+"&"+blog_js.searchStr, function(data)
+    $.get("/rest/nonauthorized/blog/list?fetchstart="+blog_js.nowPage*blog_js.fetchcount+"&fetchcount="+blog_js.fetchcount+"&"+blog_js.searchStr, function(data)
     {
         callback(data);
     }).fail(function()
     {
         console.log("Failed to fetch data; now organizing re-fetch...");
-        fetchData(arguments);
+        setTimeout(function(){fetchData(callback);},3000);        
     });
 }
 function showRef()

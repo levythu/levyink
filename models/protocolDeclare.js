@@ -8,7 +8,11 @@ var protocolInfo=
             NORMAL:0,
 
             UNAUTHORIZED:1000,
-            INVALID_USER:1001
+            INVALID_USER:1001,
+
+            INVALID_PARAMETER: 2000,
+
+            DB_ERROR: 17000
         }
     }
 };
@@ -33,5 +37,33 @@ function(str)
     str=str.replace(/%ESC-PERCENT%/g,"%");
     return str;
 };
+protocolInfo.secure=
+function(obj)
+{
+    for (var i in obj)
+    {
+        if (typeof obj[i]=="string")
+            obj[i]=protocolInfo.escape(obj[i]);
+        else if (obj[i] instanceof Array)
+            for (var j=0;j<obj[i].length;j++)
+                if (typeof obj[i][j]=="string")
+                    obj[i][j]=protocolInfo.escape(obj[i][j]);
+    }
+    return obj;
+}
+protocolInfo.ansisecure=
+function(obj)
+{
+    for (var i in obj)
+    {
+        if (typeof obj[i]=="string")
+            obj[i]=protocolInfo.descape(obj[i]);
+        else if (obj[i] instanceof Array)
+            for (var j=0;j<obj[i].length;j++)
+                if (typeof obj[i][j]=="string")
+                    obj[i][j]=protocolInfo.descape(obj[i][j]);
+    }
+    return obj;
+}
 
 module.exports=protocolInfo;
