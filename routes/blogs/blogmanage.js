@@ -46,41 +46,52 @@ router.get('/list', function(req, res)
         {
             searchCondition[req.query.filter]=req.query.key;
         }
-        db[model.BLOG].find(searchCondition).limit(fcount).skip(fstart)
-            .sort({order:-1,pubtime:-1}).toArray(function(err, doc)
+        db[model.BLOG].count(searchCondition,function(err, ct)
         {
             if (err)
             {
                 res.send(JSON.stringify({
-                    "status": protocolInfo.generalRes.statusCode.DB_ERROR,
+                    "status": protocolInfo.generalRes.statusCode.GET_LIST_FAIL,
                     "content": null
                 }));
                 return;
             }
-            var artList=[];
-            for (var i=0;i<doc.length;i++)
+            db[model.BLOG].find(searchCondition).limit(fcount).skip(fstart)
+                .sort({order:-1,pubtime:-1}).toArray(function(err, doc)
             {
-                artList.push(protocolInfo.secure(
+                if (err)
                 {
-                    title: doc[i].title,
-                    catalog: doc[i].catalog,
-                    pubtime: doc[i].pubtime,
-                    preview: doc[i].preview,
-                    commentcount: 0,
-                    pid: doc[i].pid,
-                    order: doc[i].order,
-                    author: doc[i].author,
-                    tag: doc[i].author,
-                    url: "/blog/"+doc[i].pid
+                    res.send(JSON.stringify({
+                        "status": protocolInfo.generalRes.statusCode.DB_ERROR,
+                        "content": null
+                    }));
+                    return;
+                }
+                var artList=[];
+                for (var i=0;i<doc.length;i++)
+                {
+                    artList.push(protocolInfo.secure(
+                    {
+                        title: doc[i].title,
+                        catalog: doc[i].catalog,
+                        pubtime: doc[i].pubtime,
+                        preview: doc[i].preview,
+                        commentcount: 0,
+                        pid: doc[i].pid,
+                        order: doc[i].order,
+                        author: doc[i].author,
+                        tag: doc[i].author,
+                        url: "/blog/"+doc[i].pid
+                    }));
+                }
+                res.send(JSON.stringify(
+                {
+                    "status": protocolInfo.generalRes.statusCode.NORMAL,
+                    "content": artList,
+                    "blog_in_total": ct
                 }));
-            }
-            res.send(JSON.stringify(
-            {
-                "status": protocolInfo.generalRes.statusCode.NORMAL,
-                "content": artList,
-                "blog_in_total": doc.length
-            }));
-            return;
+                return;
+            });
         });
     });
 

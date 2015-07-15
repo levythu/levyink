@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="js/functionhelper.js"></script>
 	<script type="text/javascript" src="js/effecthelper.js"></script>
 	<script type="text/javascript" src="js/showdown/showdown.min.js"></script>
+	<script type="text/javascript" src="js/showdown/showdown-table.min.js"></script>
 	<script type="text/javascript" src="js/editor.js"></script>
 </head>
 <body>
@@ -43,6 +44,24 @@
 				</div>
 	        </div>
 	        <div id="profileArea" class="nonexist transit_all">
+				<div id="profAreaCont">
+					<h2>Profile settings: </h2>
+					<p><span class="left0-5">Title: </span><input type="text" name="ptitle" id="ptitle" class="flatTextArea editInput"/></p>
+					<p><span class="left0-5">Author: </span><input type="text" name="pau" id="pau" class="flatTextArea editInput"/></p>
+					<p><span class="left0-5">Catalog: </span><input type="text" name="pcata" id="pcata" class="flatTextArea editInput"/></p>
+					<p><span class="left0-5">Tags(space to split): </span><input type="text" name="ptag" id="ptag" class="flatTextArea editInput"/></p>
+					<p>
+					<div>
+						<span class="left0-5">Status: </span><div class="transit_all checkBox_white exclusiveSelect" id="ptop">&nbsp;&nbsp;&nbsp;Top&nbsp;&nbsp;&nbsp;</div>
+						<div class="transit_all checkBox_white exclusiveSelect" id="phide">&nbsp;&nbsp;&nbsp;Hide&nbsp;&nbsp;&nbsp;</div>
+					</div>
+					</p>
+					<p>
+					<div>
+						<span class="left0-5">Timestamp: </span><div class="transit_all checkBox_white" id="preftime">&nbsp;&nbsp;&nbsp;&nbsp;Refresh Timestamp&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</div>
+					</p>
+				</div>
 	        </div>
 		</div>
     </div>

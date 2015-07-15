@@ -22,6 +22,7 @@
     left: 0;
     width: 100%;
     background-color: #EEEEEE;
+    overflow: auto;
 
 }
 #previewArea {
@@ -102,4 +103,36 @@
     text-align: center;
     color: white;
     font-size: 1.5em;
+}
+#profAreaCont {
+    padding:1em;
+    margin:auto;
+    max-width:42em;
+    font-size: 1.3em;
+}
+.editInput {
+    min-width: 10em;
+    font-size: 1em;
+    display: inline-block;
+    font-family: inherit;
+    width: 50%;
+}
+.left0-5 {
+    display: inline-block;
+    width: 40%;
+    min-width: 8em;
+}
+
+
+.checkBox_white {
+    border: 0.1em solid #CCCCCC;
+    border-radius: 0.2em;
+    text-align: center;
+    display: inline-block;
+    min-width: 4em;
+    cursor: default;
+}
+.checkBox_white_chosen {
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.2em black;
 }

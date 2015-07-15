@@ -167,6 +167,7 @@ function analyzeData(data)
     for (var i=0;i<entries.length;i++)
     {
         var newNode=$("#blogentry_template > ").clone();
+        entries[i]=protocolInfo.ansisecure(entries[i]);
         newNode.find(".tem_cata_tag").css("color",dispenseColor(entries[i].catalog));
         newNode.find(".tem_cata").html(
             "<a class='nil_a' href='"+function_helper.url_blog+"?toTop=1&searchby=catalog&key="+entries[i].catalog+"'>"+
@@ -186,7 +187,7 @@ function analyzeData(data)
             "<a class='no_effect_a' href='"+function_helper.url_blog+"?toTop=1&searchby=author&key="+entries[i].author+"'>"+
             entries[i].author+"</a>"
         );
-        newNode.find(".tem_cont").text(formatContent(protocolInfo.descape(entries[i].preview)));
+        newNode.find(".tem_cont").html(formatContent(entries[i].preview));
 
         if (entries[i].order<0) newNode.css("color","#BBBBBB");
 
@@ -235,7 +236,7 @@ function fetchData(callback)
     }).fail(function()
     {
         console.log("Failed to fetch data; now organizing re-fetch...");
-        setTimeout(function(){fetchData(callback);},3000);        
+        setTimeout(function(){fetchData(callback);},3000);
     });
 }
 function showRef()

@@ -11,8 +11,15 @@ var protocolInfo=
             INVALID_USER:1001,
 
             INVALID_PARAMETER: 2000,
+            INVALID_POST_CONTENT: 2001,
 
-            DB_ERROR: 17000
+            REDUNDANCY_POST: 3000,
+            CREATION_FAIL: 3001,
+            GET_LIST_FAIL: 3002,
+
+            DB_ERROR: 17000,
+
+            FRONT_END_ERROR: 65535
         }
     }
 };
@@ -56,7 +63,7 @@ function(obj)
 {
     for (var i in obj)
     {
-        if (typeof obj[i]=="string")
+        if ((typeof obj[i])=="string")
             obj[i]=protocolInfo.descape(obj[i]);
         else if (obj[i] instanceof Array)
             for (var j=0;j<obj[i].length;j++)

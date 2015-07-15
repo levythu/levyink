@@ -4,6 +4,10 @@ var function_helper=
     url_editor: "editor.html",
     url_me: "me.html",
     url_mess: "mess.html",
+
+    RANDOM_PATTERN_ALPHABET:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    RANDOM_PATTERN_NUM:"0123456789",
+    RANDOM_PATTERN_HEX:"1234567890ABCDEF"
 }
 
 function trimStringToNum(str)
@@ -34,6 +38,13 @@ function getParameterByName(name)
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+function genRandom(pattern,len)
+{
+    var res="";
+    for (var i=0;i<len;i++)
+        res+=pattern[Math.floor(Math.random()*pattern.length)];
+    return res;
 }
 function formatDate(ms)
 {

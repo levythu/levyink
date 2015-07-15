@@ -1,11 +1,13 @@
 var mongojs = require('mongojs');
 var AUTHOR = "author";
 var BLOG = "blog";
+var METADATA = "metadata"
 
 exports.AUTHOR = AUTHOR;
 exports.BLOG = BLOG;
+exports.METADATA = METADATA; //{type:"overview"/"visitontime"/"visitonblog"/"visitonmess"}
 
-exports.db = mongojs('mongodb://localhost/levyink', [AUTHOR,BLOG]);
+exports.db = mongojs('mongodb://localhost/levyink', [AUTHOR,BLOG,METADATA]);
 
 exports.getIDClass=function(idValue)
 {
