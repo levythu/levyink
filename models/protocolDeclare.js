@@ -16,6 +16,7 @@ var protocolInfo=
             REDUNDANCY_POST: 3000,
             CREATION_FAIL: 3001,
             GET_LIST_FAIL: 3002,
+            NO_SUCH_DOCS: 3003,            
 
             DB_ERROR: 17000,
 

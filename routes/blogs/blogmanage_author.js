@@ -60,7 +60,7 @@ function checkInData(obj,isnew,callback)
 {
     if (isnew)
     {
-        var insList=["title","catalog","preview","order","author","tag"];
+        var insList=["title","catalog","preview","order","author","tag","content"];
         lock.acquire("rest.blog.create.null",function()
         {
             stat.checkEssays(function(num)
@@ -75,7 +75,7 @@ function checkInData(obj,isnew,callback)
                 for (var i=0;i<insList.length;i++)
                     toInsert[insList[i]]=obj[insList[i]];
                 toInsert.pubtime=(new Date()).getTime();
-                toInsert.pid=num;
+                toInsert.pid=""+num;
 
                 db[model.BLOG].insert(toInsert,function(err,doc)
                 {

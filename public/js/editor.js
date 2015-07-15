@@ -257,6 +257,7 @@ function postIt(callb)
             author: $("#pau")[0].value,
             tag: $("#ptag")[0].value.split(" ").filter(function(p){return p!=""}),
             reftime: $("#preftime").hasClass("checkBox_white_chosen"),
+            content: $("#sourceTA")[0].value,
             token: editor_js.tmpToken
         };
     }

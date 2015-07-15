@@ -4,6 +4,7 @@ var router = express.Router();
 var protocol=require("../../models/protocols");
 var protocolInfo=require("../../models/protocolDeclare");
 var model=require("../../models/db");
+var auth=require("../../manage/authencitation");
 var db=model.db;
 
 var searchable=["catalog","author"];
@@ -31,7 +32,6 @@ router.get('/list', function(req, res)
 
     var searchCondition={};
     var us=req.session.author || "%IMPOSSIBLE%";
-    console.log(us);
 
     db[model.AUTHOR].find(
     {
@@ -56,7 +56,7 @@ router.get('/list', function(req, res)
                 }));
                 return;
             }
-            db[model.BLOG].find(searchCondition).limit(fcount).skip(fstart)
+            db[model.BLOG].find(searchCondition,{content:0}).limit(fcount).skip(fstart)
                 .sort({order:-1,pubtime:-1}).toArray(function(err, doc)
             {
                 if (err)
@@ -95,6 +95,53 @@ router.get('/list', function(req, res)
         });
     });
 
+});
+
+router.get('/passage', function(req, res)
+{
+    if (req.query.pid==undefined)
+    {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
+            "content": null
+        }));
+        return;
+    }
+    db[model.BLOG].find({pid:req.query.pid},{_id:0},function(err,doc)
+    {
+        if (err || doc.length==0)
+        {
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.NO_SUCH_DOCS,
+                "content": null
+            }));
+            return;
+        }
+        doc=doc[0];
+        var procNext=function()
+        {
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.NORMAL,
+                "content": protocolInfo.secure(doc)
+            }));
+            return;
+        }
+        if (doc.order<0)
+        {
+            auth.validateAdmin(req,procNext,function()
+            {
+                res.send(JSON.stringify({
+                    "status": protocolInfo.generalRes.statusCode.NO_SUCH_DOCS,
+                    "content": null
+                }));
+                return;
+            });
+        }
+        else
+        {
+            procNext();
+        }
+    });
 });
 
 module.exports = router;

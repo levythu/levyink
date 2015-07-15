@@ -4,6 +4,7 @@ var router = express.Router();
 
 var protocol=require("../models/protocols");
 var protocolInfo=require("../models/protocolDeclare");
+var auth=require("../manage/authencitation");
 
 var model=require("../models/db");
 var db=model.db;
@@ -13,29 +14,9 @@ var r_nau=require("./rest_nau");
 
 var templateRoot={root: path.join(__dirname, '../templates')}
 
-function validateAdmin(req,succ,fail)
-{
-    if (req.session.author==null)
-    {
-        fail();
-        return;
-    }
-    db[model.AUTHOR].find(
-    {
-        name: req.session.author
-    },function(err,docs)
-    {
-        if (err||docs.length==0)
-        {
-            fail();
-            return;
-        }
-        succ();
-    });
-}
 router.get('/blogadmin.js', function(req, res)
 {
-    validateAdmin(req,function()
+    auth.validateAdmin(req,function()
     {
         res.sendFile("blog.admin.js",templateRoot);
     },function()
