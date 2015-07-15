@@ -8,6 +8,7 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var r_restapi = require('./routes/rest');
+var r_admin = require('./routes/manager');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/rest', r_restapi);
+app.use('/admin', r_admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
