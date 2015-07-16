@@ -11,6 +11,16 @@ var editor_js=
         parseImgDimensions: true,
         extensions: ['table','prettify']
     }),
+    mdconverter_abs: new showdown.Converter(
+    {
+        tables: true,
+        ghCodeBlocks: true,
+        tasklists: true,
+        noHeaderId: true,
+        parseImgDimensions: true,
+        extensions: ['table','prettify'],
+        headerLevelStart: 2
+    }),
 
     abstract:"",
     abstract_length:300,
@@ -272,7 +282,9 @@ function fillProfile()
 }
 function gleanAbstract()
 {
-    var el=$("#preViewCont > :not(h1,h2,h3,h4)");
+    var vp=$("<div>").html(editor_js.mdconverter_abs.makeHtml($("#sourceTA")[0].value).replace(/linenums/g,"line-nums"));
+    var el=vp.children(":not(h1,h2,script)");
+    console.log(el);
     var i=0,ins=el.length,ttc=0;
     var virtualNode=$("<div>");
     while (i<ins && ttc<editor_js.abstract_length)
