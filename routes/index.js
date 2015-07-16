@@ -12,6 +12,10 @@ router.get('/', function(req, res)
     res.sendFile("blog.html",pubRoot);
 });
 router.use('/blog', r_blog);
+router.get('/login', function(req, res)
+{
+    res.sendFile("login.html",pubRoot);
+});
 router.get('/me', function(req, res)
 {
     res.sendFile("me.html",pubRoot);
