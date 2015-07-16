@@ -222,6 +222,7 @@ function analyzeData(data)
         $("#nextPage").addClass("activeButton").removeClass("disButton");
 
     $("#headline").text(" - Page "+(blog_js.nowPage+1));
+    prettyPrint();
 
     $("body").trigger("finishAjaxBlog");
 

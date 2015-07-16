@@ -9,7 +9,7 @@ var editor_js=
         tasklists: true,
         noHeaderId: true,
         parseImgDimensions: true,
-        extensions: ['table']
+        extensions: ['table','prettify']
     }),
 
     abstract:"",
@@ -108,7 +108,7 @@ $(document).ready(function()
         {
             if (editor_js.saved==false)
                 return "Are you sure to quit? All the progress will get lost.";
-            
+
         });
     }
 });
@@ -147,7 +147,8 @@ function updateUI()
 
 function renderMD()
 {
-    $("#preViewCont").html(editor_js.mdconverter.makeHtml($("#sourceTA")[0].value));
+    $("#preViewCont").html(editor_js.mdconverter.makeHtml($("#sourceTA")[0].value).replace(/linenums/g,"line-nums"));
+    prettyPrint();
 }
 function backupContent()
 {

@@ -9,6 +9,7 @@ var db=model.db;
 
 var showdown  = require('showdown'),
     sdtable = require('showdown-table'),
+    sdprett = require('showdown-prettify'),
     converter = new showdown.Converter(
     {
         tables: true,
@@ -16,7 +17,7 @@ var showdown  = require('showdown'),
         tasklists: true,
         noHeaderId: true,
         parseImgDimensions: true,
-        extensions: [sdtable]
+        extensions: [sdtable,sdprett]
     });
 
 var pubRoot={root: path.join(__dirname, '../public')}
@@ -45,7 +46,7 @@ router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
             res.render("pdetail",
             {
                 secureStr: JSON.stringify(protocolInfo.secure(doc)),
-                cont: converter.makeHtml(con)
+                cont: converter.makeHtml(con).replace(/linenums/g,"line-nums")
             });
         }
         if (doc.order<0)

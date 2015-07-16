@@ -23,4 +23,5 @@ function procDocs()
         $("#lafin").before($("<p class='byline'>").html("<span class='icon-price-tags'></span>&nbsp;&nbsp;Tags:&nbsp;&nbsp;"+tagstr));
     }
     $(".tem_cata").text(p_detail.catalog);
+    prettyPrint();
 }

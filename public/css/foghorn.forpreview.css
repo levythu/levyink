@@ -51,7 +51,6 @@ body {
 .mdPre code {
 	font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
 	font-size: .9em;
-	background: white;
 	}
 .mdPre a {
 	color: #2484c1;
