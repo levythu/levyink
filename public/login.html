@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no" />
+    <title>Login - Levy's Ink</title>
+
+    <link href="css/general.font.css" rel='stylesheet' type='text/css'>
+	<link href="css/general.effect.css" rel='stylesheet' type='text/css'>
+    <link href="css/editor.layout.css" rel='stylesheet' type='text/css'>
+	<link href="iconfont/icomoon/style.css" rel='stylesheet' type='text/css'>
+    <link href="css/manage.general.css" rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript" src="js/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.mobile-events.min.js"></script>
+	<script type="text/javascript" src="js/protocolDeclare.js"></script>
+	<script type="text/javascript" src="js/functionhelper.js"></script>
+	<script type="text/javascript" src="js/effecthelper.js"></script>
+	<script type="text/javascript" src="js/manage.general.js"></script>
+	<script type="text/javascript" src="js/jsSHA/sha1.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+    <div class="fullScreen" id="fullCanvas">
+        <div id="topBar">
+			<div id="morgan" class="transit_in_opacity normalCursor">
+				Levy's Ink
+			</div>
+			<div id="tbglobal">
+				<!--
+				<span class="inb icon-exit glyph-button-orange transit_in_color" id="exitBut" title="Logout"></span> |
+				-->
+			</div>
+        </div>
+        <div id="dBar">
+	        <div id="profileArea">
+				<div id="MainPanel">
+					<h2> </h2>
+					<p>
+						<input type="text" name="tusr" id="tusr" class="flatTextArea inp2" placeholder="Username"/>
+					</p>
+					<p>
+						<input type="PASSWORD" name="tpss" id="tpss" class="flatTextArea inp2" placeholder="Password"/>
+					</p>
+					<p class="errorInfo">
+					</p>
+					<p class="rightInfo">
+					</p>
+					<p>
+						<div id="gogogo" class="bigButton activeButton">
+							<div>
+								Login
+							</div>
+						</div>
+					</p>
+				</div>
+	        </div>
+		</div>
+    </div>
+	<div class="fullScreen transit_in_opacity nonexist" id="upperCanvas">
+		<div id="upperContent" class="absCenter">
+			<img src="image/signs/loading-w.svg" id="loadingFrame_pic" />
+			<br/><br/>
+			<span id="promptWord">Fetching data from server, please wait...</span>
+		</div>
+	</div>
+
+</body>
+</html>

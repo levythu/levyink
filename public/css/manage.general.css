@@ -1,0 +1,43 @@
+#MainPanel {
+    padding:1em;
+    text-align: center;
+    margin:auto;
+    max-width:22em;
+    width:50%;
+    font-size: 1.3em;
+}
+.inp2 {
+    min-width: 10em;
+    font-size: 1em;
+    display: inline-block;
+    width: 100%;
+}
+.bigButton {
+    box-shadow: 0 0 0.1em black;
+    border-radius: 0.1em;
+    text-align: center;
+    width: 5em;
+    border: 1px solid black;
+    position: relative;
+    cursor:default;
+    transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -webkit-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -ms-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -moz-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+}
+.activeButton {
+    top: 0;
+    color: black;
+    background-color: white;
+}
+.activeButton:hover {
+    top: -0.2em;
+    color: #2484c1;
+    background-color: white;
+}
+.errorInfo {
+    color:red;
+}
+.rightInfo {
+    color:green;
+}
