@@ -19,7 +19,7 @@ var editor_js=
         noHeaderId: true,
         parseImgDimensions: true,
         extensions: ['table','prettify'],
-        headerLevelStart: 2
+        headerLevelStart: 3
     }),
 
     abstract:"",
@@ -283,7 +283,7 @@ function fillProfile()
 function gleanAbstract()
 {
     var vp=$("<div>").html(editor_js.mdconverter_abs.makeHtml($("#sourceTA")[0].value).replace(/linenums/g,"line-nums"));
-    var el=vp.children(":not(h1,h2,script)");
+    var el=vp.children(":not(h1,h2,h3,script)");
     console.log(el);
     var i=0,ins=el.length,ttc=0;
     var virtualNode=$("<div>");
