@@ -2,7 +2,9 @@ var blog_admin_js=
 {
     isInAdminMode: false,
     KEY_Q: 81,
-    modified: false
+    modified: false,
+
+    API_MOD:"/rest/authorized/blog/modify"
 }
 
 $(document).ready(newComer);
@@ -34,13 +36,61 @@ function newComer()
 
             tnode.find(".tem_hide").tap(function()
             {
-                showRef();
-                //TODO
+                if ($(this).hasClass("icon-eye"))
+                {
+                    $.get(blog_admin_js.API_MOD+"?order=-1&pid="+contxt.pid,function(data)
+                    {
+                        var res=JSON.parse(data);
+                        if (res.status<protocolInfo.LEAST_ERR)
+                        {
+                            tnode.find(".tem_hide").removeClass("icon-eye").addClass("icon-eye-blocked");
+                            tnode.find(".tem_pushpin").removeClass("glybutton_chosen");
+                            showRef();
+                        }
+                    });
+                }
+                else
+                {
+                    $.get(blog_admin_js.API_MOD+"?order=0&pid="+contxt.pid,function(data)
+                    {
+                        var res=JSON.parse(data);
+                        if (res.status<protocolInfo.LEAST_ERR)
+                        {
+                            tnode.find(".tem_hide").removeClass("icon-eye-blocked").addClass("icon-eye");
+                            tnode.find(".tem_pushpin").removeClass("glybutton_chosen");
+                            showRef();
+                        }
+                    });
+                }
             });
             tnode.find(".tem_pushpin").tap(function()
             {
-                showRef();
-                //TODO
+                if ($(this).hasClass("glybutton_chosen"))
+                {
+                    $.get(blog_admin_js.API_MOD+"?order=0&pid="+contxt.pid,function(data)
+                    {
+                        var res=JSON.parse(data);
+                        if (res.status<protocolInfo.LEAST_ERR)
+                        {
+                            tnode.find(".tem_hide").removeClass("icon-eye-blocked").addClass("icon-eye");
+                            tnode.find(".tem_pushpin").removeClass("glybutton_chosen");
+                            showRef();
+                        }
+                    });
+                }
+                else
+                {
+                    $.get(blog_admin_js.API_MOD+"?order=10&pid="+contxt.pid,function(data)
+                    {
+                        var res=JSON.parse(data);
+                        if (res.status<protocolInfo.LEAST_ERR)
+                        {
+                            tnode.find(".tem_hide").removeClass("icon-eye-blocked").addClass("icon-eye");
+                            tnode.find(".tem_pushpin").addClass("glybutton_chosen");
+                            showRef();
+                        }
+                    });
+                }
             });
             tnode.find(".tem_edit").tap(function()
             {

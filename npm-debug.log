@@ -3,17 +3,17 @@
 2 info using npm@1.4.28
 3 info using node@v0.10.32
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart levyink@0.0.0
-6 info start levyink@0.0.0
+5 info prestart levyink@0.1.0
+6 info start levyink@0.1.0
 7 verbose unsafe-perm in lifecycle true
-8 info levyink@0.0.0 Failed to exec start script
-9 error levyink@0.0.0 start: `node ./bin/www`
+8 info levyink@0.1.0 Failed to exec start script
+9 error levyink@0.1.0 start: `node ./bin/levyink-www`
 9 error Exit status 8
-10 error Failed at the levyink@0.0.0 start script.
+10 error Failed at the levyink@0.1.0 start script.
 10 error This is most likely a problem with the levyink package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
-10 error     node ./bin/www
+10 error     node ./bin/levyink-www
 10 error You can get their info via:
 10 error     npm owner ls levyink
 10 error There is likely additional logging output above.

@@ -5,6 +5,7 @@ var protocol=require("../../models/protocols");
 var protocolInfo=require("../../models/protocolDeclare");
 var model=require("../../models/db");
 var auth=require("../../manage/authencitation");
+var puburl=require("../../configure/url");
 var db=model.db;
 
 var searchable=["catalog","author"];
@@ -81,7 +82,7 @@ router.get('/list', function(req, res)
                         order: doc[i].order,
                         author: doc[i].author,
                         tag: doc[i].author,
-                        url: "/blog/"+doc[i].pid
+                        url: puburl.blogpage.replace(/%PID%/g,doc[i].pid)
                     }));
                 }
                 res.send(JSON.stringify(

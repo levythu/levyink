@@ -8,6 +8,7 @@ var lock=require("../../models/lock");
 var rangen=require("../../funchelper/rangen");
 var stat=require("../../manage/statistics");
 var puburl=require("../../configure/url");
+var cvt=require("../../funchelper/smartconverter");
 var db=model.db;
 
 var redCheck={};
@@ -198,6 +199,47 @@ router.post('/update', function(req, res)
             "content": protocolInfo.secure({url:puburl.blogpage.replace(/%PID%/g,result)})
         }));
     });
+});
+router.get('/modify', function(req, res)
+{
+    if (req.query.pid==undefined || req.query.pid=="")
+    {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
+            "content": null
+        }));
+        return;
+    }
+    var providedField=
+    {
+        order: 1
+    }
+    upd={};
+    var reqInfo=req.query;
+    for (var i in reqInfo)
+    {
+        if (providedField[i]!=undefined)
+        {
+            upd[i]=cvt.smartConvertfromString(reqInfo[i],providedField[i]);
+        }
+    }
+    db[model.BLOG].update({pid:req.query.pid},{$set:upd},{},
+        function(err,rec)
+        {
+            if (err || rec.length==0)
+            {
+                res.send(JSON.stringify({
+                    "status": protocolInfo.generalRes.statusCode.NO_SUCH_DOCS,
+                    "content": null
+                }));
+                return;
+            }
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.NORMAL,
+                "content": null
+            }));
+        }
+    );
 });
 
 module.exports = router;
