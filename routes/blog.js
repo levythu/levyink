@@ -46,6 +46,7 @@ router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
             res.render("pdetail",
             {
                 secureStr: JSON.stringify(protocolInfo.secure(doc)),
+                blgTitle: doc.title,
                 cont: converter.makeHtml(con).replace(/linenums/g,"line-nums")
             });
         }

@@ -2,6 +2,7 @@ var blog_admin_js=
 {
     isInAdminMode: false,
     KEY_Q: 81,
+    KEY_R: 82,
     modified: false,
 
     API_MOD:"/rest/authorized/blog/modify"
@@ -135,6 +136,10 @@ function keyboardHook(e)
 	{
 	case blog_admin_js.KEY_Q:
 		toggleMode();
+        e.preventDefault();
+		break;
+	case blog_admin_js.KEY_R:
+		$("#refbut").trigger("tap");
         e.preventDefault();
 		break;
     }
