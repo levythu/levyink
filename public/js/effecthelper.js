@@ -91,6 +91,6 @@ function fetchFont(url)
     if (url==undefined)
         url=window.location.href;
     j=document.createElement("script");
-    j.src="http://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURI(url);
+    j.src="http://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURIComponent(url);
     document.body.appendChild(j);
 }
