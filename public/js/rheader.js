@@ -43,7 +43,10 @@ $(document).ready(function()
     bindDirectEvent();
 
     $(window).trigger("resize");
-    $("html").load(function(){$(window).trigger("resize");});
+    $("html").load(function(){
+        $(window).trigger("resize");
+        setTimeout(function(){$(window).trigger("resize");},2000);
+    });
     setTimeout(function(){$(window).trigger("resize");},2000);
 
     if (getParameterByName('toTop')!="")
