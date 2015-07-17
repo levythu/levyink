@@ -4,7 +4,7 @@ var function_helper=
     url_editor: "/editor",
     url_me: "/me",
     url_mess: "/mess",
-    hostname: "59.66.137.81:2333",
+    hostname: "www.levy.at",
 
     RANDOM_PATTERN_ALPHABET:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
     RANDOM_PATTERN_NUM:"0123456789",
@@ -52,7 +52,7 @@ function formatDate(ms)
     var t=new Date(ms);
     var to2Str=function(num)
     {
-        if (0<=num<10)
+        if (0<=num && num<10)
             return "0"+(""+num);
         return ""+num;
     }
