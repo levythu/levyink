@@ -5,7 +5,7 @@ var METADATA = "metadata"
 
 exports.AUTHOR = AUTHOR;
 exports.BLOG = BLOG;
-exports.METADATA = METADATA; //{type:"overview"/"visitontime"/"visitonblog"/"visitonmess"}
+exports.METADATA = METADATA; //{type:"overview"/"visit"}
 
 exports.db = mongojs('mongodb://localhost/levyink', [AUTHOR,BLOG,METADATA]);
 

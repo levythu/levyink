@@ -5,6 +5,7 @@ var router = express.Router();
 var model=require("../models/db");
 var auth=require("../manage/authencitation");
 var protocolInfo=require("../models/protocolDeclare");
+var sta = require("../manage/statistics");
 var db=model.db;
 
 var showdown  = require('showdown'),
@@ -24,12 +25,14 @@ var pubRoot={root: path.join(__dirname, '../public')}
 
 router.get('/', function(req, res)
 {
+    sta.addTotalVisit();
     res.sendFile("blog.html",pubRoot);
 });
 router.use('/',express.static(path.join(__dirname, '../public')));
 
 router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
 {
+    sta.addTotalVisit();
     var tm=req.path.substr(1);
     db[model.BLOG].find({pid:tm},{_id:0},function(err,doc)
     {
@@ -43,6 +46,7 @@ router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
         delete doc.content;
         var procNext=function()
         {
+            sta.addBlogVisit(doc.pid);
             res.render("pdetail",
             {
                 secureStr: JSON.stringify(protocolInfo.secure(doc)),

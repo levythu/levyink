@@ -65,3 +65,34 @@ function(callback)
         }
     });
 }
+exports.addTotalVisit=
+function(callback)
+{
+    var t=new Date();
+
+    db[model.METADATA].update(
+    {
+        type:           "visit",
+        timespan_year:  t.getFullYear(),
+        timespan_month: (t.getMonth()+1),
+    },{$inc:{count:1}},{upsert:true},function(err,rec)
+    {
+        if (callback!=undefined)
+            callback();
+    });
+}
+exports.addBlogVisit=
+function(_pid,callback)
+{
+    var t=new Date();
+
+    db[model.METADATA].update(
+    {
+        type:           "visit",
+        pid:            _pid
+    },{$inc:{count:1}},{upsert:true},function(err,rec)
+    {
+        if (callback!=undefined)
+            callback();
+    });
+}
