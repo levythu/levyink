@@ -7,7 +7,9 @@ exports.AUTHOR = AUTHOR;
 exports.BLOG = BLOG;
 exports.METADATA = METADATA; //{type:"overview"/"visit"}
 
-exports.db = mongojs('mongodb://localhost/levyink', [AUTHOR,BLOG,METADATA]);
+exports.cList=[AUTHOR,BLOG,METADATA];
+
+exports.db = mongojs('mongodb://localhost/levyink', exports.cList);
 
 exports.getIDClass=function(idValue)
 {
