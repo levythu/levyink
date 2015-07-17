@@ -6,3 +6,4 @@ Levy's Personal block, backend and frontend as well
 - modify configure/url.js hostname
 - modify models/db.js database connection
 - add index on mongodb
+- modify bin/emailDump.js if you need mail dump
