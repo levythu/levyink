@@ -4,6 +4,7 @@ var function_helper=
     url_editor: "/editor",
     url_me: "/me",
     url_mess: "/mess",
+    hostname: "59.66.137.81:2333",
 
     RANDOM_PATTERN_ALPHABET:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
     RANDOM_PATTERN_NUM:"0123456789",

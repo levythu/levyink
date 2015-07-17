@@ -64,6 +64,9 @@ $(document).ready(function()
 
     detQuery();
     refreshData();
+    fetchFont("http://"+function_helper.hostname+
+        "/rest/nonauthorized/blog/list?fetchstart=0&fetchcount=19940701&"
+        +blog_js.searchStr);
 
     $(window).trigger("resize");
 });

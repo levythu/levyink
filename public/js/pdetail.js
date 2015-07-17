@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    fetchFont();
     p_detail=protocolInfo.ansisecure(p_detail);
     procDocs();
 });

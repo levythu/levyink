@@ -1,6 +1,6 @@
 var effect_helper=
 {
-    FONT_SERVER: "font.levys.ink",
+    FONT_SERVER: "font.levy.at",
     colorlist:
     [
         "rgb(255,185,0)",
@@ -85,11 +85,12 @@ $(document).ready(function()
 
     $(window).trigger("resize");
 });
-/*
-$(document).ready(function()
+
+function fetchFont(url)
 {
+    if (url==undefined)
+        url=window.location.href;
     j=document.createElement("script");
-    j.src="http://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURI(window.location.href);
+    j.src="http://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURI(url);
     document.body.appendChild(j);
-});
-*/
+}
