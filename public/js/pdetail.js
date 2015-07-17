@@ -7,11 +7,11 @@ $(document).ready(function()
 
 function procDocs()
 {
-    if ($("#contentMain > h1").length==0)
+    if ($("#strongRes > h1").length==0)
     {
-        $("#contentMain").prepend($("<h1>").html(p_detail.title));
+        $("#strongRes").prepend($("<h1>").html(p_detail.title));
     }
-    $("#contentMain > h1").after($("<p class='byline'>").html(
+    $("#strongRes > h1").after($("<p class='byline'>").html(
         "<span class='inlineblock'> -- by "+p_detail.author+",</span>"+
         "&nbsp;&nbsp;&nbsp;&nbsp;"+
         "<span class='inlineblock'>"+formatDate(p_detail.pubtime)+"</span>"
