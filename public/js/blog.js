@@ -1,6 +1,6 @@
 var blog_js=
 {
-    fetchcount: 6,
+    fetchcount: 4,
     isLoading: false,
     isError: false,
     nowPage: 0,

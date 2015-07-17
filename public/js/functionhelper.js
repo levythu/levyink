@@ -50,7 +50,13 @@ function genRandom(pattern,len)
 function formatDate(ms)
 {
     var t=new Date(ms);
-    return ""+t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate()+" "+t.getHours()+":"+t.getMinutes();
+    var to2Str=function(num)
+    {
+        if (0<=num<10)
+            return "0"+(""+num);
+        return ""+num;
+    }
+    return ""+t.getFullYear()+"-"+to2Str(t.getMonth()+1)+"-"+to2Str(t.getDate())+" "+to2Str(t.getHours())+":"+to2Str(t.getMinutes());
 }
 function formatContent(str)
 {
