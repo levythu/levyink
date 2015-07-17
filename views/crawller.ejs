@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>For crawller - Levy's Ink</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <h1>Welcome, crawller!</h1>
+    <% for (var i=0;i<urllist.length;i++) { %>
+        <p>
+            <a href="<%= urllist[i] %>">
+                <%= urllist[i] %>
+            </a>
+        </p>
+    <% } %>
+  </body>
+</html>
