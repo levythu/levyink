@@ -23,7 +23,7 @@ var editor_js=
     }),
 
     abstract:"",
-    abstract_length:300,
+    abstract_length:200,
     API_INFO:"/rest/authorized/blog/create",
     API_INFO2:"/rest/authorized/blog/update",
     API_GET:"/rest/nonauthorized/blog/passage",
