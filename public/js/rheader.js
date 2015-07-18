@@ -128,7 +128,7 @@ function bindDirectEvent()
         (function(nm,lc){
             $("#"+nm).tap(function()
             {
-                window.location.href=lc+"?toTop=1";
+                window.location.href=lc;
             });
         })(ls[i],loc[i]);
     }

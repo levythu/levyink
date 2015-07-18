@@ -59,7 +59,7 @@ $(document).ready(function()
     });
     $("#condline").tap(function()
     {
-        window.location=function_helper.url_blog+"?toTop=1";
+        window.location=function_helper.url_blog;
     });
 
     detQuery();
@@ -173,7 +173,7 @@ function analyzeData(data)
         entries[i]=protocolInfo.ansisecure(entries[i]);
         newNode.find(".tem_cata_tag").css("color",dispenseColor(entries[i].catalog));
         newNode.find(".tem_cata").html(
-            "<a class='nil_a' href='"+function_helper.url_blog+"?toTop=1&searchby=catalog&key="+entries[i].catalog+"'>"+
+            "<a class='nil_a' href='"+function_helper.url_blog+"?searchby=catalog&key="+entries[i].catalog+"'>"+
             entries[i].catalog+"</a>");
         newNode.find(".tem_title").html("<a class='no_effect_a transit_in_color' href='"+
             entries[i].url+
@@ -187,7 +187,7 @@ function analyzeData(data)
         else
             newNode.find(".tem_com").remove();
         newNode.find(".tem_auth").html(
-            "<a class='no_effect_a' href='"+function_helper.url_blog+"?toTop=1&searchby=author&key="+entries[i].author+"'>"+
+            "<a class='no_effect_a' href='"+function_helper.url_blog+"?searchby=author&key="+entries[i].author+"'>"+
             entries[i].author+"</a>"
         );
         newNode.find(".tem_cont").html(formatContent(entries[i].preview));
