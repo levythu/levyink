@@ -63,7 +63,7 @@ $(document).ready(function()
     });
 
     detQuery();
-    if (!Number.isNaN(-(-window.location.hash.substr(1))))
+    if (!isNaN(-(-window.location.hash.substr(1))))
         blog_js.nowPage=Math.round(-(-window.location.hash.substr(1)));
     refreshData();
     fetchFont("http://"+function_helper.hostname+
