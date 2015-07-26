@@ -63,8 +63,8 @@ $(document).ready(function()
     });
 
     detQuery();
-    if (!Number.isNaN(Number.parseInt(window.location.hash.substr(1))))
-        blog_js.nowPage=Number.parseInt(window.location.hash.substr(1));
+    if (!Number.isNaN(-(-window.location.hash.substr(1))))
+        blog_js.nowPage=Math.round(-(-window.location.hash.substr(1)));
     refreshData();
     fetchFont("http://"+function_helper.hostname+
         "/rest/nonauthorized/blog/list?fetchstart=0&fetchcount=19940701&"
