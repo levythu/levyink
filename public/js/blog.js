@@ -137,7 +137,8 @@ function refreshData()
     $("#lastPage").removeClass("activeButton").addClass("disButton");
     $("#nextPage").removeClass("activeButton").addClass("disButton");
     showLoading();
-    window.location.hash=blog_js.nowPage;
+    if (blog_js.nowPage>0)
+        window.location.hash=blog_js.nowPage;
     fetchData(analyzeData);
 }
 function getEmphasis(id)
