@@ -150,6 +150,7 @@ function refreshData()
     $("#lastPage").removeClass("activeButton").addClass("disButton");
     $("#nextPage").removeClass("activeButton").addClass("disButton");
     showLoading();
+    hideError();
     if (blog_js.nowPage>0 || window.location.hash!="")
         window.location.hash=blog_js.nowPage;
     fetchData(analyzeData);
