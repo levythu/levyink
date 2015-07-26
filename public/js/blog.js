@@ -63,6 +63,8 @@ $(document).ready(function()
     });
 
     detQuery();
+    if (!Number.isNaN(Number.parseInt(window.location.hash.substr(1))))
+        blog_js.nowPage=Number.parseInt(window.location.hash.substr(1));
     refreshData();
     fetchFont("http://"+function_helper.hostname+
         "/rest/nonauthorized/blog/list?fetchstart=0&fetchcount=19940701&"
@@ -135,6 +137,7 @@ function refreshData()
     $("#lastPage").removeClass("activeButton").addClass("disButton");
     $("#nextPage").removeClass("activeButton").addClass("disButton");
     showLoading();
+    window.location.hash=blog_js.nowPage;
     fetchData(analyzeData);
 }
 function getEmphasis(id)
