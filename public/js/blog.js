@@ -162,7 +162,7 @@ function analyzeData(data)
         showError();
         return;
     }
-    if (data.status>=protocolInfo.LEAST_ERR)
+    if (res.status>=protocolInfo.LEAST_ERR)
     {
         hideLoading();
         showError();
