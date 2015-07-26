@@ -61,6 +61,19 @@ $(document).ready(function()
     {
         window.location=function_helper.url_blog;
     });
+    window.onhashchange=function()
+    {
+        var sp;
+        if (!isNaN(-(-window.location.hash.substr(1))))
+            sp=Math.round(-(-window.location.hash.substr(1)));
+        else
+            sp=0;
+        if (sp!=blog_js.nowPage)
+        {
+            blog_js.nowPage=sp;
+            refreshData();
+        }
+    }
 
     detQuery();
     if (!isNaN(-(-window.location.hash.substr(1))))
