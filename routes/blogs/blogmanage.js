@@ -89,7 +89,8 @@ router.get('/list', function(req, res)
                 {
                     "status": protocolInfo.generalRes.statusCode.NORMAL,
                     "content": artList,
-                    "blog_in_total": ct
+                    "blog_in_total": ct,
+                    "reserved": "[置顶][隐藏]"
                 }));
                 return;
             });
