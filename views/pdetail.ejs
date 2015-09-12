@@ -75,21 +75,19 @@
 			<div class="placeholder-1-5em"></div>
 			<div class="placeholder-3em" id="lafin"></div>
 			<!--COMMENTS--><!--COMMENTS--><!--COMMENTS--><!--COMMENTS--><!--COMMENTS-->
-				<div id="hypercomments_widget"></div>
+				<div id="disqus_thread"></div>
 				<script type="text/javascript">
-				_hcwp = window._hcwp || [];
-				_hcwp.push({widget:"Stream", widget_id: 61768});
-				(function() {
-				if("HC_LOAD_INIT" in window)return;
-				HC_LOAD_INIT = true;
-				var lang = "en";
-				var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-				hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/61768/"+lang+"/widget.js";
-				var s = document.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(hcc, s.nextSibling);
-				})();
+					/* * * CONFIGURATION VARIABLES * * */
+					var disqus_shortname = 'levysink';
+
+					/* * * DON'T EDIT BELOW THIS LINE * * */
+					(function() {
+						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+						dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					})();
 				</script>
-				<a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 			<!--COMMENTS--><!--COMMENTS--><!--COMMENTS--><!--COMMENTS--><!--COMMENTS-->
 		</div>
 		<div id="footer">
