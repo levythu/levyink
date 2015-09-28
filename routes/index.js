@@ -25,6 +25,11 @@ router.get('/login', function(req, res)
 router.get('/me', function(req, res)
 {
     sta.addTotalVisit();
+    if (req.query["lang"]==="en-us")
+    {
+        res.sendFile("me.en-us.html",pubRoot);
+        return
+    }
     res.sendFile("me.html",pubRoot);
 });
 router.get('/mess', function(req, res)
