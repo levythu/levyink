@@ -1,2 +1,4 @@
 1. modify date formatter to convert 1:9 to 01:09 [DONE]
 2. modify the blog list length to 4 [DONE]
+3. add mess module
+4. add tag list and category list for BLOG
