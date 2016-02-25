@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/levyink-www"
+    "start": "nodejs ./bin/levyink-www"
   },
   "dependencies": {
     "express": "~4.9.0",
