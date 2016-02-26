@@ -22,6 +22,11 @@ router.get('/login', function(req, res)
     sta.addTotalVisit();
     res.sendFile("login.html",pubRoot);
 });
+router.get('/logout', function(req, res)
+{
+    req.session.author=undefined;
+    res.redirect("/blog")
+});
 router.get('/me', function(req, res)
 {
     sta.addTotalVisit();
