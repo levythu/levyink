@@ -1,29 +1,32 @@
 #MainPanel {
-    padding:1em;
     text-align: center;
     margin:auto;
-    max-width:22em;
-    width:50%;
     font-size: 1.3em;
 }
 .inp2 {
-    min-width: 10em;
-    font-size: 1em;
+    width: 75%;
+    font-size: 0.9em;
     display: inline-block;
-    width: 100%;
 }
 .bigButton {
-    box-shadow: 0 0 0.1em black;
     border-radius: 0.1em;
     text-align: center;
+    padding: 6px;
     width: 5em;
+    font-size: 0.95em;
     border: 1px solid black;
     position: relative;
     cursor:default;
-    transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
-    -webkit-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
-    -ms-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
-    -moz-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+}
+.bigButton-blue {
+    background: #4d90fe;
+    border: 1px solid #3079ed;
+    color: white;
+}
+.bigButton-blue:hover {
+    background: #4787ed;
+    border: 1px solid #3079ed;
+    color: white;
 }
 .activeButton {
     top: 0;
@@ -40,4 +43,32 @@
 }
 .rightInfo {
     color:green;
+}
+
+.row-holder-2em {
+    height: 2em;
+}
+.row-holder-1em {
+    height: 1em;
+}
+.white-card {
+    max-width: 20em;
+    width: 85%;
+    background: white;
+    border-radius: 0.2em;
+    box-shadow: 0.1em 0.1em 0.2em #999;
+    margin: 0 auto;
+}
+.white-card-container {
+    padding: 1em;
+}
+.tit {
+    font-family: "Perpetua-b","Times";
+    color: #333333;
+    font-size: 2em;
+
+}
+.big-3-margin {
+    font-size: 3.5em;
+    padding: 0.2em;
 }
