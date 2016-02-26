@@ -3,6 +3,7 @@ $(document).ready(function()
     fetchFont();
     p_detail=protocolInfo.ansisecure(p_detail);
     procDocs();
+    if (editor_url) called_on_loaded();
 });
 
 function procDocs()
