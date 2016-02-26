@@ -23,6 +23,11 @@
     border: 1px solid #3079ed;
     color: white;
 }
+.bigButton-blue-dark {
+    background: #3079ed;
+    border: 1px solid #3079ed;
+    color: #DDD;
+}
 .bigButton-blue:hover {
     background: #4787ed;
     border: 1px solid #3079ed;
