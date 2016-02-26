@@ -2,3 +2,4 @@ node_modules/*
 *.debuglog
 paperwork/*
 *.exe
+npm-debug.log
