@@ -38,7 +38,7 @@ router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
     {
         if (err || doc.length==0)
         {
-            res.sendFile("w404.html",pubRoot);
+            res.status(404).sendFile("w404.html",pubRoot);
             return;
         }
         doc=doc[0];
@@ -58,7 +58,7 @@ router.get(/^\/[0-9A-Za-z]*$/, function(req, res)
         {
             auth.validateAdmin(req,procNext,function()
             {
-                res.sendFile("w404.html",pubRoot);
+                res.status(404).sendFile("w404.html",pubRoot);
                 return;
             });
         }
