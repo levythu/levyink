@@ -54,3 +54,6 @@
 .inlineblock {
     display: inline-block;
 }
+.nowrapper {
+    white-space: nowrap;
+}
