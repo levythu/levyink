@@ -79,7 +79,7 @@ $(document).ready(function()
     if (!isNaN(-(-window.location.hash.substr(1))))
         blog_js.nowPage=Math.round(-(-window.location.hash.substr(1)));
     refreshData();
-    fetchFont("http://"+function_helper.hostname+
+    fetchFont("https://"+function_helper.hostname+
         "/rest/nonauthorized/blog/list?fetchstart=0&fetchcount=19940701&"
         +blog_js.searchStr);
 
