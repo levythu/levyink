@@ -25,6 +25,7 @@ app.use(cookieParser());
 app.use(session({secret: 'um....what2say?', saveUninitialized: false, resave: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', routes);
 app.use('/rest', r_restapi);
 app.use('/admin', r_admin);
