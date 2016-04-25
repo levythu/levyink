@@ -80,7 +80,7 @@
     height: 100%;
 }
 #fullCanvas {
-    font-family: "simHei", "微软雅黑", "黑体", sans-serif;
+    font-family: Arial, Helvetica, "simHei", "微软雅黑", "黑体", sans-serif;
 }
 
 .glyph-option {
@@ -125,14 +125,44 @@
 
 
 .checkBox_white {
-    border: 0.1em solid #CCCCCC;
-    border-radius: 0.2em;
+    border-radius: 0.1em;
     text-align: center;
+    padding: 6px;
+    width: 5em;
+    font-size: 0.95em;
+    border: 1px solid black;
+    position: relative;
+    cursor:default;
+    background: #4d90fe;
+    border: 1px solid #3079ed;
+    color: white;
     display: inline-block;
-    min-width: 4em;
-    cursor: default;
+}
+.checkBox_white:hover {
+    background: #4787ed;
+    border: 1px solid #3079ed;
+    color: white;
 }
 .checkBox_white_chosen {
-    border: 0.1em solid black;
-    box-shadow: 0 0 0.2em black;
+    border-radius: 0.1em;
+    text-align: center;
+    padding: 6px;
+    width: 5em;
+    font-size: 0.95em;
+    border: 1px solid black;
+    position: relative;
+    cursor:default;
+    background: #0554b8;
+    border: 1px solid #3079ed;
+    color: white;
+    display: inline-block;
+}
+.checkBox_white:hover {
+    background: #0554b8;
+}
+
+.morganPortable {
+    font-family: "Perpetua-b","Times";
+    color: #444;
+    font-size: 2em;
 }

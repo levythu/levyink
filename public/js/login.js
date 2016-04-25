@@ -1,7 +1,11 @@
 $(document).ready(function()
 {
+    var goTapped=false;
     $("#gogogo").tap(function()
     {
+        if (goTapped) return;
+        goTapped=true;
+        $("#gogogo").addClass("bigButton-blue-dark").removeClass("bigButton-blue");
         $.get("/rest/user/token",function(data)
         {
             var shaObj = new jsSHA("SHA-1", "TEXT");
@@ -14,14 +18,23 @@ $(document).ready(function()
                     if (code<protocolInfo.LEAST_ERR)
                     {
                         $(".errorInfo").text("");
-                        $(".rightInfo").text("Good! Logged in.")
+                        $(".white-card").css("opacity", "0");
                         setTimeout(function(){window.location=function_helper.url_blog},3000);
                     }
                     else
                     {
                         $(".errorInfo").text("Encountered error: "+code);
                     }
+                }).fail(function() {
+                    $(".errorInfo").text("Connection error");
+                }).always(function() {
+                    goTapped=false;
+                    $("#gogogo").addClass("bigButton-blue").removeClass("bigButton-blue-dark");
                 });
+        }).fail(function() {
+            goTapped=false;
+                $(".errorInfo").text("Connection error");
+            $("#gogogo").addClass("bigButton-blue").removeClass("bigButton-blue-dark");
         });
     });
 });

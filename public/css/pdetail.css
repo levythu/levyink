@@ -18,3 +18,8 @@
 .placeholder-1-5em {
     height: 3em;
 }
+
+.editButton {
+    color: #2484c1 !important;
+    display: inline-block;
+}

@@ -64,7 +64,7 @@ $(document).ready(function()
 $(document).ready(function()
 {
     j=document.createElement("script");
-    j.src="http://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURI(window.location.href);
+    j.src="https://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURI(window.location.href);
     document.body.appendChild(j);
 });
 */

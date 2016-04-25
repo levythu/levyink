@@ -24,5 +24,15 @@ router.get('/blogadmin.js', function(req, res)
         res.sendFile("blog.admin.fake.js",templateRoot);
     });
 });
+router.get('/pdetailadmin.js', function(req, res)
+{
+    auth.validateAdmin(req,function()
+    {
+        res.sendFile("pdetail.admin.js",templateRoot);
+    },function()
+    {
+        res.sendFile("pdetail.admin.fake.js",templateRoot);
+    });
+});
 
 module.exports = router;

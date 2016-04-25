@@ -53,6 +53,9 @@
 .inlineb {
     display: inline-block;
 }
+.nowrapper {
+    white-space: nowrap;
+}
 .indent1em {
     border-left: 1em solid transparent;
 }

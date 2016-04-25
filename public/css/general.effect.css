@@ -98,9 +98,8 @@
 .flatTextArea {
      resize: none;
      border: solid 1px #AAAAAA;
-     box-shadow: 0 0 0.4em #AAAAAA;
-     border-radius: 0.1em;
-     background: #F3F3F3;
+     padding: 0.5em;
+     background: #EEEEEE;
      -webkit-appearance:none;
      tab-size: 4;
 }
