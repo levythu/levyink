@@ -59,7 +59,7 @@ function checkExist(tpid,yescall,nocall)
 }
 function checkInData(obj,isnew,callback)
 {
-    var insList=["title","catalog","preview","order","author","tag","content"];
+    var insList=["title","catalog","preview","order","author","tag","content","img"];
     if (isnew)
     {
         lock.acquire("rest.blog.create.null",function()
@@ -74,7 +74,8 @@ function checkInData(obj,isnew,callback)
                 }
                 var toInsert={};
                 for (var i=0;i<insList.length;i++)
-                    toInsert[insList[i]]=obj[insList[i]];
+                    if (insList[i] in obj)
+                        toInsert[insList[i]]=obj[insList[i]];
                 toInsert.pubtime=(new Date()).getTime();
                 toInsert.pid=""+num;
 
@@ -108,7 +109,8 @@ function checkInData(obj,isnew,callback)
         {
             var toInsert={};
             for (var i=0;i<insList.length;i++)
-                toInsert[insList[i]]=obj[insList[i]];
+                if (insList[i] in obj)
+                    toInsert[insList[i]]=obj[insList[i]];
             if (obj.reftime===true)
                 toInsert.pubtime=(new Date()).getTime();
 

@@ -3,6 +3,7 @@ $(document).ready(function()
     fetchFont();
     p_detail=protocolInfo.ansisecure(p_detail);
     procDocs();
+    loadSelectedImg();
     called_on_loaded();
 });
 
@@ -26,4 +27,17 @@ function procDocs()
     }
     $(".tem_cata").text(p_detail.catalog);
     prettyPrint();
+}
+
+
+function loadSelectedImg()
+{
+    if (p_detail.img==undefined || p_detail.img=="")
+        return;
+    var imgBuf=new Image;
+	imgBuf.onload=function()
+	{
+        $("#giPic")[0].src=imgBuf.src;
+	}
+	imgBuf.src=p_detail.img;
 }

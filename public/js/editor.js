@@ -211,6 +211,8 @@ function loadData()
             }
             $("#pau")[0].value=cont.author;
             $("#ptag")[0].value=cont.tag.join(" ");
+            if (cont.img!=undefined)
+                $("#pimg")[0].value=cont.img;
             $("#sourceTA")[0].value=cont.content;
             renderMD();
             hideCover();
@@ -308,6 +310,7 @@ function postIt(callb)
         order: $("#phide").hasClass("checkBox_white_chosen")?-1:($("#ptop").hasClass("checkBox_white_chosen")?10:0),
         author: $("#pau")[0].value,
         tag: $("#ptag")[0].value.split(" ").filter(function(p){return p!=""}),
+        img: $("#pimg")[0].value,
         reftime: $("#preftime").hasClass("checkBox_white_chosen"),
         content: $("#sourceTA")[0].value,
         token: editor_js.tmpToken
