@@ -11,6 +11,12 @@
     height: 100%;
     margin: 0 auto;
 }
+.img_crop {
+    background-size: cover;
+}
+.giPicIMG {
+    background-image:url("../image/ink_tailored-moded1.jpg");
+}
 .px-20-placeholder
 {
     width: 100%;

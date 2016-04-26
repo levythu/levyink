@@ -37,7 +37,7 @@ function loadSelectedImg()
     var imgBuf=new Image;
 	imgBuf.onload=function()
 	{
-        $("#giPic")[0].src=imgBuf.src;
+        $("#giPic").css("background-image", 'url("'+imgBuf.src+'")');
 	}
 	imgBuf.src=p_detail.img;
 }
