@@ -17,6 +17,9 @@
 .giPicIMG {
     background-image:url("../image/ink_tailored-moded1.jpg");
 }
+.modPicIMG {
+    background-image:url("../image/moding.png");
+}
 .px-20-placeholder
 {
     width: 100%;
