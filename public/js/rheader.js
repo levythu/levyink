@@ -73,7 +73,7 @@ function topInk_onResize()
 
     if ($("#topInk")[0].offsetWidth>=blog_js.titleTrigger1)
     {
-        $("#giPic").css("width","100%");
+        //$("#giPic").css("width","100%");
         $("#latitle").css("bottom",blog_js.latitle_normal)
                      .css("text-align","left");
         $("#direct-panel").css("right","20px");
@@ -82,7 +82,7 @@ function topInk_onResize()
     {
         $("#direct-panel").css("right",(contentWidth-$("#direct-panel")[0].offsetWidth)/2);
         contentWidth=blog_js.titleTrigger1;
-        $("#giPic").css("width",contentWidth);
+        //$("#giPic").css("width",contentWidth);
         $("#latitle").css("bottom",blog_js.latitle_elevated)
                      .css("text-align","center");
     }

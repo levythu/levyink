@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
     var goTapped=false;
-    $("#gogogo").tap(function()
+    var tp=function()
     {
         if (goTapped) return;
         goTapped=true;
@@ -19,7 +19,7 @@ $(document).ready(function()
                     {
                         $(".errorInfo").text("");
                         $(".white-card").css("opacity", "0");
-                        setTimeout(function(){window.location=function_helper.url_blog},3000);
+                        setTimeout(function(){window.location=function_helper.url_blog},0);
                     }
                     else
                     {
@@ -36,5 +36,10 @@ $(document).ready(function()
                 $(".errorInfo").text("Connection error");
             $("#gogogo").addClass("bigButton-blue").removeClass("bigButton-blue-dark");
         });
+    };
+    $("body").keypress(function(e){
+        if(e.keyCode==13)
+            tp();
     });
+    $("#gogogo").tap(tp);
 });
