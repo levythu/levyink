@@ -56,6 +56,7 @@ function effectHelper_adj()
               .css("top",(dom.parentNode.offsetHeight-dom.offsetHeight)*0.5);
     });
 
+    /*
     $(".strongRes img").each(function(id,dom)
     {
         var pw=dom.parentNode;
@@ -78,6 +79,7 @@ function effectHelper_adj()
             }
         }
     });
+    */
 }
 $(document).ready(function()
 {
