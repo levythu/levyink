@@ -11,6 +11,8 @@ $(document).ready(function()
     var SET_API="http://localhost:1234/declare";
     //var DISCARD_API="/rest/nonauthorized/tiles/discard";
     var DISCARD_API="http://localhost:1234/declare";
+    //var LIST_API="/rest/nonauthorized/tiles/discard";
+    var DISCARD_API="http://localhost:1234/declare";
     var PREFIX_TILE="tile_";
 
     var globalDeltaY=0;
@@ -167,7 +169,7 @@ $(document).ready(function()
         if (job.length==0) {
             //TODO
         }
-        console.log(tileList[tid]);
+
         if (! (tid in tileList))
             job.remove();
         else {
@@ -239,6 +241,10 @@ $(document).ready(function()
             switchWork();
 
         if (p2x-p1x<TILE_MIN_X || p2y-p1y<=TILE_MIN_Y)
+            return;
+
+        // TODO
+        if (p1x<0 || p1y<0 || p2x>$("#commentsCanvas")[0].offsetWidth)
             return;
         var newTileDOM=$("<div class='elemTile tileUndeclared'>").css("left", p1x+"px")
                                                                  .css("top", p1y+"px")
