@@ -21,6 +21,11 @@
 	<script type="text/javascript" src="js/effecthelper.js"></script>
 	<script type="text/javascript" src="js/rheader.js"></script>
     <script type="text/javascript" src="js/googleSta.js"></script>
+
+	<!--EXTENSION-->
+    <script type="text/javascript" src="js/commentsCanvas.js"></script>
+	<link href="css/commentsCanvas.css" rel='stylesheet' type='text/css'>
+	<!--EXTENSION END-->
 </head>
 <body>
 	<div id="toTop" class="transit_in_position">
@@ -57,9 +62,18 @@
     </div>
 	<div id="followedFrame">
 		<div id="contentMain">
-			<p>
-				施工中，请等待。(By Levy)
-			</p>
+			<!--EXTENSION-->
+			<div id="commentsCanvas">
+				<div id="shadowSelect">
+				</div>
+				<div class="elemTile" style="height:100px; width:100px;">
+					<div class="fullStretch">1231223131asdhjasdjfasdjkfkhjsdakfhjkjhasdfhjasdkhfhjhhjdsfhdaskfhkdas</div>
+				</div>
+				<div id="editTile" class="elemTile">
+					<textarea id="editTileText" placeholder="Type content, or double click to use image."></textarea>
+				</div>
+			</div>
+			<!--EXTENSION END-->
 		</div>
 		<div id="footer">
 			<p>By Levy, 2015. Copyright reserved.</p>

@@ -1,0 +1,69 @@
+#contentMain {
+    overflow-x: auto !important;
+    background-color: #eeeeee !important;
+    max-width: 60em !important;
+}
+
+body {
+    background-color: #eeeeee !important;
+}
+
+#commentsCanvas {
+    width: 100%;
+    /*background-color: #DDDDDD;*/
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    cursor: crosshair;
+}
+
+.elemTile {
+    background: white;
+    border-radius: 0.2em;
+    box-shadow: 0.1em 0.1em 0.2em #999;
+    position: absolute;
+    padding: 10px;
+    cursor: default;
+    z-index: 10;
+}
+.tileUndeclared {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#shadowSelect {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    z-index: 20;
+}
+
+#editTile {
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 70px;
+    z-index: 15;
+    background-size: cover;
+    visibility: hidden;
+}
+
+#editTileText {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: 0px transparent;
+    background-color: transparent;
+}
+#editTileText:hover,
+#editTileText:active,
+#editTileText:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    border: 0px transparent;
+}
+
+.fullStretch {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
