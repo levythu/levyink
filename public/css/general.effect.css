@@ -117,3 +117,6 @@
 .normalCursor {
     cursor: default;
 }
+.strongRes img {
+    max-width: 100%;
+}
