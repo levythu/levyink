@@ -289,4 +289,28 @@ router.get("/list", function(req, res) {
     });
 });
 
+router.get("/uppesty", function(req, res) {
+    db[TILE].find({
+        status: {$gte: 0}
+    }).sort({
+        y1: 1
+    }).limit(1).toArray(function(err, docs) {
+        if (err) {
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.DB_ERROR,
+            }));
+            return;
+        }
+        var res=0
+        if (docs.length>0) {
+            res=docs[0].y1;
+        }
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.NORMAL,
+            "value":  res
+        }));
+        return
+    });
+});
+
 module.exports = router;
