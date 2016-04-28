@@ -196,6 +196,7 @@ router.post("/set", function(req, res) {
     }
     var obj2Set=JSON.parse(val);
     obj2Set.html=false;
+    console.log(obj2Set);
     function next() {
         var nt=Date.now();
         db[TILE].update({
