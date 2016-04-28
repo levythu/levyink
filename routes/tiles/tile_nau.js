@@ -224,10 +224,10 @@ router.post("/set", function(req, res) {
         });
     }
     var MAGIC="<!html>";
-    if (obj2Set.content.startsWith(MAGIC))
+    if (obj2Set.value.startsWith(MAGIC))
     {
         auth.validateAdmin(req, function() {
-            obj2Set.content=obj2Set.content.substr(MAGIC.length);
+            obj2Set.value=obj2Set.value.substr(MAGIC.length);
             obj2Set.html=true;
             next();
         }, function() {
