@@ -489,3 +489,7 @@ $(document).ready(function()
 
     startMoveDownwards();
 });
+var commentsCanvas_js={
+    removeTile: removeTile,
+    PREFIX_TILE: PREFIX_TILE
+};

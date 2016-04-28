@@ -1,6 +1,7 @@
 var tiles_admin={
     isInAdminMode: false,
-    KEY_Q: 81
+    KEY_Q: 81,
+    REMOVE_API: "https://www.levy.at/rest/authorized/tiles/remove"
 };
 
 $(document).ready(newComer);
@@ -29,11 +30,35 @@ function toggleMode()
     if (tiles_admin.isInAdminMode)
     {
         $("#superButton").removeClass("adminSu");
+        $(".elemTile:not(#editTile)").removeClass("hoverRed")
         tiles_admin.isInAdminMode=false;
     }
     else
     {
         tiles_admin.isInAdminMode=true;
+        $(".elemTile:not(#editTile)").addClass("hoverRed").each(function(id, dom) {
+            $(dom).tap(function() {
+                if (!tiles_admin.isInAdminMode)
+                    return;
+                var tid=id.substr(commentsCanvas_js.PREFIX_TILE.length);
+                $.post(REMOVE_API, {
+                    tid: tid
+                }, function(data)
+                {
+                    var code=(JSON.parse(data)).status;
+                    if (code<protocolInfo.LEAST_ERR)
+                    {
+                        commentsCanvas_js.removeTile(tid);
+                    }
+                    else
+                    {
+                        // nothing
+                    }
+                }).fail(function() {
+                    // nothing
+                });
+            });
+        });
         $("#superButton").addClass("adminSu");
     }
 }

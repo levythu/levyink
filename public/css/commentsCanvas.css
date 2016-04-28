@@ -103,3 +103,7 @@ body {
     height: calc(100% - 10px * 2);
     overflow-y: auto;
 }
+
+.hoverRed:hover {
+    box-shadow: 0.2em 0.2em 0.1em red;
+}
