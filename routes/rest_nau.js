@@ -5,8 +5,10 @@ var protocol=require("../models/protocols");
 var protocolInfo=require("../models/protocolDeclare");
 
 var blogmanage=require("./blogs/blogmanage");
+var tilemanage=require("./tiles/tile_nau");
 
 router.use("/blog",blogmanage);
+router.use("/tiles",tilemanage);
 
 router.get('/', function(req, res, next)
 {
