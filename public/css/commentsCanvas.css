@@ -40,6 +40,16 @@ body {
 .normalText {
     white-space: pre;
     padding: 10px;
+
+    width: 90%;/*写给不支持calc()的浏览器*/
+	width: -moz-calc(100% - 10px * 2);
+	width: -webkit-calc(100% - 10px * 2);
+	width: calc(100% - 10px * 2);
+
+    height: 90%;/*写给不支持calc()的浏览器*/
+	height:-moz-calc(100% - 10px * 2);
+	height:-webkit-calc(100% - 10px * 2);
+	height: calc(100% - 10px * 2);
 }
 
 #shadowSelect {
@@ -65,12 +75,20 @@ body {
 }
 
 #editTileText {
-    width: 100%;
-    height: 100%;
     resize: none;
     border: 0px transparent;
     background-color: transparent;
     padding: 10px;
+
+    width: 90%;/*写给不支持calc()的浏览器*/
+	width: -moz-calc(100% - 10px * 2);
+	width: -webkit-calc(100% - 10px * 2);
+	width: calc(100% - 10px * 2);
+
+    height: 90%;/*写给不支持calc()的浏览器*/
+	height:-moz-calc(100% - 10px * 2);
+	height:-webkit-calc(100% - 10px * 2);
+	height: calc(100% - 10px * 2);
 
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
