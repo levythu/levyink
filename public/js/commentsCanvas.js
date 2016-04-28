@@ -1,45 +1,50 @@
 $(document).ready(function()
 {
-    var MAX_Y_SPACE_IN_PX=100;
-    var Y_SPACE_INCREMENT=2;
+    var MAX_Y_SPACE_IN_PX=200;
+    var Y_SPACE_INCREMENT=2;    // deprecated
     var TILE_MIN_X=100;
     var TILE_MIN_Y=70;
     var PADDING_VALUE_OF_TILE=20;
-    //var DECLARATION_API="/rest/nonauthorized/tiles/declare";
-    var DECLARATION_API="http://localhost:1234/declare";
-    //var SET_API="/rest/nonauthorized/tiles/set";
-    var SET_API="http://localhost:1234/declare";
-    //var DISCARD_API="/rest/nonauthorized/tiles/discard";
-    var DISCARD_API="http://localhost:1234/declare";
+    var DECLARATION_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/declare";
+    //var DECLARATION_API="http://localhost:1234/declare";
+    var SET_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/set";
+    //var SET_API="http://localhost:1234/declare";
+    var DISCARD_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/discard";
+    //var DISCARD_API="http://localhost:1234/declare";
     //var LIST_API="/rest/nonauthorized/tiles/discard";
-    var DISCARD_API="http://localhost:1234/declare";
+    var LIST_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/list";
     var PREFIX_TILE="tile_";
-
+    var ONCE_LOADING_HEIGHT=1000;
+    
     var globalDeltaY=0;
     var uppestY=0;
     var downestY=200;
     var moveDownwardsRunning=false
 
     // invoked per tick to move a little
+    
+    function init() {
+        $(".elemTile").each(function(id, dom){
+            var i=parseInt($(dom).css("top"));
+            $(dom).attr("lvTargetTop", i);
+        });
+    }
+    init();
 
     function startMoveDownwards() {
-        if (moveDownwardsRunning)
+        if (MAX_Y_SPACE_IN_PX-uppestY<=globalDeltaY)
             return;
-        moveDownwardsRunning=true;
-
-        var pid=0;
-
-        function moveDownwards() {
-            if (MAX_Y_SPACE_IN_PX-uppestY<=globalDeltaY)
-            {
-                clearInterval(pid);
-                moveDownwardsRunning=false;
-            }
-            globalDeltaY+=Y_SPACE_INCREMENT;
-            $(".elemTile").css("top", "+="+Y_SPACE_INCREMENT);
-            $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
-        }
-        pid=setInterval(moveDownwards, 100);
+        var deltaD=MAX_Y_SPACE_IN_PX-uppestY-globalDeltaY;
+        globalDeltaY=MAX_Y_SPACE_IN_PX-uppestY;
+        $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
+        $(".elemTile").each(function(id, dom){
+            var i=parseInt($(dom).attr("lvTargetTop"));
+            if (isNaN(i)) console.error(dom, $(dom).attr("lvTargetTop"));
+            $(dom).attr("lvTargetTop", i+deltaD)
+                  .css("top", i+deltaD+"px");
+            //$(dom).css("top", "+="+deltaD);
+        });
+        return;
     }
 
     function pendingCanvas() {
@@ -78,9 +83,11 @@ $(document).ready(function()
     }
 
     function setTile(tid, contentObj, ifSucc, ifFail) {
+        var obj2={};
+        for (var i in contentObj) obj2[i]=contentObj[i];
         $.post(SET_API, {
             tid: tid,
-            val: JSON.stringify(protocolInfo.secure(contentObj))
+            val: JSON.stringify(protocolInfo.secure(obj2))
         }, function(data)
         {
             var code=(JSON.parse(data)).status;
@@ -103,6 +110,7 @@ $(document).ready(function()
         var tid=workingDOM.attr("id").substr(PREFIX_TILE.length);
         if (nw!=undefined && confirm("Save the current tile?"))
         {
+            workingDOM.addClass("tileUndeclared");
             setTile(tid, nw, function() {
                 updateTile(tid, {
                     status: 1,
@@ -127,10 +135,11 @@ $(document).ready(function()
         status=1;
         workingDOM=elem;
         useTextMode();
-        $("#editTile").css("left",   ax1)
-                      .css("top",    ay1)
-                      .css("width",  ax2-ax1)
-                      .css("height", ay2-ay1)
+        $("#editTile").css("left",   ax1+"px")
+                      .attr("lvTargetTop", ay1)
+                      .css("top",    ay1+"px")
+                      .css("width",  ax2-ax1+"px")
+                      .css("height", ay2-ay1+"px")
                       .css("visibility", "inherit");
         $("#editTileText").focus();
     }
@@ -167,17 +176,32 @@ $(document).ready(function()
         var tileid=PREFIX_TILE+tid;
         var job=$("#"+tileid);
         if (job.length==0) {
-            //TODO
+            if (! (tid in tileList))
+                return;
+            job=$("<div class='elemTile' id='"+tileid+"'>")
+                .css("left", tileList[tid].x1+"px")
+                .attr("lvTargetTop", tileList[tid].y1+globalDeltaY)
+                .css("top", tileList[tid].y1+globalDeltaY+"px")
+                .css("width", tileList[tid].x2-tileList[tid].x1+"px")
+                .css("height", tileList[tid].y2-tileList[tid].y1+"px");
+            $("#commentsCanvas").append(job);
         }
 
         if (! (tid in tileList))
-            job.remove();
+            removeTile(tid);
         else {
-            if (tileList[tid].content.istext) {
-                job.append($("<div class='fullStretch'>").text(tileList[tid].content.value));
-            } else {
-                job.css("background-size", "cover")
-                   .css("background-image", "url("+tileList[tid].content.value+")");
+            if (tileList[tid].status==1) {
+                job.removeClass("tileUndeclared");
+                if (tileList[tid].content.istext) {
+                    job.append($("<div class='fullStretch normalText'>").text(tileList[tid].content.value));
+                } else {
+                    job.css("background-size", "cover")
+                       .css("background-image", "url("+tileList[tid].content.value+")");
+                }
+            } else if (tileList[tid].status==2) {
+                job.addClass("tileUndeclared");
+            } else if (tileList[tid].status==-1) {
+                removeTile(tid);
             }
         }
 
@@ -185,34 +209,36 @@ $(document).ready(function()
 
     function updateTile(tid, anything) {
         if (! (tid in tileList))
-            return;
+            tileList[tid]={};
         for (i in anything)
+        {
             tileList[tid][i]=anything[i];
+        }
+        if (tileList[tid].status>=0 && tileList[tid].y2>downestY)
+        {
+            downestY=tileList[tid].y2
+            $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
+        }
+        if (tileList[tid].status>=0 && tileList[tid].y1<uppestY) 
+        {
+            uppestY=tileList[tid].y1;
+            startMoveDownwards();
+        }   
     }
 
     // checkInTile use unbiased position
     function checkInTile(tid, x1, y1, x2, y2, status)
     {
         // status: 1: fixed; 2: editing
-        tileList[tid]=
-        {
+        updateTile(tid, {
             x1: x1,
             y1: y1,
             x2: x2,
             y2: y2,
             status: status
-        };
-        if (y2>downestY)
-        {
-            downestY=y2;
-            $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
-        }
-        if (y1<uppestY)
-        {
-            uppestY=y1;
-            // TODO
-        }
+        });
     }
+   
 
     // START TO IMPLEMENT DRAG EVENTS
     var isDragging=false;
@@ -247,6 +273,7 @@ $(document).ready(function()
         if (p1x<0 || p1y<0 || p2x>$("#commentsCanvas")[0].offsetWidth)
             return;
         var newTileDOM=$("<div class='elemTile tileUndeclared'>").css("left", p1x+"px")
+                                                                 .attr("lvTargetTop", p1y)
                                                                  .css("top", p1y+"px")
                                                                  .css("width", p2x-p1x+"px")
                                                                  .css("height", p2y-p1y+"px");
@@ -342,5 +369,48 @@ $(document).ready(function()
     });
     // END TO IMPLEMENT EDIT TILE
 
-    startMoveDownwards();
+
+
+    // START TO IMELEMENT FETCHER
+    var lastFetch=0;
+    // unbiased y
+    function fetchData(maxY1) {
+        if (maxY1==undefined || maxY1<downestY+ONCE_LOADING_HEIGHT)
+            maxY1=downestY+ONCE_LOADING_HEIGHT;
+        function ifSucc(obj) {
+            var cList=obj.content;
+            for (var i=0; i<cList.length; i++) {
+                var thisOne=cList[i];
+                var tid=thisOne.tid;
+                delete thisOne["tid"];
+                if ("content" in thisOne)
+                    protocolInfo.ansisecure(thisOne.content);
+                updateTile(tid, thisOne);
+                renderTile(tid);
+            }
+            if (!isNaN(parseInt(obj.timestamp)))
+                lastFetch=parseInt(obj.timestamp);
+        }
+        function ifFail() {
+            // TODO
+        }
+        $.get(LIST_API+"?updatesince="+lastFetch+"&ymax="+maxY1, function(data)
+        {
+            var code=(JSON.parse(data)).status;
+            if (code<protocolInfo.LEAST_ERR)
+            {
+                ifSucc(JSON.parse(data));
+            }
+            else
+            {
+                ifFail();
+            }
+        }).fail(function() {
+            ifFail();
+        });
+    }
+    // END TO IMELEMENT FETCHER
+
+    //startMoveDownwards();
+    fetchData();
 });
