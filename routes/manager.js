@@ -34,5 +34,15 @@ router.get('/pdetailadmin.js', function(req, res)
         res.sendFile("pdetail.admin.fake.js",templateRoot);
     });
 });
+router.get('/tileadmin.js', function(req, res)
+{
+    auth.validateAdmin(req,function()
+    {
+        res.sendFile("tiles.admin.js",templateRoot);
+    },function()
+    {
+        res.sendFile("tiles.admin.fake.js",templateRoot);
+    });
+});
 
 module.exports = router;
