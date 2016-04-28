@@ -196,8 +196,6 @@ router.post("/set", function(req, res) {
     }
     var obj2Set=JSON.parse(val);
     obj2Set.html=false;
-    console.log(obj2Set, obj2Set.value);
-    console.log("str".startsWith("s"));
     function next() {
         var nt=Date.now();
         db[TILE].update({
@@ -226,7 +224,8 @@ router.post("/set", function(req, res) {
         });
     }
     var MAGIC="<!html>";
-    if (obj2Set.value.startsWith(MAGIC))
+
+    if (obj2Set.value.indexOf(MAGIC)===0)
     {
         auth.validateAdmin(req, function() {
             obj2Set.value=obj2Set.value.substr(MAGIC.length);
