@@ -11,7 +11,7 @@ function newComer()
         $("<div id='superButton' class='transit_all'>").html
         (
             '<span class="icon-flag mid-4-2-glyph"></span>'
-        ).tap(toggleMode);
+        ).tap(toggleMode)
     );
     $("#errorFrame").after($('<div class="addFrame transit_all" class="transit_in_size">')
         .html('<span class="addFrame_c">+</span>')
