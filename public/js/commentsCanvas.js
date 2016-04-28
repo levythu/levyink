@@ -7,26 +7,26 @@ $(document).ready(function()
     var PADDING_VALUE_OF_TILE=20;
     var DECLARATION_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/declare";
     DECLARATION_API="/rest/nonauthorized/tiles/declare";
-    
+
     var SET_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/set";
     SET_API="/rest/nonauthorized/tiles/set";
-    
+
     var DISCARD_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/discard";
     DISCARD_API="/rest/nonauthorized/tiles/discard";
 
     var LIST_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/list";
     LIST_API="/rest/nonauthorized/tiles/list";
-    
+
     var PREFIX_TILE="tile_";
     var ONCE_LOADING_HEIGHT=1000;
-    
+
     var globalDeltaY=0;
     var uppestY=0;
     var downestY=-1994;
     var moveDownwardsRunning=false
 
     // invoked per tick to move a little
-    
+
     function init() {
         $(".elemTile").each(function(id, dom){
             var i=parseInt($(dom).css("top"));
@@ -228,11 +228,11 @@ $(document).ready(function()
             downestY=tileList[tid].y2
             $("#commentsCanvas").css("height", globalDeltaY+Math.max(downestY, 0)+PADDING_VALUE_OF_TILE*2+"px");
         }
-        if (tileList[tid].status>=0 && tileList[tid].y1<uppestY) 
+        if (tileList[tid].status>=0 && tileList[tid].y1<uppestY)
         {
             uppestY=tileList[tid].y1;
             startMoveDownwards();
-        }   
+        }
     }
 
     // checkInTile use unbiased position
@@ -247,7 +247,7 @@ $(document).ready(function()
             status: status
         });
     }
-   
+
 
     // START TO IMPLEMENT DRAG EVENTS
     var isDragging=false;
