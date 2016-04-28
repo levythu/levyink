@@ -5,14 +5,18 @@ $(document).ready(function()
     var TILE_MIN_X=100;
     var TILE_MIN_Y=70;
     var PADDING_VALUE_OF_TILE=20;
-    var DECLARATION_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/declare";
-    //var DECLARATION_API="http://localhost:1234/declare";
-    var SET_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/set";
-    //var SET_API="http://localhost:1234/declare";
-    var DISCARD_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/discard";
-    //var DISCARD_API="http://localhost:1234/declare";
-    //var LIST_API="/rest/nonauthorized/tiles/discard";
-    var LIST_API="http://192.168.241.131:2333/rest/nonauthorized/tiles/list";
+    var DECLARATION_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/declare";
+    DECLARATION_API="/rest/nonauthorized/tiles/declare";
+    
+    var SET_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/set";
+    SET_API="/rest/nonauthorized/tiles/set";
+    
+    var DISCARD_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/discard";
+    DISCARD_API="/rest/nonauthorized/tiles/discard";
+
+    var LIST_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/list";
+    LIST_API="/rest/nonauthorized/tiles/list";
+    
     var PREFIX_TILE="tile_";
     var ONCE_LOADING_HEIGHT=1000;
     
@@ -193,7 +197,12 @@ $(document).ready(function()
             if (tileList[tid].status==1) {
                 job.removeClass("tileUndeclared");
                 if (tileList[tid].content.istext) {
-                    job.append($("<div class='fullStretch normalText'>").text(tileList[tid].content.value));
+                    if (job.children(".normalText").length==0) {
+                        if (tileList[tid].html===true)
+                            job.append($("<div class='fullStretch normalText'>").html(tileList[tid].content.value));
+                        else
+                            job.append($("<div class='fullStretch normalText'>").text(tileList[tid].content.value));
+                    }
                 } else {
                     job.css("background-size", "cover")
                        .css("background-image", "url("+tileList[tid].content.value+")");
@@ -288,6 +297,7 @@ $(document).ready(function()
         }, function() {
             // on fail
             newTileDOM.remove();
+            setTimeout(fetchData, 0);
         });
 
     });
@@ -375,8 +385,9 @@ $(document).ready(function()
     var lastFetch=0;
     // unbiased y
     function fetchData(maxY1) {
-        if (maxY1==undefined || maxY1<downestY+ONCE_LOADING_HEIGHT)
-            maxY1=downestY+ONCE_LOADING_HEIGHT;
+        if (maxY1==undefined)
+            maxY1=0;
+        maxY1+=ONCE_LOADING_HEIGHT;
         function ifSucc(obj) {
             var cList=obj.content;
             for (var i=0; i<cList.length; i++) {
@@ -413,4 +424,5 @@ $(document).ready(function()
 
     //startMoveDownwards();
     fetchData();
+    setInterval(fetchData, 1000);
 });
