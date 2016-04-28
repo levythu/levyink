@@ -301,13 +301,13 @@ router.get("/uppesty", function(req, res) {
             }));
             return;
         }
-        var res=0
+        var result=0
         if (docs.length>0) {
-            res=docs[0].y1;
+            result=docs[0].y1;
         }
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.NORMAL,
-            "value":  res
+            "value":  result
         }));
         return
     });
