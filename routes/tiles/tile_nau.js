@@ -262,10 +262,17 @@ router.get("/list", function(req, res) {
         var t=parseInt(req.query["ymax"]);
         if (!isNaN(t)) yMax=t;
     }
+    var searchCon={$lte: yMax};
+    if ("ymin" in req.query) {
+        var t=parseInt(req.query["ymin"]);
+        if (!isNaN(t)) {
+            searchCon["$gte"]=t;
+        }
+    }
     var nowTime=Date.now();
     db[TILE].find({
         updateTime: {$gt: updateStart},
-        y1: {$lte: yMax}
+        y1: searchCon
     }, function(err, docs) {
         if (err)
         {
