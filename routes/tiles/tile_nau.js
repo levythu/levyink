@@ -8,7 +8,8 @@ var lock=require("../../models/lock");
 
 var auth=require("../../manage/authencitation");
 
-var DECLARED_TILE_EXPIRATION_IN_MS=60*1000;                 // one second
+var DECLARED_TILE_EXPIRATION_IN_MS=10*60*1000;
+var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one second
 
 var db=model.db;
 var TILE=model.TILE;
@@ -70,7 +71,7 @@ function clearExpiration(cb) {
 }
 setInterval(function(){
     clearExpiration();
-}, DECLARED_TILE_EXPIRATION_IN_MS);
+}, DECLARED_TILE_EXPIRATION_CHECKER_IN_MS);
 
 // if fail, returns ""
 // otherwise, returns tid
