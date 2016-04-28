@@ -6,7 +6,7 @@ var protocolInfo=require("../../models/protocolDeclare");
 var model=require("../../models/db");
 var lock=require("../../models/lock");
 
-var updateTime=require("./nau").u;
+var updateTime=require("./tile_nau").u;
 
 var db=model.db;
 var TILE=model.TILE;
