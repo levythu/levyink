@@ -43,7 +43,7 @@ function toggleMode()
                 var tid=dom.id.substr(commentsCanvas_js.PREFIX_TILE.length);
                 if (!confirm("Confirm to remove?"))
                     return;
-                $.post(REMOVE_API, {
+                $.post(tiles_admin.REMOVE_API, {
                     tid: tid
                 }, function(data)
                 {
