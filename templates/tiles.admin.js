@@ -33,7 +33,7 @@ function toggleMode()
     }
     else
     {
-        blog_admin_js.isInAdminMode=true;
+        tiles_admin.isInAdminMode=true;
         $("#superButton").addClass("adminSu");
     }
 }
@@ -55,7 +55,7 @@ function keyboardHook(e)
 	var keyPressed=e.keyCode;
     switch (keyPressed)
 	{
-	case blog_admin_js.KEY_Q:
+	case tiles_admin.KEY_Q:
 		toggleMode();
         e.preventDefault();
 		break;
