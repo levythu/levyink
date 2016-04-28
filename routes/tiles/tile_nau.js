@@ -320,4 +320,8 @@ router.get("/uppesty", function(req, res) {
     });
 });
 
-module.exports = router;
+exports.r = router;
+exports.u = function(nt) {
+    if (nt>lastUpdate)
+        lastUpdate=nt;
+};
