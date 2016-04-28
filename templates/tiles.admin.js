@@ -59,6 +59,8 @@ function toggleMode()
                 }).fail(function() {
                     // nothing
                 });
+
+                return false;
             });
         });
         $("#superButton").addClass("adminSu");
