@@ -198,7 +198,7 @@ $(document).ready(function()
                 job.removeClass("tileUndeclared");
                 if (tileList[tid].content.istext) {
                     if (job.children(".normalText").length==0) {
-                        if (tileList[tid].html===true)
+                        if (tileList[tid].content.html===true)
                             job.append($("<div class='fullStretch normalText'>").html(tileList[tid].content.value));
                         else
                             job.append($("<div class='fullStretch normalText'>").text(tileList[tid].content.value));
