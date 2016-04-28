@@ -40,7 +40,9 @@ function toggleMode()
             $(dom).tap(function() {
                 if (!tiles_admin.isInAdminMode)
                     return;
-                var tid=id.substr(commentsCanvas_js.PREFIX_TILE.length);
+                var tid=dom.id.substr(commentsCanvas_js.PREFIX_TILE.length);
+                if (!confirm("Confirm to remove?"))
+                    return;
                 $.post(REMOVE_API, {
                     tid: tid
                 }, function(data)

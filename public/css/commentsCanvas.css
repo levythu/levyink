@@ -105,5 +105,5 @@ body {
 }
 
 .hoverRed:hover {
-    box-shadow: 0.2em 0.2em 0.1em red;
+    box-shadow: 0em 0em 1em red;
 }
