@@ -38,7 +38,7 @@ body {
     background: rgba(0, 0, 0, 0.3);
 }
 .normalText {
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 #shadowSelect {

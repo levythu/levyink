@@ -7,15 +7,19 @@ $(document).ready(function()
     var PADDING_VALUE_OF_TILE=20;
     var DECLARATION_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/declare";
     DECLARATION_API="/rest/nonauthorized/tiles/declare";
+    DECLARATION_API="https://www.levy.at/rest/nonauthorized/tiles/declare";
 
     var SET_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/set";
     SET_API="/rest/nonauthorized/tiles/set";
+    SET_API="https://www.levy.at/rest/nonauthorized/tiles/set";
 
     var DISCARD_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/discard";
     DISCARD_API="/rest/nonauthorized/tiles/discard";
+    DISCARD_API="https://www.levy.at/rest/nonauthorized/tiles/discard";
 
     var LIST_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/list";
     LIST_API="/rest/nonauthorized/tiles/list";
+    LIST_API="https://www.levy.at/rest/nonauthorized/tiles/list";
 
     var PREFIX_TILE="tile_";
     var ONCE_LOADING_HEIGHT=1000;
