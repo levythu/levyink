@@ -21,6 +21,10 @@ $(document).ready(function()
     LIST_API="/rest/nonauthorized/tiles/list";
     LIST_API="https://www.levy.at/rest/nonauthorized/tiles/list";
 
+    var UPPEST_API="http://192.168.1.91:2333/rest/nonauthorized/tiles/uppesty";
+    UPPEST_API="/rest/nonauthorized/tiles/uppesty";
+    UPPEST_API="https://www.levy.at/rest/nonauthorized/tiles/uppesty";
+
     var PREFIX_TILE="tile_";
     var ONCE_LOADING_HEIGHT=1000;
 
@@ -44,7 +48,7 @@ $(document).ready(function()
             return;
         var deltaD=MAX_Y_SPACE_IN_PX-uppestY-globalDeltaY;
         globalDeltaY=MAX_Y_SPACE_IN_PX-uppestY;
-        $("#commentsCanvas").css("height", globalDeltaY+Math.max(downestY, 0)+PADDING_VALUE_OF_TILE*2+"px");
+        $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
         $(".elemTile").each(function(id, dom){
             var i=parseInt($(dom).attr("lvTargetTop"));
             if (isNaN(i)) console.error(dom, $(dom).attr("lvTargetTop"));
@@ -230,7 +234,7 @@ $(document).ready(function()
         if (tileList[tid].status>=0 && tileList[tid].y2>downestY)
         {
             downestY=tileList[tid].y2
-            $("#commentsCanvas").css("height", globalDeltaY+Math.max(downestY, 0)+PADDING_VALUE_OF_TILE*2+"px");
+            $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
         }
         if (tileList[tid].status>=0 && tileList[tid].y1<uppestY)
         {
@@ -387,11 +391,43 @@ $(document).ready(function()
 
     // START TO IMELEMENT FETCHER
     var lastFetch=0;
+    var scopeY=-19940701;
+    var updateFetching=false;
+    function fetchLeastY(succ, fail) {
+        $.get(UPPEST_API, function(data)
+        {
+            var code=(JSON.parse(data)).status;
+            if (code<protocolInfo.LEAST_ERR)
+            {
+                downestY=scopeY=(JSON.parse(data)).value;
+                succ();
+            }
+            else
+            {
+                fail();
+            }
+        }).fail(function() {
+            fail();
+        });
+    }
     // unbiased y
-    function fetchData(maxY1) {
-        if (maxY1==undefined)
-            maxY1=0;
-        maxY1+=ONCE_LOADING_HEIGHT;
+    function fetchData(isUpdate) {
+        var query="";
+        if (isUpdate==undefined)
+            isUpdate=false;
+        console.log(scopeY);
+        if (isUpdate)
+        {
+            // update mode;
+            if (updateFetching)
+                return;
+            updateFetching=true;
+            isUpdate=true;
+            query="?updatesince=0&ymax="+(scopeY+ONCE_LOADING_HEIGHT)+"&ymin="+scopeY;
+        } else {
+            // appending mode;
+            query="?updatesince="+lastFetch+"&ymax="+scopeY;
+        }
         function ifSucc(obj) {
             var cList=obj.content;
             for (var i=0; i<cList.length; i++) {
@@ -403,13 +439,20 @@ $(document).ready(function()
                 updateTile(tid, thisOne);
                 renderTile(tid);
             }
-            if (!isNaN(parseInt(obj.timestamp)))
+            if (cList.length>0) {
+                scopeY+=ONCE_LOADING_HEIGHT;
+            }
+            if (!isNaN(parseInt(obj.timestamp)) && isUpdate)
                 lastFetch=parseInt(obj.timestamp);
+            if (isUpdate)
+                updateFetching=false;
         }
         function ifFail() {
-            // TODO
+            if (isUpdate)
+                updateFetching=false;
         }
-        $.get(LIST_API+"?updatesince="+lastFetch+"&ymax="+maxY1, function(data)
+
+        $.get(LIST_API+query, function(data)
         {
             var code=(JSON.parse(data)).status;
             if (code<protocolInfo.LEAST_ERR)
@@ -424,10 +467,26 @@ $(document).ready(function()
             ifFail();
         });
     }
+    function initFetch() {
+        fetchLeastY(function(){
+            fetchData(true);
+            setInterval(fetchData, 1000);
+        }, function(){
+            setTimeout(initFetch, 1000);
+        });
+    }
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+            fetchData(true);
+        }
+    });
     // END TO IMELEMENT FETCHER
 
     //startMoveDownwards();
-    fetchData();
-    setInterval(fetchData, 1000);
+
+
+    initFetch();
+
     startMoveDownwards();
 });
