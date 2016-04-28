@@ -1,3 +1,5 @@
+var commentsCanvas_js={};
+
 $(document).ready(function()
 {
     var MAX_Y_SPACE_IN_PX=200;
@@ -26,6 +28,7 @@ $(document).ready(function()
     UPPEST_API="https://www.levy.at/rest/nonauthorized/tiles/uppesty";
 
     var PREFIX_TILE="tile_";
+    commentsCanvas_js.PREFIX_TILE=PREFIX_TILE;
     var ONCE_LOADING_HEIGHT=1000;
 
     var globalDeltaY=0;
@@ -183,6 +186,7 @@ $(document).ready(function()
         $("#"+tileid).remove();
         delete tileList["tid"];
     }
+    commentsCanvas_js.removeTile=removeTile;
 
     function renderTile(tid) {
         var tileid=PREFIX_TILE+tid;
@@ -489,7 +493,3 @@ $(document).ready(function()
 
     startMoveDownwards();
 });
-var commentsCanvas_js={
-    removeTile: removeTile,
-    PREFIX_TILE: PREFIX_TILE
-};
