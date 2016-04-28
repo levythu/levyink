@@ -22,7 +22,7 @@ $(document).ready(function()
     
     var globalDeltaY=0;
     var uppestY=0;
-    var downestY=200;
+    var downestY=-1994;
     var moveDownwardsRunning=false
 
     // invoked per tick to move a little
@@ -40,7 +40,7 @@ $(document).ready(function()
             return;
         var deltaD=MAX_Y_SPACE_IN_PX-uppestY-globalDeltaY;
         globalDeltaY=MAX_Y_SPACE_IN_PX-uppestY;
-        $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
+        $("#commentsCanvas").css("height", globalDeltaY+Math.max(downestY, 0)+PADDING_VALUE_OF_TILE*2+"px");
         $(".elemTile").each(function(id, dom){
             var i=parseInt($(dom).attr("lvTargetTop"));
             if (isNaN(i)) console.error(dom, $(dom).attr("lvTargetTop"));
@@ -226,7 +226,7 @@ $(document).ready(function()
         if (tileList[tid].status>=0 && tileList[tid].y2>downestY)
         {
             downestY=tileList[tid].y2
-            $("#commentsCanvas").css("height", globalDeltaY+downestY+PADDING_VALUE_OF_TILE*2+"px");
+            $("#commentsCanvas").css("height", globalDeltaY+Math.max(downestY, 0)+PADDING_VALUE_OF_TILE*2+"px");
         }
         if (tileList[tid].status>=0 && tileList[tid].y1<uppestY) 
         {
@@ -425,4 +425,5 @@ $(document).ready(function()
     //startMoveDownwards();
     fetchData();
     setInterval(fetchData, 1000);
+    startMoveDownwards();
 });
