@@ -6,6 +6,8 @@ var protocolInfo=require("../../models/protocolDeclare");
 var model=require("../../models/db");
 var lock=require("../../models/lock");
 
+var DECLARED_TILE_EXPIRATION_IN_MS=60*1000;                 // one second
+
 var db=model.db;
 var TILE=model.TILE;
 
@@ -33,6 +35,37 @@ router.get('/', function(req, res, next)
 });
 
 var lastUpdate=1;
+
+function clearExpiration(cb) {
+    var nt=Date.now();
+    db[TILE].update({
+        status: 2,
+        updateTime: {$lt: nt-DECLARED_TILE_EXPIRATION_IN_MS}
+    }, {
+        $set: {
+            status: -1,
+            updateTime: nt
+        }
+    }, {multi: true}, function(err, rec) {
+        if (err || rec.n==0) {
+            if (cb)
+                nextTick(function(){
+                    cb(0);
+                });
+            return;
+        }
+        if (nt>lastUpdate)
+            lastUpdate=nt;
+        if (cb)
+            nextTick(function(){
+                cb(rec.n);
+            });
+    });
+}
+setInterval(function(){
+    clearExpiration();
+}, DECLARED_TILE_EXPIRATION_IN_MS);
+
 // if fail, returns ""
 // otherwise, returns tid
 function findNPost(x1p, y1p, x2p, y2p, callback) {
