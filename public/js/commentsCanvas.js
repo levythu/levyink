@@ -415,7 +415,6 @@ $(document).ready(function()
         var query="";
         if (isUpdate==undefined)
             isUpdate=false;
-        console.log(scopeY);
         if (isUpdate)
         {
             // update mode;
@@ -425,7 +424,7 @@ $(document).ready(function()
             isUpdate=true;
             query="?updatesince=0&ymax="+(scopeY+ONCE_LOADING_HEIGHT)+"&ymin="+scopeY;
         } else {
-            // appending mode;
+            // patching mode;
             query="?updatesince="+lastFetch+"&ymax="+scopeY;
         }
         function ifSucc(obj) {
@@ -439,10 +438,10 @@ $(document).ready(function()
                 updateTile(tid, thisOne);
                 renderTile(tid);
             }
-            if (cList.length>0) {
+            if (cList.length>0 && isUpdate) {
                 scopeY+=ONCE_LOADING_HEIGHT;
             }
-            if (!isNaN(parseInt(obj.timestamp)) && isUpdate)
+            if (!isNaN(parseInt(obj.timestamp)) && !isUpdate)
                 lastFetch=parseInt(obj.timestamp);
             if (isUpdate)
                 updateFetching=false;
