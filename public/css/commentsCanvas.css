@@ -70,6 +70,7 @@ body {
     resize: none;
     border: 0px transparent;
     background-color: transparent;
+    padding: 10px;
 
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
