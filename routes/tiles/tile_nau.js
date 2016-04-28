@@ -32,6 +32,7 @@ router.get('/', function(req, res, next)
     res.send("hello from nau!");
 });
 
+var lastUpdate=1;
 // if fail, returns ""
 // otherwise, returns tid
 function findNPost(x1p, y1p, x2p, y2p, callback) {
@@ -51,19 +52,22 @@ function findNPost(x1p, y1p, x2p, y2p, callback) {
                 onFail();
                 return;
             }
+            var nt=Date.now();
             db[TILE].insert({
                 x1: x1p,
                 x2: x2p,
                 y1: y1p,
                 y2: y2p,
                 status: 2,
-                updateTime: Date.now()
+                updateTime: nt
             }, function(err, rec) {
                 if (err || rec.length==0)
                 {
                     onFail();
                     return;
                 }
+                if (nt>lastUpdate)
+                    lastUpdate=nt;
                 lock.release("tiles.findNPost");
                 callback(rec._id.toString());
             });
@@ -115,13 +119,14 @@ router.post("/discard", function(req, res) {
         }));
         return;
     }
+    var nt=Date.now();
     db[TILE].update({
         _id: model.getIDClass(tid),
         status: 2
     }, {
         $set: {
             status: -1,
-            updateTime: Date.now()
+            updateTime: nt
         }
     },{}, function(err, rec) {
         if (err || rec.n==0) {
@@ -130,6 +135,8 @@ router.post("/discard", function(req, res) {
             }));
             return;
         }
+        if (nt>lastUpdate)
+            lastUpdate=nt;
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.NORMAL
         }));
@@ -148,14 +155,15 @@ router.post("/set", function(req, res) {
         return;
     }
     var obj2Set=JSON.parse(val);
+    var nt=Date.now();
     db[TILE].update({
         _id: model.getIDClass(tid),
         status: 2
     }, {
         $set: {
             status: 1,
-            updateTime: Date.now(),
-            postTime: Date.now(),
+            updateTime: nt,
+            postTime: nt,
             content: obj2Set
         }
     }, {}, function(err, rec) {
@@ -165,6 +173,8 @@ router.post("/set", function(req, res) {
             }));
             return;
         }
+        if (nt>lastUpdate)
+            lastUpdate=nt;
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.NORMAL
         }));
@@ -179,6 +189,16 @@ router.get("/list", function(req, res) {
         var t=parseInt(req.query["updatesince"]);
         if (t>0) updateStart=t;
     }
+    if (updateStart>=lastUpdate)
+    {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.NORMAL,
+            "timestamp": Date.now(),
+            "content": []
+        }));
+        return;
+    }
+
     var yMax=1024;
     if ("ymax" in req.query)
     {
