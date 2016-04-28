@@ -6,6 +6,8 @@ var protocolInfo=require("../../models/protocolDeclare");
 var model=require("../../models/db");
 var lock=require("../../models/lock");
 
+var auth=require("../../manage/authencitation");
+
 var DECLARED_TILE_EXPIRATION_IN_MS=60*1000;                 // one second
 
 var db=model.db;
@@ -18,7 +20,11 @@ var TILE=model.TILE;
 ** updateTime: unixtimestamp(int)
 ** postTime: unixtimestamp(int)
 ** content: JSON
-** isHTML: boolean
+** {
+**      istext: bool
+**      value: string
+**      [html]: bool
+** }
 */
 
 var TILE_MIN_X=100;
@@ -188,31 +194,47 @@ router.post("/set", function(req, res) {
         return;
     }
     var obj2Set=JSON.parse(val);
-    var nt=Date.now();
-    db[TILE].update({
-        _id: model.getIDClass(tid),
-        status: 2
-    }, {
-        $set: {
-            status: 1,
-            updateTime: nt,
-            postTime: nt,
-            content: obj2Set
-        }
-    }, {}, function(err, rec) {
-        if (err || rec.n==0) {
+    obj2Set.html=false;
+    function next() {
+        var nt=Date.now();
+        db[TILE].update({
+            _id: model.getIDClass(tid),
+            status: 2
+        }, {
+            $set: {
+                status: 1,
+                updateTime: nt,
+                postTime: nt,
+                content: obj2Set
+            }
+        }, {}, function(err, rec) {
+            if (err || rec.n==0) {
+                res.send(JSON.stringify({
+                    "status": protocolInfo.generalRes.statusCode.NO_SUCH_DOCS
+                }));
+                return;
+            }
+            if (nt>lastUpdate)
+                lastUpdate=nt;
             res.send(JSON.stringify({
-                "status": protocolInfo.generalRes.statusCode.NO_SUCH_DOCS
+                "status": protocolInfo.generalRes.statusCode.NORMAL
             }));
             return;
-        }
-        if (nt>lastUpdate)
-            lastUpdate=nt;
-        res.send(JSON.stringify({
-            "status": protocolInfo.generalRes.statusCode.NORMAL
-        }));
-        return;
-    });
+        });
+    }
+    var MAGIC="<!html>";
+    if (obj2Set.content.startsWith(MAGIC))
+    {
+        auth.validateAdmin(req, function() {
+            obj2Set.content=obj2Set.content.substr(MAGIC.length);
+            obj2Set.html=true;
+            next();
+        }, function() {
+            next();
+        });
+    } else {
+        next();
+    }
 });
 
 router.get("/list", function(req, res) {
