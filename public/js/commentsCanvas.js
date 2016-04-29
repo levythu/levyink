@@ -368,12 +368,9 @@ $(document).ready(function()
             istext: isTextMode,
             value:  v
         };
-        if (tiles_admin!=undefined)
+        if (v.indexOf("<!html>")===0 && tiles_admin)
         {
-            // admin mode
-            if (v.indexOf("<!html>")===0) {
-                ret.html=true;
-            }
+            ret.html=true;
         }
 
         return ret;
