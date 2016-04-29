@@ -91,6 +91,28 @@
     color: #AAAAAA;
 }
 
+#outerLink p {
+    text-align: left;
+}
+
+.bigWrd {
+    font-size: 1em !important;
+}
+.outerLinkEntry {
+    font-family: Arial, Helvetica, "微软雅黑", "黑体", SimHei, sans-serif;
+    font-size: 0.8em;
+    padding-right: 1em;
+    padding-bottom: 0.3em;
+    min-width: 10em;
+}
+.outerLinkEntry a {
+    text-decoration: none !important;
+    color: inherit;
+}
+.outerLinkEntry a:hover {
+    color: #2484c1;
+}
+
 #toTop {
     position: fixed;
     z-index: 99;
