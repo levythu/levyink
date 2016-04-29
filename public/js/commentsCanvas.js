@@ -267,7 +267,7 @@ $(document).ready(function()
     var startPointY=0;
     $("#commentsCanvas").mousedown(function(e) {
         isDragging=true;
-        startPointX=e.pageX-$("#commentsCanvas").offset().left;
+        startPointX=e.pageX-$("#commentsCanvas").offset().left+$("#commentsCanvas").scrollLeft();
         startPointY=e.pageY-$("#commentsCanvas").offset().top;
         $("#shadowSelect").css("width", "0px")
                           .css("height", "0px")
@@ -275,7 +275,7 @@ $(document).ready(function()
     });
     $("body").mouseup(function(e) {
         $("#shadowSelect").css("visibility", "hidden");
-        nowX=e.pageX-$("#commentsCanvas").offset().left;
+        nowX=e.pageX-$("#commentsCanvas").offset().left+$("#commentsCanvas").scrollLeft();
         nowY=e.pageY-$("#commentsCanvas").offset().top;
         var p1x=Math.min(startPointX, nowX);
         var p1y=Math.min(startPointY, nowY);
@@ -316,7 +316,7 @@ $(document).ready(function()
     $("#commentsCanvas").mousemove(function(e) {
         if (isDragging)
         {
-            nowX=e.pageX-$("#commentsCanvas").offset().left;
+            nowX=e.pageX-$("#commentsCanvas").offset().left+$("#commentsCanvas").scrollLeft();
             nowY=e.pageY-$("#commentsCanvas").offset().top;
             var p1x=Math.min(startPointX, nowX);
             var p1y=Math.min(startPointY, nowY);
