@@ -11,10 +11,16 @@ body {
 #commentsCanvas {
     width: 100%;
     /*background-color: #DDDDDD;*/
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
     cursor: crosshair;
+}
+
+@media screen and (max-width: 1000px) {
+    #commentsCanvas {
+        overflow-x: auto !important;
+    }
 }
 
 .elemTile {
