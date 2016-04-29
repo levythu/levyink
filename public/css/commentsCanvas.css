@@ -135,3 +135,7 @@ body {
 .hoverRed:hover {
     box-shadow: 0em 0em 1em red;
 }
+
+#footer {
+    border-top: 1px solid #cccccc !important;
+}
