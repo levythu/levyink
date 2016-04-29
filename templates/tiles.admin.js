@@ -37,7 +37,9 @@ function toggleMode()
     {
         tiles_admin.isInAdminMode=true;
         $(".elemTile:not(#editTile)").addClass("hoverRed").each(function(id, dom) {
-            $(dom).tap(function() {
+            $(dom).unbind("click")
+                  .click(function() {
+
                 if (!tiles_admin.isInAdminMode)
                     return;
                 var tid=dom.id.substr(commentsCanvas_js.PREFIX_TILE.length);
@@ -61,6 +63,7 @@ function toggleMode()
                 });
 
                 return false;
+                
             });
         });
         $("#superButton").addClass("adminSu");
