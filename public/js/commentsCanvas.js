@@ -29,7 +29,7 @@ $(document).ready(function()
 
     var PREFIX_TILE="tile_";
     commentsCanvas_js.PREFIX_TILE=PREFIX_TILE;
-    var ONCE_LOADING_HEIGHT=1000;
+    var ONCE_LOADING_HEIGHT=3000;
 
     var globalDeltaY=0;
     var uppestY=0;

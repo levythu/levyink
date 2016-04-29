@@ -39,6 +39,11 @@ body {
 }
 .normalText {
     white-space: pre-wrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
 }
 
 #shadowSelect {
