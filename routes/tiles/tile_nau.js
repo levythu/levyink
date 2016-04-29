@@ -196,6 +196,13 @@ router.post("/set", function(req, res) {
     }
     var obj2Set=JSON.parse(val);
     obj2Set.html=false;
+    if (!obj2Set.istext && obj2Set.value.indexOf("https")!==0) {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
+            "tid": null
+        }));
+        return;
+    }
     function next() {
         var nt=Date.now();
         db[TILE].update({

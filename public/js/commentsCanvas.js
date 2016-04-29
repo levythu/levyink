@@ -379,7 +379,7 @@ $(document).ready(function()
         {
             e.stopPropagation();
             var url=$("#editTileText")[0].value;
-            if (!url.toLowerCase().startsWith("https://"))
+            if (!(url.toLowerCase().indexOf("https://")===0))
             {
                 $("#editTileText")[0].value="URL must starts with https://";
                 return;
