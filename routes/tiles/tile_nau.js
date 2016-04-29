@@ -79,9 +79,12 @@ setInterval(function(){
 
 setInterval(function(){
     var nt=Date.now();
+    console("START TO REMOVE");
     db[TILE].remove({
         status: -1,
         updateTime: {$lt: nt-REMOVED_TILE_ELIMINATION_IN_MS}
+    }, function() {
+        console("END TO REMOVE");
     });
 }, REMOVED_TILE_ELIMINATION_CHECKER_IN_MS);
 
