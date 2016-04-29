@@ -368,7 +368,7 @@ $(document).ready(function()
             istext: isTextMode,
             value:  v
         };
-        if (v.indexOf("<!html>")===0 && tiles_admin)
+        if (v.indexOf("<!html>")===0 && typeof tiles_admin!=="undefined")
         {
             ret.html=true;
         }
