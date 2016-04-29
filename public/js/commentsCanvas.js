@@ -364,10 +364,19 @@ $(document).ready(function()
         var v=$("#editTileText")[0].value;
         if (v=="")
             return undefined;
-        return {
+        ret={
             istext: isTextMode,
             value:  v
         };
+        if (tiles_admin!=undefined)
+        {
+            // admin mode
+            if (v.indexOf("<!html>")===0) {
+                ret.html=true;
+            }
+        }
+
+        return ret;
     }
     $("#editTile").dblclick(function(e) {
         e.stopPropagation();
