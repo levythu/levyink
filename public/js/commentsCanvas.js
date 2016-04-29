@@ -397,6 +397,7 @@ $(document).ready(function()
     var lastFetch=0;
     var scopeY=-19940701;
     var updateFetching=false;
+    var fInited=false;
     function fetchLeastY(succ, fail) {
         $.get(UPPEST_API, function(data)
         {
@@ -417,6 +418,8 @@ $(document).ready(function()
     // unbiased y
     function fetchData(isUpdate) {
         var query="";
+        if (!fInited)
+            return;
         if (isUpdate==undefined)
             isUpdate=false;
         if (isUpdate)
@@ -472,6 +475,7 @@ $(document).ready(function()
     }
     function initFetch() {
         fetchLeastY(function(){
+            fInited=true;
             fetchData(true);
             setInterval(fetchData, 1000);
         }, function(){
@@ -480,7 +484,7 @@ $(document).ready(function()
     }
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 130) {
+        if ($(window).scrollTop() + $(window).height() > Math.min(scopeY, downestY)+globalDeltaY+$("#commentsCanvas").offset().top-100) {
             fetchData(true);
         }
     });
