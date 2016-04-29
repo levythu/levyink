@@ -25,7 +25,7 @@ body {
     cursor: default;
     z-index: 10;
 
-    font-size: 0.7em;
+    font-size: 0.9em;
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 
     transition:         left 0.30s ease-out,right 0.30s ease-out,top 0.30s ease-out,bottom 0.30s ease-out;
@@ -41,7 +41,7 @@ body {
     box-shadow: 0.1em 0.1em 0.2em #999;
     cursor: default;
 
-    font-size: 0.9em;
+    font-size: 0.7em;
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
 .tileUndeclared {

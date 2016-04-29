@@ -277,10 +277,16 @@ router.get("/list", function(req, res) {
         }
     }
     var nowTime=Date.now();
-    db[TILE].find({
+
+    var fc={
         updateTime: {$gt: updateStart},
         y1: searchCon
-    }, function(err, docs) {
+    };
+    if ("new" in req.query) {
+        fc.status={$gte: 0};
+    }
+
+    db[TILE].find(fc, function(err, docs) {
         if (err)
         {
             res.send(JSON.stringify({

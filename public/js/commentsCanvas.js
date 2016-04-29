@@ -426,7 +426,7 @@ $(document).ready(function()
                 return;
             updateFetching=true;
             isUpdate=true;
-            query="?updatesince=0&ymax="+(scopeY+ONCE_LOADING_HEIGHT)+"&ymin="+scopeY;
+            query="?updatesince=0&new=1&ymax="+(scopeY+ONCE_LOADING_HEIGHT)+"&ymin="+scopeY;
         } else {
             // patching mode;
             query="?updatesince="+lastFetch+"&ymax="+scopeY;
