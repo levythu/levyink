@@ -42,6 +42,8 @@ $(document).ready(function()
         $(".elemTile").each(function(id, dom){
             var i=parseInt($(dom).css("top"));
             $(dom).attr("lvTargetTop", i);
+            var j=parseInt($(dom).css("left"));
+            $(dom).attr("lvTargetLeft", j);
         });
     }
     init();
@@ -150,7 +152,8 @@ $(document).ready(function()
         status=1;
         workingDOM=elem;
         useTextMode();
-        $("#editTile").css("left",   ax1+"px")
+        $("#editTile").attr("lvTargetLeft", ax1)
+                      .css("left",   ax1+"px")
                       .attr("lvTargetTop", ay1)
                       .css("top",    ay1+"px")
                       .css("width",  ax2-ax1+"px")
@@ -195,6 +198,7 @@ $(document).ready(function()
             if (! (tid in tileList))
                 return;
             job=$("<div class='elemTile' id='"+tileid+"'>")
+                .attr("lvTargetLeft", tileList[tid].x1)
                 .css("left", tileList[tid].x1+"px")
                 .attr("lvTargetTop", tileList[tid].y1+globalDeltaY)
                 .css("top", tileList[tid].y1+globalDeltaY+"px")
@@ -295,7 +299,8 @@ $(document).ready(function()
         // TODO
         if (p1x<0 || p1y<0 || p2x>$("#commentsCanvas")[0].offsetWidth)
             return;
-        var newTileDOM=$("<div class='elemTile tileUndeclared'>").css("left", p1x+"px")
+        var newTileDOM=$("<div class='elemTile tileUndeclared'>").attr("lvTargetLeft", p1x)
+                                                                 .css("left", p1x+"px")
                                                                  .attr("lvTargetTop", p1y)
                                                                  .css("top", p1y+"px")
                                                                  .css("width", p2x-p1x+"px")
@@ -504,4 +509,25 @@ $(document).ready(function()
     initFetch();
 
     startMoveDownwards();
+});
+
+$(document).ready(function() {
+    var floatTimer=0;
+
+    commentsCanvas_js.startFloat=
+    function startFloat() {
+        floatTimer=setInterval(function() {
+            $(".elemTile").addClass("normalTransit").each(function(id, dom) {
+                var i=$(dom);
+                i.css("top",   parseInt(i.attr("lvTargetTop"))+(Math.floor(Math.random()*9)-4))
+                 .css("left",  parseInt(i.attr("lvTargetLeft"))+(Math.floor(Math.random()*9)-4));
+            });
+        }, 500);
+    }
+
+    commentsCanvas_js.stopFloat=
+    function stopFloat() {
+        $(".elemTile").removeClass("normalTransit");
+        clearInterval(floatTimer);
+    }
 });

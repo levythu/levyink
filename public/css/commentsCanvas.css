@@ -41,6 +41,13 @@ body {
 
 }
 
+.normalTransit {
+    transition:         left 0.50s linear,right 0.50s linear,top 0.50s linear,bottom 0.50s linear;
+    -webkit-transition: left 0.50s linear,right 0.50s linear,top 0.50s linear,bottom 0.50s linear;
+    -ms-transition:     left 0.50s linear,right 0.50s linear,top 0.50s linear,bottom 0.50s linear;
+    -moz-transition:    left 0.50s linear,right 0.50s linear,top 0.50s linear,bottom 0.50s linear;
+}
+
 .regulateFormat {
     background: white;
     border-radius: 0.2em;
@@ -78,10 +85,10 @@ body {
     background-size: cover;
     visibility: hidden;
 
-    transition:         none;
-    -webkit-transition: none;
-    -ms-transition:     none;
-    -moz-transition:    none;
+    transition:         none !important;
+    -webkit-transition: none !important;
+    -ms-transition:     none !important;
+    -moz-transition:    none !important;
 }
 
 #editTileText {
