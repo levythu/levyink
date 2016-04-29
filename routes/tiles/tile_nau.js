@@ -301,6 +301,7 @@ router.get("/list", function(req, res) {
     db[TILE].find(fc, function(err, docs) {
         if (err)
         {
+            console.error(err);
             res.send(JSON.stringify({
                 "status": protocolInfo.generalRes.statusCode.DB_ERROR,
                 "content": null
@@ -328,6 +329,7 @@ router.get("/uppesty", function(req, res) {
         y1: 1
     }).limit(1).toArray(function(err, docs) {
         if (err) {
+            console.error(err);
             res.send(JSON.stringify({
                 "status": protocolInfo.generalRes.statusCode.DB_ERROR,
             }));
