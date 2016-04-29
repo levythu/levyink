@@ -9,7 +9,10 @@ var lock=require("../../models/lock");
 var auth=require("../../manage/authencitation");
 
 var DECLARED_TILE_EXPIRATION_IN_MS=10*60*1000;
-var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one second
+var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one minute
+
+var REMOVED_TILE_ELIMINATION_IN_MS=10*60*1000;
+var REMOVED_TILE_ELIMINATION_CHECKER_IN_MS=3*60*1000;
 
 var db=model.db;
 var TILE=model.TILE;
@@ -72,6 +75,15 @@ function clearExpiration(cb) {
 setInterval(function(){
     clearExpiration();
 }, DECLARED_TILE_EXPIRATION_CHECKER_IN_MS);
+
+
+setInterval(function(){
+    var nt=Date.now();
+    db[TILE].remove({
+        status: -1,
+        updateTime: {$lt: nt-REMOVED_TILE_ELIMINATION_IN_MS}
+    });
+}, REMOVED_TILE_ELIMINATION_CHECKER_IN_MS);
 
 // if fail, returns ""
 // otherwise, returns tid
