@@ -12,7 +12,7 @@ var DECLARED_TILE_EXPIRATION_IN_MS=10*60*1000;
 var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one minute
 
 var REMOVED_TILE_ELIMINATION_IN_MS=10*60*1000;
-var REMOVED_TILE_ELIMINATION_CHECKER_IN_MS=3*60*1000;
+var REMOVED_TILE_ELIMINATION_CHECKER_IN_MS=30*1000;
 
 var db=model.db;
 var TILE=model.TILE;
@@ -79,12 +79,12 @@ setInterval(function(){
 
 setInterval(function(){
     var nt=Date.now();
-    console("START TO REMOVE");
+    console.log("START TO REMOVE");
     db[TILE].remove({
         status: -1,
         updateTime: {$lt: nt-REMOVED_TILE_ELIMINATION_IN_MS}
     }, function() {
-        console("END TO REMOVE");
+        console.log("END TO REMOVE");
     });
 }, REMOVED_TILE_ELIMINATION_CHECKER_IN_MS);
 
