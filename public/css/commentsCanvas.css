@@ -139,3 +139,7 @@ body {
 #footer {
     border-top: 1px solid #cccccc !important;
 }
+
+#contentMain {
+    border-bottom: 0em solid transparent;
+}
