@@ -127,6 +127,11 @@ $(document).ready(function()
         var tid=workingDOM.attr("id").substr(PREFIX_TILE.length);
         if (nw!=undefined && confirm("Save the current tile?"))
         {
+            if (nw.html===true) {
+                if (nw.value!=undefined) {
+                    nw.value=nw.value.replace(/$me/g, "$('#"+workingDOM.attr("id")+"')");
+                }
+            }
             workingDOM.addClass("tileUndeclared");
             setTile(tid, nw, function() {
                 updateTile(tid, {
@@ -373,8 +378,7 @@ $(document).ready(function()
             istext: isTextMode,
             value:  v
         };
-        if (v.indexOf("<!html>")===0 && typeof tiles_admin!=="undefined")
-        {
+        if (v.indexOf("<!html>")===0 && typeof tiles_admin!=="undefined") {
             ret.html=true;
         }
 
