@@ -494,7 +494,7 @@ $(document).ready(function()
         fetchLeastY(function(){
             fInited=true;
             fetchData(true);
-            setInterval(fetchData, 5000);
+            setInterval(fetchData, 3000);
         }, function(){
             setTimeout(initFetch, 1000);
         });
