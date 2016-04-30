@@ -138,6 +138,7 @@ body {
 
 #footer {
     border-top: 1px solid #cccccc !important;
+    max-width: 60em;
 }
 
 #contentMain {
