@@ -31,7 +31,7 @@ $(document).ready(function()
     commentsCanvas_js.PREFIX_TILE=PREFIX_TILE;
     var ONCE_LOADING_HEIGHT=3000;
 
-    var STYLE_IN_TOTAL=2;
+    var STYLELIST=[0, 0, 1, 2];
 
     var globalDeltaY=0;
     var uppestY=0;
@@ -387,7 +387,7 @@ $(document).ready(function()
             ret.html=true;
         }
         if (ret.html!==true) {
-            ret.style=Math.floor(Math.random()*STYLE_IN_TOTAL);
+            ret.style=STYLELIST[Math.floor(Math.random()*STYLELIST.length)];
         }
 
         return ret;
