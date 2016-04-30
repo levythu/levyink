@@ -61,15 +61,6 @@ function topInk_onResize()
 {
     var topInkH2W=1008/3072;
     var contentWidth=$("#topInk")[0].offsetWidth;
-    if ($(window).width()<320)
-    {
-        $("#topInk").css("width",320);
-        contentWidth=320;
-    }
-    else
-    {
-        $("#topInk").css("width","100%");
-    }
 
     if ($("#topInk")[0].offsetWidth>=blog_js.titleTrigger1)
     {
