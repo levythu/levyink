@@ -146,3 +146,10 @@ body {
 #contentMain {
     border-bottom: 0em solid transparent;
 }
+
+.tileStyle0 {
+}
+.tileStyle1 {
+    background-color: #777;
+    color: white;
+}

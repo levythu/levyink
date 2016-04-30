@@ -31,6 +31,8 @@ $(document).ready(function()
     commentsCanvas_js.PREFIX_TILE=PREFIX_TILE;
     var ONCE_LOADING_HEIGHT=3000;
 
+    var STYLE_IN_TOTAL=2;
+
     var globalDeltaY=0;
     var uppestY=0;
     var downestY=-1994;
@@ -217,6 +219,9 @@ $(document).ready(function()
         else {
             if (tileList[tid].status==1) {
                 job.removeClass("tileUndeclared");
+                if ("style" in tileList[tid].content) {
+                    job.addClass("tileStyle"+tileList[tid].content.style);
+                }
                 if (tileList[tid].content.istext) {
                     if (job.children(".normalText").length==0) {
                         if (tileList[tid].content.html===true)
@@ -380,6 +385,9 @@ $(document).ready(function()
         };
         if (v.indexOf("<!html>")===0 && typeof tiles_admin!=="undefined") {
             ret.html=true;
+        }
+        if (ret.html!==true) {
+            ret.style=Math.floor(Math.random()*STYLE_IN_TOTAL);
         }
 
         return ret;
