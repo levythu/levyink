@@ -129,7 +129,7 @@ $(document).ready(function()
         {
             if (nw.html===true) {
                 if (nw.value!=undefined) {
-                    nw.value=nw.value.replace(/$me/g, "$('#"+workingDOM.attr("id")+"')");
+                    nw.value=nw.value.replace(/\$me/g, "$('#"+workingDOM.attr("id")+"')");
                 }
             }
             workingDOM.addClass("tileUndeclared");
