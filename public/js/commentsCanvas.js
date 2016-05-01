@@ -31,7 +31,7 @@ $(document).ready(function()
     commentsCanvas_js.PREFIX_TILE=PREFIX_TILE;
     var ONCE_LOADING_HEIGHT=3000;
 
-    var STYLELIST=[0, 0, 1, 1];
+    var STYLELIST=[0, 0, 1];
 
     var globalDeltaY=0;
     var uppestY=0;
