@@ -6,11 +6,17 @@
     background: #444444;
     overflow: hidden;
     min-width: 320px;
+    height: 32.8125vw;
+    min-height: 278px;
+}
+#catFrame {
+    height: 32.8125vw;
+    min-height: 278px;
 }
 #followedFrame {
     position:relative;
     width:95%;
-    top:0px;
+    top: 50px;
     margin: auto;
 }
 #latitle {
@@ -75,6 +81,31 @@
 .direct-panel-item-mask {
 }
 
+@media screen and (max-width: 850px) {
+    #latitle {
+        bottom: 56px;
+        text-align: center;
+    }
+    #direct-panel {
+        right: calc( 50% - 150px );
+    }
+}
+@media screen and (max-width: 600px) {
+    #smalltitle {
+        font-size: 20px;
+        font-size: 4.5vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    #bigtitle {
+        font-size: 80px;
+        font-size: 19vw;
+    }
+    #smalltitle {
+        visibility: collapse;
+        position: absolute;
+    }
+}
 #footer {
     margin-top: 20px;
     border-top: 1px solid #EFEFEF;
@@ -89,7 +120,7 @@
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
-    color: #AAAAAA;
+    color: #BABABA;
 }
 
 #outerLink p {
