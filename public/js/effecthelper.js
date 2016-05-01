@@ -136,4 +136,7 @@ function setShortcut() {
     effect_helper.addShortcut("login", function() {
         window.location="/login";
     });
+    effect_helper.addShortcut("logout", function() {
+        window.location="/logout";
+    });
 }
