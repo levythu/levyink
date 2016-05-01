@@ -98,7 +98,7 @@
 }
 @media screen and (max-width: 500px) {
     #bigtitle {
-        font-size: 80px;
+        font-size: 65px;
         font-size: 19vw;
     }
     #smalltitle {
