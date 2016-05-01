@@ -25,7 +25,11 @@ router.get('/login', function(req, res)
 router.get('/logout', function(req, res)
 {
     req.session.author=undefined;
-    res.redirect("/blog")
+    var r=req.get("Referer");
+    if (r==undefined && r=="")
+        res.redirect("/blog");
+    else
+        res.redirect(r);
 });
 router.get('/me', function(req, res)
 {
