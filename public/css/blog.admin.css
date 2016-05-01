@@ -15,8 +15,9 @@
 }
 @media screen and (max-width: 700px) {
     #superButton {
-        right: calc( 50% - 2em );
-        background-color: red;
+        right: 0;
+        left: 0;
+        margin: auto;
     }
 }
 .adminSu {
