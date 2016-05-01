@@ -111,7 +111,6 @@ function newComer()
     document.onkeydown=keyboardHook;
 
     $(window).trigger("resize");
-    setTimeout(function(){$(window).trigger("resize");},1000);
 }
 function toggleMode()
 {

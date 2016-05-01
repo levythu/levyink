@@ -55,35 +55,11 @@ function effectHelper_adj()
               .css("left",(dom.parentNode.offsetWidth-dom.offsetWidth)*0.5)
               .css("top",(dom.parentNode.offsetHeight-dom.offsetHeight)*0.5);
     });
-
-    /*
-    $(".strongRes img").each(function(id,dom)
-    {
-        var pw=dom.parentNode;
-        if (dom.offsetWidth>pw.offsetWidth)
-        {
-            if ($(dom).attr("lvori")==undefined)
-            {
-                $(dom).attr("lvres",dom.offsetHeight/dom.offsetWidth);
-                $(dom).attr("lvori",dom.offsetWidth);
-            }
-            $(dom).css("width",pw.offsetWidth).css("height",$(dom).attr("lvres")*pw.offsetWidth);
-        }
-        else
-        {
-            if ($(dom).attr("lvori")!=undefined)
-            {
-                mwid=Math.min(pw.offsetWidth,-(-$(dom).attr("lvori")));
-
-                $(dom).css("width",mwid).css("height",$(dom).attr("lvres")*mwid);
-            }
-        }
-    });
-    */
 }
 $(document).ready(function()
 {
-    $(window).resize(effectHelper_adj);
+    if ($(".absCenter").length>0)
+        $(window).resize(effectHelper_adj);
     setShortcut();
     $(".absCenter").load(function() {
         $(window).trigger("resize");

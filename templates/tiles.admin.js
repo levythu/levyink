@@ -22,12 +22,9 @@ function newComer()
         .html('<span class="addFrame_c">+</span>')
     );
 
-    $(window).resize(me_admin_ui);
-
     document.onkeydown=keyboardHook;
 
     $(window).trigger("resize");
-    setTimeout(function(){$(window).trigger("resize");},1000);
 }
 function toggleMode()
 {
@@ -72,19 +69,6 @@ function toggleMode()
         });
         $("#superButton").addClass("adminSu");
     }
-}
-function me_admin_ui()
-{
-    var uwidth=$(window).width();
-    if (uwidth<700)
-    {
-        $("#superButton").css("right",(uwidth-$("#superButton")[0].offsetWidth)/2);
-    }
-    else
-    {
-        $("#superButton").css("right","5em");
-    }
-    effectHelper_adj();
 }
 function keyboardHook(e)
 {

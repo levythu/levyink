@@ -34,7 +34,6 @@ $(document).ready(function()
     $("html").load(function(){
         $(window).trigger("resize");
     });
-    setInterval(function(){$(window).trigger("resize");},2000);
 
     if (getParameterByName('toTop')!="")
         setTimeout(function(){scroll2Top()}, 500);
