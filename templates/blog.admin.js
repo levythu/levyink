@@ -130,6 +130,8 @@ function toggleMode()
         $(".tem_idf").addClass("blur_5px");
         $("#superButton").addClass("adminSu");
     }
+
+    return false;
 }
 function keyboardHook(e)
 {

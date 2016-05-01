@@ -69,6 +69,8 @@ function toggleMode()
         });
         $("#superButton").addClass("adminSu");
     }
+
+    return false;
 }
 function keyboardHook(e)
 {
