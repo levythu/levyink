@@ -84,6 +84,10 @@ function effectHelper_adj()
 $(document).ready(function()
 {
     $(window).resize(effectHelper_adj);
+    setShortcut();
+    $(".absCenter").load(function() {
+        $(window).trigger("resize");
+    });
 
     $(window).trigger("resize");
 });
@@ -95,4 +99,65 @@ function fetchFont(url)
     j=document.createElement("script");
     j.src="https://"+effect_helper.FONT_SERVER+"/jspadding.js?addcss=1&font=stsong&url="+encodeURIComponent(url);
     document.body.appendChild(j);
+}
+
+// start with / and end with enter
+function setShortcut() {
+    var shortcutMap={};
+    var expirationTimer=0;
+    var nowTyping="";
+    var hasStart=false;
+
+    function expireType() {
+        nowTyping="";
+        hasStart=false;
+        clearTimeout(expirationTimer);
+    }
+    function startType() {
+        clearTimeout(expirationTimer);
+        nowTyping="";
+        hasStart=true;
+        expirationTimer=setTimeout(expireType, 1000);
+    }
+    effect_helper.addShortcut=function(str, cb) {
+        shortcutMap[str]=cb;
+    }
+    effect_helper.clearShortcut=function(str) {
+        delete shortcutMap[str];
+    }
+    $("body").keyup(function(e) {
+        var keyc=e.which;
+        //console.log(hasStart, keyc);
+        if (keyc==undefined && hasStart)
+        {
+            expireType();
+            return;
+        }
+        if (keyc===191) {
+            // enter mode
+            startType();
+            return;
+        }
+        if (!hasStart) {
+            return;
+        }
+
+        if (keyc===13) {
+            nowTyping=nowTyping.toLowerCase();
+            console.log(nowTyping);
+            if (nowTyping in shortcutMap)
+            {
+                setTimeout(shortcutMap[nowTyping], 0);
+            }
+            expireType();
+            return;
+        }
+        nowTyping+=String.fromCharCode(keyc);
+        clearTimeout(expirationTimer);
+        expirationTimer=setTimeout(expireType, 1000);
+    });
+
+    effect_helper.addShortcut("login", function() {
+        window.location="/login";
+    });
 }

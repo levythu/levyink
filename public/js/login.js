@@ -19,7 +19,13 @@ $(document).ready(function()
                     {
                         $(".errorInfo").text("");
                         $(".white-card").css("opacity", "0");
-                        setTimeout(function(){window.location=function_helper.url_blog},0);
+                        setTimeout(function() {
+                            var r=document.referrer;
+                            if (r==undefined || r=="")
+                                window.location=function_helper.url_blog
+                            else
+                                window.location=r;
+                        },0);
                     }
                     else
                     {
