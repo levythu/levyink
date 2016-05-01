@@ -8,11 +8,20 @@ $(document).ready(newComer);
 function newComer()
 {
     $("head").append($("<link href='css/blog.admin.css' rel='stylesheet' type='text/css'>"));
+    var hasTapped=false;
+    function clearTap() {
+        hasTapped=false;
+    }
     $("#topInk").prepend(
         $("<div id='superButton' class='transit_all'>").html
         (
             '<span class="icon-flag mid-4-2-glyph"></span>'
-        ).tap(toggleMode).taphold(function(){
+        ).tap(function() {
+            hasTapped=true;
+            toggleMode();
+            setTimeout(clearTap, 2000);
+        }).taphold(function(){
+            if (hasTapped) return;
             if (!confirm("Sure to log out?"))
                 return;
             window.location="/logout";
