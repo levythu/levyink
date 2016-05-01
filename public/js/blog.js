@@ -12,7 +12,7 @@ var blog_js=
 
 $(document).ready(function()
 {
-    $(window).resize(updateUI);
+    //$(window).resize(updateUI);
     $("#choosePage").tap(function()
     {
         return false;
@@ -104,32 +104,22 @@ function detQuery()
         $("#condline").removeClass("nonexist-noblock");
     }
 }
-function updateUI()
-{
-    if (blog_js.isLoading)
-        $("#loadingFrame").css("height",$("#heightMeasure")[0].offsetHeight);
-    if (blog_js.isError)
-        $("#errorFrame").css("height",$("#heightMeasure2")[0].offsetHeight);
-    if ($(window).width()<500)
-        $("#cp_container").css("border-width","0.6em");
-    else
-        $("#cp_container").css("border-width","3em");
-
-    $("#floatBack >").each(function(id,dom)
-    {
-        $(dom).css("position","absolute")
-              .css("left",(dom.parentNode.offsetWidth-dom.offsetWidth)*0.5)
-              .css("top",(dom.parentNode.offsetHeight-dom.offsetHeight)*0.4);
-    });
-}
 
 function showLoading()
 {
     $("#loadingFrame").css("height",$("#heightMeasure")[0].offsetHeight);
     blog_js.isLoading=true;
+    setTimeout(function() {
+        if (blog_js.isLoading)
+            $("#loadingFrame").css("height", "auto");
+    }, 300);
 }
 function hideLoading()
 {
+    if (!blog_js.isLoading)
+        return;
+    $("#loadingFrame").css("height",$("#heightMeasure")[0].offsetHeight);
+    var useless=$("#loadingFrame").css("height");
     $("#loadingFrame").css("height",0);
     blog_js.isLoading=false;
 }
@@ -137,9 +127,17 @@ function showError()
 {
     $("#errorFrame").css("height",$("#heightMeasure2")[0].offsetHeight);
     blog_js.isError=true;
+    setTimeout(function() {
+        if (blog_js.isError)
+            $("#errorFrame").css("height", "auto");
+    }, 300);
 }
 function hideError()
 {
+    if (!blog_js.isError)
+        return;
+    $("#errorFrame").css("height",$("#heightMeasure2")[0].offsetHeight);
+    var useless=$("#errorFrame").css("height");
     $("#errorFrame").css("height",0);
     blog_js.isError=false;
 }

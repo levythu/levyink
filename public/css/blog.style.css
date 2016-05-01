@@ -148,6 +148,12 @@
     width: 50%;
     color: white;
     min-width: 320px;
+    
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
 }
 .choiceBox {
     border-radius: 0.3em;
@@ -180,6 +186,12 @@
 }
 #cp_container {
     border: 0.5em solid transparent;
+    border-width: 3em;
+}
+@media screen and (max-width: 500px) {
+    #cp_container {
+        border-width: 0.6em;
+    }
 }
 #choiceBoxTemplate {
     visibility: hidden;

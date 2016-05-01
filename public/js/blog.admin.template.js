@@ -15,7 +15,6 @@ function newComer()
         ).tap(toggleMode)
     );
 
-    $(window).resize(me_admin_ui);
     document.onkeydown=keyboardHook;
 
     setTimeout(me_admin_ui,200);
@@ -44,12 +43,4 @@ function keyboardHook(e)
         e.preventDefault();
 		break;
     }
-}
-function me_admin_ui()
-{
-    var uwidth=$(window).width();
-    if (uwidth<700)
-        $("#superButton").css("right",(uwidth-$("#superButton")[0].offsetWidth)/2);
-    else
-        $("#superButton").css("right","5em");
 }

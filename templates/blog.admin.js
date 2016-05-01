@@ -26,7 +26,6 @@ function newComer()
         .html('<span class="addFrame_c">+</span>')
     );
 
-    $(window).resize(me_admin_ui);
     $("body").bind({finishAjaxBlog:function()
     {
         $("#blogboard .tem_man").each(function(id,dom)
@@ -147,19 +146,4 @@ function keyboardHook(e)
         e.preventDefault();
 		break;
     }
-}
-function me_admin_ui()
-{
-    var uwidth=$(window).width();
-    if (uwidth<700)
-    {
-        $(".strechWidth").css("display", "inline-block");
-        $("#superButton").css("right",(uwidth-$("#superButton")[0].offsetWidth)/2);
-    }
-    else
-    {
-        $(".strechWidth").css("display", "inline-flex");
-        $("#superButton").css("right","5em");
-    }
-    effectHelper_adj();
 }
