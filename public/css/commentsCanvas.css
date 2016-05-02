@@ -60,8 +60,9 @@ body {
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
 .tileUndeclared {
-    background: #ababab;
-    box-shadow: 0 0 0.5em 0.5em #eee inset;
+    background: transparent;
+    border: dashed #ccc;
+    box-shadow: 0 0 0;
 }
 .tileJustPut {
     background: transparent;
