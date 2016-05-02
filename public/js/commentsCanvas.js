@@ -309,7 +309,7 @@ $(document).ready(function()
         // TODO
         if (p1x<0 || p1y<0 || p2x>$("#commentsCanvas")[0].offsetWidth)
             return;
-        var newTileDOM=$("<div class='elemTile tileUndeclared'>").attr("lvTargetLeft", p1x)
+        var newTileDOM=$("<div class='elemTile tileJustPut'>"   ).attr("lvTargetLeft", p1x)
                                                                  .css("left", p1x+"px")
                                                                  .attr("lvTargetTop", p1y)
                                                                  .css("top", p1y+"px")
@@ -320,7 +320,7 @@ $(document).ready(function()
         var ubp2y=p2y-globalDeltaY;
         declareTile(p1x, ubp1y, p2x, ubp2y, newTileDOM, function(resJSON) {
             newTileDOM.attr("id", PREFIX_TILE+resJSON.tid);
-            newTileDOM.removeClass("tileUndeclared");
+            newTileDOM.removeClass("tileJustPut");
             checkInTile(resJSON.tid, p1x, ubp1y, p2x, ubp2y, 2);
             editDOM(newTileDOM, p1x, ubp1y+globalDeltaY, p2x, ubp2y+globalDeltaY);
         }, function() {

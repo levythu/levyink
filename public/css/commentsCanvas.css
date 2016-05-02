@@ -63,6 +63,11 @@ body {
     background: #ababab;
     box-shadow: 0 0 0.5em 0.5em #eee inset;
 }
+.tileJustPut {
+    background: transparent;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0;
+}
 .normalText {
     white-space: pre-wrap;
     -moz-user-select: none;
