@@ -72,11 +72,19 @@
     text-align: center;
     font-family: "Perpetua-b","Times";
     font-size: 20px;
-    color: white;
+    color: #DEDEDE;
 
     position: absolute;
     bottom: 0px;
     width: 96px;
+
+    text-decoration: none !important;
+}
+.direct-panel-chosen .direct-panel-item-text {
+    color: white;
+}
+.direct-panel-item-text:hover {
+    color: white;
 }
 .direct-panel-item-mask {
 }
