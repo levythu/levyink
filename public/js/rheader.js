@@ -28,7 +28,6 @@ $(document).ready(function()
         });
     }
     $("#floatBack").tap(hideBlack);
-    bindDirectEvent();
 
     $(window).trigger("resize");
     $("html").load(function(){
@@ -44,21 +43,6 @@ function scroll2Top(disableAnime)
         $("html, body").scrollTop($("#latitle")[0].offsetTop-60);
     else
         $("html, body").animate({scrollTop: $("#latitle")[0].offsetTop-60}, 400);
-}
-function bindDirectEvent()
-{
-    var ls=["tab_me","tab_blog","tab_mess"];
-    var loc=[function_helper.url_me,function_helper.url_blog,function_helper.url_mess];
-    for (var i=0;i<ls.length;i++)
-    {
-        (function(nm,lc){
-            $("#"+nm).tap(function()
-            {
-                window.location.href=lc;
-            });
-        })(ls[i],loc[i]);
-    }
-
 }
 
 function showBlack()
