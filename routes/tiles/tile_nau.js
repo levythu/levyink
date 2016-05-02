@@ -7,6 +7,7 @@ var model=require("../../models/db");
 var lock=require("../../models/lock");
 
 var auth=require("../../manage/authencitation");
+var getip=require("../../utils/getRealIP");
 
 var DECLARED_TILE_EXPIRATION_IN_MS=10*60*1000;
 var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one minute
@@ -135,6 +136,7 @@ router.post("/declare", function(req, res) {
     var y1=parseInt(req.body.y1);
     var x2=parseInt(req.body.x2);
     var y2=parseInt(req.body.y2);
+    console.log(getip.GetRealIP(req));
     if (isNaN(x1+x2+y1+y2)) {
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
