@@ -60,7 +60,8 @@ body {
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
 .tileUndeclared {
-    background: rgba(0, 0, 0, 0.3);
+    background: #ababab;
+    box-shadow: 0 0 0.5em 0.5em #eee inset;
 }
 .normalText {
     white-space: pre-wrap;
