@@ -91,7 +91,7 @@ setInterval(function(){
 
 // if fail, returns ""
 // otherwise, returns tid
-function findNPost(x1p, y1p, x2p, y2p, callback) {
+function findNPost(x1p, y1p, x2p, y2p, callback, identity) {
     function onFail() {
         lock.release("tiles.findNPost");
         callback("");
@@ -109,14 +109,18 @@ function findNPost(x1p, y1p, x2p, y2p, callback) {
                 return;
             }
             var nt=Date.now();
-            db[TILE].insert({
+            var toInsert={
                 x1: x1p,
                 x2: x2p,
                 y1: y1p,
                 y2: y2p,
                 status: 2,
                 updateTime: nt
-            }, function(err, rec) {
+            };
+            if (identity!=undefined) {
+                toInsert.creater=identity;
+            }
+            db[TILE].insert(toInsert, function(err, rec) {
                 if (err || rec.length==0)
                 {
                     onFail();
@@ -136,7 +140,6 @@ router.post("/declare", function(req, res) {
     var y1=parseInt(req.body.y1);
     var x2=parseInt(req.body.x2);
     var y2=parseInt(req.body.y2);
-    console.log(getip.GetRealIP(req));
     if (isNaN(x1+x2+y1+y2)) {
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
@@ -164,7 +167,7 @@ router.post("/declare", function(req, res) {
             "tid": tid
         }));
         return;
-    });
+    }, getip.GetRealIP(req));
 });
 
 router.post("/discard", function(req, res) {
