@@ -61,7 +61,7 @@ body {
 }
 .tileUndeclared {
     background: transparent;
-    border: dashed #ccc;
+    border: 0.2em dashed #ccc;
     box-shadow: 0 0 0;
 }
 .tileJustPut {

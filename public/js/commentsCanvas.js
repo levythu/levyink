@@ -236,6 +236,8 @@ $(document).ready(function()
                        .css("background-image", "url("+tileList[tid].content.value+")");
                 }
             } else if (tileList[tid].status==2) {
+                if (status==1 && workingDOM.attr("id")==tileid)
+                    return;
                 job.addClass("tileUndeclared");
             } else if (tileList[tid].status==-1) {
                 removeTile(tid);
