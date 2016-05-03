@@ -63,6 +63,9 @@ body {
     background: transparent;
     border: 0.2em dashed #ccc;
     box-shadow: 0 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../image/blocked.png);
 }
 .tileJustPut {
     background: transparent;
