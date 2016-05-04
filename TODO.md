@@ -1,0 +1,6 @@
+- <del>modify date formatter to convert 1:9 to 01:09 </del>
+- <del>modify the blog list length to 4 </del>
+- <del>add mess module</del>
+- add tag list and category list for BLOG
+- mess module restriction to new tile (size or distance to current cluster)
+- mess module back end prevent invalid post

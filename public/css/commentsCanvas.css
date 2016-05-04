@@ -60,7 +60,17 @@ body {
     font-family: "微软雅黑", "黑体", SimHei, Arial, Helvetica, sans-serif;
 }
 .tileUndeclared {
-    background: rgba(0, 0, 0, 0.3);
+    background: transparent;
+    border: 0.2em dashed #ccc;
+    box-shadow: 0 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../image/blocked.png);
+}
+.tileJustPut {
+    background: transparent;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0;
 }
 .normalText {
     white-space: pre-wrap;
