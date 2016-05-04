@@ -1,16 +1,21 @@
 .big-gray-glyph {
     font-size: 3em;
-    color: #888888;
+    color: #888888 !important;
     margin-right: 50px;
     transition: color 0.30s ease-in-out;
     -webkit-transition: color 0.30s ease-in-out;
     -moz-transition: color 0.30s ease-in-out;
+    text-decoration: none !important;
 }
 .big-gray-glyph:hover {
-    color: #00bcf2;
+    color: #00bcf2 !important;
 }
 
 #contactList {
     text-align: left;
     line-height: 300%;
+}
+
+.action2Location {
+    cursor: pointer;
 }
