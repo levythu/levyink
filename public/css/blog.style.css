@@ -148,7 +148,7 @@
     width: 50%;
     color: white;
     min-width: 320px;
-    
+
     top: 50%;
     left: 50%;
     -webkit-transform: translateY(-50%) translateX(-50%);
@@ -207,9 +207,10 @@
     border-top: 0.5em solid transparent;
     border-bottom: 0.5em solid transparent;
 }
-#condline:hover {
-    box-shadow: 0 0 0.5em red;
-    border-radius: 0.2em;
+#condline:hover:after {
+    white-space: pre;
+    content: "    ×";
+    color: red;
 }
 
 #refbut {
