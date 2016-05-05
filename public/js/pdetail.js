@@ -16,7 +16,7 @@ function procDocs()
     $("#blogCont > h1").after($("<p class='byline'>").html(
         "<span class='inlineblock nowrapper'> -- by "+p_detail.author+",</span>"+
         "&nbsp;&nbsp;&nbsp;&nbsp;"+
-        "<span class='inlineblock nowrapper'>"+formatDate(p_detail.pubtime)+"</span>"
+        "<span class='inlineblock nowrapper'>"+formatDate(p_detail.pubtime)+"</span><br/><br/>"
     ));
     if (p_detail.tag.length>0)
     {
