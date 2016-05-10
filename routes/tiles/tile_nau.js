@@ -9,6 +9,9 @@ var lock=require("../../models/lock");
 var auth=require("../../manage/authencitation");
 var getip=require("../../utils/getRealIP");
 
+var emap=require("../../utils/expireMap");
+var rand=require("../../utils/randomGen");
+
 var DECLARED_TILE_EXPIRATION_IN_MS=10*60*1000;
 var DECLARED_TILE_EXPIRATION_CHECKER_IN_MS=60*1000;                  // one minute
 
@@ -43,6 +46,21 @@ router.use(function(req, res, next) {
 router.get('/', function(req, res, next)
 {
     res.send("hello from nau!");
+});
+
+var ONLINE_JUDDGE_TIME=30*1000;
+var onlineRecorder=new emap(ONLINE_JUDDGE_TIME, ONLINE_JUDDGE_TIME);
+router.use(function(req, res, next) {
+    var thisSession;
+    if (req.cookies.sessionnumber==undefined) {
+        thisSession=rand.GenerateUUID();
+        res.cookie("sessionnumber", thisSession);
+    } else {
+        thisSession=req.cookies.sessionnumber;
+    }
+    onlineRecorder.Set(thisSession, true);
+
+    next();
 });
 
 var lastUpdate=1;
@@ -136,7 +154,7 @@ router.post("/declare", function(req, res) {
     var y1=parseInt(req.body.y1);
     var x2=parseInt(req.body.x2);
     var y2=parseInt(req.body.y2);
-    console.log(getip.GetRealIP(req));
+
     if (isNaN(x1+x2+y1+y2)) {
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.INVALID_PARAMETER,
@@ -350,6 +368,14 @@ router.get("/uppesty", function(req, res) {
         }));
         return
     });
+});
+
+router.get("/usersonline", function(req, res) {
+    res.send(JSON.stringify({
+        "status": protocolInfo.generalRes.statusCode.NORMAL,
+        "value":  onlineRecorder.approxCount
+    }));
+    return;
 });
 
 exports.r = router;

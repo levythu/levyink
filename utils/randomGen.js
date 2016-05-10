@@ -7,3 +7,10 @@ exports.GenerateRandomString=function(length) {
     }
     return res;
 }
+
+var launchTime=Date.now();
+var uidCount=0;
+exports.GenerateUUID=function() {
+    uidCount++;
+    return ""+launchTime+"-"+uidCount;
+}
