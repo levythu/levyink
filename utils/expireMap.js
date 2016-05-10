@@ -17,7 +17,7 @@ function Exmap(expTimeInMS, checkTimeInMS)
             if (that.innermap[k][1]+that.exptime<nt)
             {
                 delete that.innermap[k];
-                this.approxCount--;
+                that.approxCount--;
             }
         }
     }, this.checktime);
