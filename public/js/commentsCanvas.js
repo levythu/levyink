@@ -466,7 +466,8 @@ $(document).ready(function()
                 var lang=navigator.language || navigator.browserLanguage;
                 if ((typeof lang)=="string" && lang.indexOf("zh")===0) {
                     // is chinese
-                    $("#welcomeTitle").text("欢迎来到随意的留言板! 除了你，现在这里还有"+(obj.onlines-1)+"个小伙伴。");
+                    if (obj.onlines>1)
+                        $("#welcomeTitle").text("欢迎来到随意的留言板! 除了你，现在这里还有"+(obj.onlines-1)+"个小伙伴。");
                 } else {
                     $("#welcomeTitle").text("Welcome! Users online: "+obj.onlines);
                 }
