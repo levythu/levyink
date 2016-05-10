@@ -293,6 +293,7 @@ router.get("/list", function(req, res) {
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.NORMAL,
             "timestamp": Date.now(),
+            "onlines": onlineRecorder.approxCount,
             "content": []
         }));
         return;
@@ -339,6 +340,7 @@ router.get("/list", function(req, res) {
         res.send(JSON.stringify({
             "status": protocolInfo.generalRes.statusCode.NORMAL,
             "timestamp": nowTime,
+            "onlines": onlineRecorder.approxCount,
             "content": docs // Note that docs[i].content is secured.
         }));
         return;

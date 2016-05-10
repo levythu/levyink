@@ -462,6 +462,16 @@ $(document).ready(function()
             query="?updatesince="+lastFetch+"&ymax="+scopeY;
         }
         function ifSucc(obj) {
+            if ((typeof obj.onlines)=="number") {
+                var lang=navigator.language || navigator.browserLanguage;
+                if ((typeof lang)=="string" && lang.indexOf("zh")===0) {
+                    // is chinese
+                    $("#welcomeTitle").text("欢迎来到随意的留言板! 除了你，现在这里还有"+(obj.onlines-1)+"个小伙伴。");
+                } else {
+                    $("#welcomeTitle").text("Welcome! Users online: "+obj.onlines);
+                }
+            }
+
             var cList=obj.content;
             for (var i=0; i<cList.length; i++) {
                 var thisOne=cList[i];
@@ -543,5 +553,15 @@ $(document).ready(function() {
     function stopFloat() {
         $(".elemTile").removeClass("normalTransit");
         clearInterval(floatTimer);
+    }
+});
+
+$(document).ready(function() {
+    var lang=navigator.language || navigator.browserLanguage;
+    if ((typeof lang)=="string" && lang.indexOf("zh")===0) {
+        // is chinese
+        $("#welcomeTitle").text("欢迎来到随意的留言板!");
+    } else {
+        $("#welcomeTitle").text("Welcome!");
     }
 });
