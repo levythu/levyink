@@ -17,7 +17,7 @@ router.get("/ask", function(req, res) {
             if (des.search==undefined) des.search="?token="+token;
             else des.search+="&token="+token;
             req.redirect(url.format(des));
-        } catch () {
+        } catch (e) {
             req.send("TOKEN CEARATION FAULT.");
         }
     } else {
