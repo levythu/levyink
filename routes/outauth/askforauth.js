@@ -16,12 +16,12 @@ router.get("/ask", function(req, res) {
             var des=url.parse(req.body.destination);
             if (des.search==undefined) des.search="?token="+token;
             else des.search+="&token="+token;
-            req.redirect(url.format(des));
+            res.redirect(url.format(des));
         } catch (e) {
-            req.send("TOKEN CEARATION FAULT.");
+            res.send("TOKEN CEARATION FAULT.");
         }
     } else {
-        req.send("TOKEN CEARATION FAULT.");
+        res.send("TOKEN CEARATION FAULT.");
     }
 });
 

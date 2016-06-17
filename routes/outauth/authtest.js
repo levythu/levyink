@@ -12,10 +12,10 @@ var storage=require("./authstorage");
 router.get("/test", function(req, res) {
     if (req.query!=undefined && req.query.token!=undefined)
         if (storage.TestAuth(req.query.token)) {
-            req.send("TRUE");
+            res.send("TRUE");
             return;
         }
-    req.send("FALSE");
+    res.send("FALSE");
     return;
 });
 
