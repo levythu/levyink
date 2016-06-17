@@ -4,11 +4,13 @@ var router = express.Router();
 var auth=require("../manage/authencitation");
 var oa=require("./outauth/askforauth");
 
+var pubRoot={root: path.join(__dirname, '../public')};
+
 router.use('/', function(req, res, next)
 {
     auth.validateAdmin(req, next, function()
     {
-        res.redirect("/login");
+        res.sendFile("redirectToLogin.html", pubRoot);
         return;
     });
 });
