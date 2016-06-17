@@ -4,8 +4,8 @@ var express = require('express');
 var url=require("url");
 var router = express.Router();
 
-var protocol=require("../models/protocols");
-var protocolInfo=require("../models/protocolDeclare");
+var protocol=require("../../models/protocols");
+var protocolInfo=require("../../models/protocolDeclare");
 
 var storage=require("./authstorage");
 
