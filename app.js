@@ -9,6 +9,7 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var r_restapi = require('./routes/rest');
 var r_admin = require('./routes/manager');
+var r_au=require('./routes/au');
 
 var rand = require("./utils/randomGen");
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/rest', r_restapi);
 app.use('/admin', r_admin);
+app.use('/a', r_au);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
