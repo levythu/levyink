@@ -1,5 +1,5 @@
 var random=require("../../utils/randomGen");
-var Exmap=require("../../utils/expiremap");
+var Exmap=require("../../utils/expireMap");
 
 var tmpStorage=new Exmap(10000, 10000);
 
