@@ -1,7 +1,7 @@
 var random=require("../../utils/randomGen");
 var Exmap=require("../../utils/expireMap");
 
-var tmpStorage=new Exmap(10000, 10000);
+var tmpStorage=new Exmap(30*1000, 60*1000);
 
 // Return: token [string]; "" if fail;
 exports.CreateAuth=function(token) {

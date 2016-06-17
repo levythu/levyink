@@ -9,7 +9,7 @@ var protocolInfo=require("../../models/protocolDeclare");
 
 var storage=require("./authstorage");
 
-router.get("/ask", function(req, res) {
+router.post("/ask", function(req, res) {
     var token=storage.CreateAuth();
     if (token!="") {
         try {
