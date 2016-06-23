@@ -1,4 +1,4 @@
-var charPool="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-+";
+var charPool="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
 exports.GenerateRandomString=function(length) {
     var res="";
