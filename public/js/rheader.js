@@ -11,7 +11,7 @@ $(document).ready(function()
         $("#toTop").css("top","0em");
         blog_js.totop_hide_timer=setTimeout(function()
         {
-            $("#toTop").css("top","-4em");
+            $("#toTop").css("top","-4.5em");
         },3000);
     });
     if (true)
@@ -22,13 +22,13 @@ $(document).ready(function()
             $("#toTop").css("top","0em");
             blog_js.totop_hide_timer=setTimeout(function()
             {
-                $("#toTop").css("top","-4em");
+                $("#toTop").css("top","-4.5em");
             },3000);
         });
         $("#toTop").tap(function()
         {
             clearTimeout(blog_js.totop_hide_timer);
-            $("#toTop").css("top","-4em");
+            $("#toTop").css("top","-4.5em");
             scroll2Top();
         });
     }
