@@ -7,9 +7,14 @@ $(document).ready(function()
 {
     $("body").dblclick(function(e)
     {
-        scroll2Top();
+        clearTimeout(blog_js.totop_hide_timer);
+        $("#toTop").css("top","0em");
+        blog_js.totop_hide_timer=setTimeout(function()
+        {
+            $("#toTop").css("top","-4em");
+        },3000);
     });
-    if ($.isTouchCapable()==true)
+    if (true)
     {
         $("body").taphold(function()
         {
