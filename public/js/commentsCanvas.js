@@ -321,6 +321,8 @@ $(document).ready(function()
         var ubp1y=p1y-globalDeltaY;
         var ubp2y=p2y-globalDeltaY;
         declareTile(p1x, ubp1y, p2x, ubp2y, newTileDOM, function(resJSON) {
+            commentsCanvas_js.isRunningDEMO=false;
+            $("#demoTile").css("opacity", "0");
             newTileDOM.attr("id", PREFIX_TILE+resJSON.tid);
             newTileDOM.removeClass("tileJustPut");
             checkInTile(resJSON.tid, p1x, ubp1y, p2x, ubp2y, 2);
@@ -565,4 +567,26 @@ $(document).ready(function() {
     } else {
         $("#welcomeTitle").text("Welcome!");
     }
+    commentsCanvas_js.isRunningDEMO=true;
+    setTimeout(runDEMO, 1500);
 });
+
+function runDEMO() {
+    $("#demoTile").css("opacity", "1");
+    setTimeout(function() {
+        $("#demoTile").addClass("activedemoTile");
+        setTimeout(function() {
+            $("#democap").addClass("activedemocap");
+            setTimeout(function() {
+                $("#demoTile").css("opacity", "0");
+                setTimeout(function() {
+                    $("#demoTile").removeClass("activedemoTile");
+                    $("#democap").removeClass("activedemocap");
+                    if (commentsCanvas_js.isRunningDEMO)
+                        setTimeout(runDEMO, 10000);
+                }, 300);
+            }, 4000);
+        }, 1250);
+    }, 300);
+
+}

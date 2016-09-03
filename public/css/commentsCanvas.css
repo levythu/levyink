@@ -81,6 +81,46 @@ body {
     -o-user-select:none;
 }
 
+.slowTransit {
+    transition: height 1.2s ease-out, width 1.2s ease-out, opacity 0.2s ease-out;
+    -webkit-transition: height 1.2s ease-out, width 1.2s ease-out, opacity 0.2s ease-out;
+    -ms-transition: height 1.2s ease-out, width 1.2s ease-out, opacity 0.2s ease-out;
+    -moz-transition: height 1.2s ease-out, width 1.2s ease-out, opacity 0.2s ease-out;
+}
+#demoTile {
+    background: transparent;
+    border: 0.2em dashed #ccc;
+    box-shadow: 0 0 0;
+    position: relative;
+    left: 300px;
+    top: 35px;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    overflow: visible;
+    z-index: 0;
+    text-align: center;
+}
+.activedemoTile {
+    width: 400px !important;
+    height: 130px !important;
+}
+#demomouse {
+    position: absolute;
+    left: 100%;
+    top: 100%;
+}
+#democap {
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #aaa;
+    position: relative;
+    top: 40px;
+    opacity: 0;
+}
+.activedemocap {
+    opacity: 1 !important;
+}
+
 #shadowSelect {
     position: absolute;
     background: rgba(0, 0, 0, 0.5);

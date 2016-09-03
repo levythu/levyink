@@ -66,6 +66,7 @@
 		<div id="contentMain">
 			<!--EXTENSION-->
 			<h3 id="welcomeTitle">欢迎来到随意的留言板! Welcome!</h3>
+		<!--
 			<div class="regulateFormat normalText fullStretch" id="introTitle">
 拖拽矩形确定编辑区域，注意不要和已有区域重合，而后尽情打字吧！画布顶部空间会自动扩展，请不用担心没空间可贴的情况。
 Drag to draw a rectangle and avoid overlapping others. Then just type in it! No need to worry about available space since it will extend on the top.
@@ -78,12 +79,18 @@ Press outside the rectangle to save the contents, within 10 minutes.
 
 *★,°*:.☆\(￣▽￣)/$:*.°★*
 Have fun!
-------
+- - - - - -
 附: 支持https链接的上传图片服务地址: <a href="https://sm.ms/">https://sm.ms/</a> 请大家自行使用上传图片以获得https地址。
 PS: Get https url from your uploaded images: <a href="https://sm.ms/">https://sm.ms/</a>
-			</div><br/>
+			</div>
+		-->
+			<br/>
 			<div id="commentsCanvas">
 				<div id="shadowSelect">
+				</div>
+				<div id="demoTile" class="slowTransit">
+					<span id="democap" class="slowTransit">Drag and type here.</span>
+					<img src="image/mouse-pointer.png" width=13 height=20 id="demomouse" class="slowTransit" />
 				</div>
 				<div id="editTile" class="elemTile">
 					<textarea id="editTileText" placeholder="Type content, or double click to use image."></textarea>
