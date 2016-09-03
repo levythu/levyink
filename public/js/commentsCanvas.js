@@ -571,13 +571,34 @@ $(document).ready(function() {
     setTimeout(runDEMO, 1500);
 });
 
+function showCap(textArray, callback, current) {
+    if (current==undefined) current=0;
+    if (current==textArray.length) {
+        callback();
+        return;
+    }
+    $("#democap").removeClass("activedemocap");
+    setTimeout(function() {
+        $("#democap").text(textArray[current]);
+        $("#democap").addClass("activedemocap");
+        setTimeout(function() {
+            showCap(textArray, callback, current+1);
+        }, 3000);
+    }, current==0?0:300);
+
+}
 function runDEMO() {
     $("#demoTile").css("opacity", "1");
     setTimeout(function() {
         $("#demoTile").addClass("activedemoTile");
         setTimeout(function() {
-            $("#democap").addClass("activedemocap");
-            setTimeout(function() {
+            showCap([
+                "Drag and type here",
+                "Avoid overlapping",
+                "Doubleclick to insert image url",
+                "Click outside to save",
+                "Have fun:)"
+            ], function() {
                 $("#demoTile").css("opacity", "0");
                 setTimeout(function() {
                     $("#demoTile").removeClass("activedemoTile");
@@ -585,7 +606,7 @@ function runDEMO() {
                     if (commentsCanvas_js.isRunningDEMO)
                         setTimeout(runDEMO, 10000);
                 }, 300);
-            }, 4000);
+            });
         }, 1250);
     }, 300);
 
