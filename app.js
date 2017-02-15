@@ -34,6 +34,10 @@ app.use('/rest', r_restapi);
 app.use('/admin', r_admin);
 app.use('/a', r_au);
 
+app.use(function(req, res) {
+    res.redirect("https://s.levy.at"+req.originalUrl);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
