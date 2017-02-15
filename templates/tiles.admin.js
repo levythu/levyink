@@ -1,7 +1,7 @@
 var tiles_admin={
     isInAdminMode: false,
     KEY_Q: 81,
-    REMOVE_API: "https://www.levy.at/rest/authorized/tiles/remove"
+    REMOVE_API: "https://levy.at/rest/authorized/tiles/remove"
 };
 
 $(document).ready(newComer);

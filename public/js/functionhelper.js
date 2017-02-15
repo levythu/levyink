@@ -4,7 +4,7 @@ var function_helper=
     url_editor: "/editor",
     url_me: "/me",
     url_mess: "/mess",
-    hostname: "www.levy.at",
+    hostname: "levy.at",
 
     RANDOM_PATTERN_ALPHABET:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
     RANDOM_PATTERN_NUM:"0123456789",
