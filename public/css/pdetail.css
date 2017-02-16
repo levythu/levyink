@@ -2,12 +2,12 @@
         padding-left:1em;
         padding-right:1em;
         margin:auto;
-        max-width:42em;
+        max-width:45em;
         background:#fefefe;
     	color: #333;
     	text-align: justify;
         word-break: break-all;
-        font-size: 1.20em;
+        font-size: 1.10em;
 }
 .byline {
     color: #888888;
