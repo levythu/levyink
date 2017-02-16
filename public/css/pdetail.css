@@ -8,6 +8,7 @@
     	text-align: justify;
         word-break: break-all;
         font-size: 1.10em;
+        padding-top: 1em;
 }
 .byline {
     color: #888888;
