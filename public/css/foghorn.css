@@ -4,14 +4,13 @@ body {
 #contentMain {
         padding:1em;
         margin:auto;
-        max-width:42em;
+        max-width:45em;
         background:#fefefe;
 	}
 #contentMain {
-	font: 1.20em "custom-content1", "stsong", Times;
+	font: 1.10em "custom-content1", "stsong", Times;
 	color: #333;
-	line-height: 1.7;
-	text-align: justify;
+	line-height: 1.73;
     word-break: break-all;
     border-bottom: 4em solid transparent
 	}

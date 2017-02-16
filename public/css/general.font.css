@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Belgrano');
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
 
 @font-face {
     font-family: 'Perpetua-b';
@@ -11,10 +12,9 @@
 	src: local("Vollkorn"),url('../font/Vollkorn-Regular.ttf');
 	unicode-range: U+00-024F;
 }
-/*
+
 @font-face {
 	font-family: custom-content1;
-	src: local("stsong");
+	src: 'Noto Sans TC', local("stsong");
 	unicode-range: U+4E00-9FFF;
 }
-*/
