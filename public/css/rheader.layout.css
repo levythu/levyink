@@ -26,14 +26,14 @@
     right: 20px;
 }
 #bigtitle {
-    font-family: "Perpetua-b","Times";
-    font-size: 100px;
+    font-family: 'Belgrano', "Perpetua-b","Times";
+    font-size: 75px;
     color: white;
     white-space: nowrap;
 }
 #smalltitle {
-    font-family: "Perpetua-b","Times";
-    font-size: 30px;
+    font-family: 'Belgrano', "Perpetua-b","Times";
+    font-size: 27px;
     color: white;
     white-space: nowrap;
 }
@@ -69,7 +69,7 @@
 }
 .direct-panel-item-text {
     text-align: center;
-    font-family: "Perpetua-b","Times";
+    font-family: 'Belgrano', "Perpetua-b","Times";
     font-size: 20px;
     color: #DEDEDE;
 
@@ -100,13 +100,13 @@
 @media screen and (max-width: 600px) {
     #smalltitle {
         font-size: 20px;
-        font-size: 4.5vw;
+        font-size: 4.2vw;
     }
 }
 @media screen and (max-width: 500px) {
     #bigtitle {
         font-size: 65px;
-        font-size: 19vw;
+        font-size: 16vw;
     }
     #smalltitle {
         visibility: collapse;
