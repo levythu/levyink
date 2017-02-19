@@ -17,8 +17,7 @@ function digestAll(req, res) {
     db[model.AUTHOR].find(
     {
         name: us
-    },function(err,docs)
-    {
+    },function(err,docs) {
         if (err||docs.length==0)
         {
             searchCondition["order"]={$gt:-1};
@@ -56,7 +55,7 @@ function digestAll(req, res) {
                 "reserved": "[置顶][隐藏]"
             }));
             return;
-        }
+        });
     });
 }
 
