@@ -157,6 +157,7 @@ function refreshData()
     } else {
         $("#searchBox").addClass("nonexist");
     }
+    $("#potheader").html("");
     fetchData(analyzeData);
 }
 function getEmphasis(id)
@@ -189,6 +190,10 @@ function analyzeData(data)
     blog_js.totalblog=res.blog_in_total;
     blog_js.search_Res=entries=res.content;
 
+    if (blog_js.nowPage<0) {
+        $("#potheader").html("<p>Quick Search</p>");
+        showQuickSearch(res.digest_content);
+    }
     for (var i=0;i<entries.length;i++)
     {
         var newNode=$("#blogentry_template > ").clone();
@@ -269,4 +274,12 @@ function showRef()
 {
     $("#refbut").html("&nbsp;&nbsp;&nbsp;&nbsp;<span class='icon-spinner11 inlineb' style='font-size:1.3em'></span>")
     $("#refbut").removeClass("nonexist-noblock");
+}
+function showQuickSearch(entries) {
+    for (var i=0;i<entries.length;i++) {
+        var newNode=$("#qsentry_template > ").clone();
+        entries[i]=protocolInfo.ansisecure(entries[i]);
+        newNode.find(".qsentry_template_a").text(entries[i].title).attr("href", entries[i].url)
+        $("#blogboard").append(newNode);
+    }
 }

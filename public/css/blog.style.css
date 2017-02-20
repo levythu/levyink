@@ -47,7 +47,13 @@
 .line1px {
 }
 .blog_title_div {
-    height: 2em;
+    min-height: 2em;
+}
+.blog_title_div p {
+    font-size: 1.35em;
+    position: relative;
+    left: 5%;
+    left: calc( 2% + 1.3em );
 }
 .inlineb {
     display: inline-block;
@@ -76,6 +82,11 @@
     border-bottom: 1em solid transparent;
 }
 #blogentry_template {
+    visibility: hidden;
+    height: 0px;
+    overflow: hidden;
+}
+#qsentry_template {
     visibility: hidden;
     height: 0px;
     overflow: hidden;
@@ -255,4 +266,20 @@
 .showAndEdit:hover, .showAndEdit:active, .showAndEdit:focus {
     outline: 0px !important;
     -webkit-appearance: none;
+}
+
+.listAllEntry {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2em;
+
+    left: 5%;
+    left: calc( 2% + 1.5em );
+    width: 95%;
+    width: calc( 98% - 1.5em );
+
+}
+.listAllEntry_container {
+    position: relative;
+    width: 100%;
 }
