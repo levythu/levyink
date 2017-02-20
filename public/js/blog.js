@@ -151,6 +151,12 @@ function refreshData()
     hideError();
     if (blog_js.nowPage>0 || window.location.hash!="")
         window.location.hash=blog_js.nowPage;
+    if (blog_js.nowPage<0) {
+        $("#searchBox").removeClass("nonexist");
+        $("#searchBoxDetail")[0].focus();
+    } else {
+        $("#searchBox").addClass("nonexist");
+    }
     fetchData(analyzeData);
 }
 function getEmphasis(id)
@@ -237,7 +243,7 @@ function analyzeData(data)
 
     if (blog_js.nowPage>0)
         $("#lastPage").addClass("activeButton").removeClass("disButton");
-    if (blog_js.nowPage<totalPages-1)
+    if (blog_js.nowPage<totalPages-1 && blog_js.nowPage>=0)
         $("#nextPage").addClass("activeButton").removeClass("disButton");
 
     $("#headline").text(" - Page "+(blog_js.nowPage+1));

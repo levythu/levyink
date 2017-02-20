@@ -219,3 +219,40 @@
 #refbut:hover {
     color: #AAAAAA;
 }
+
+#searchBox {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fefefe;
+}
+
+.showAndEdit {
+    resize: none;
+    border: solid 1px transparent;
+    padding: 0.05em;
+    border-bottom: solid 1px #999;
+    background: transparent;
+    -webkit-appearance: none;
+    tab-size: 4;
+    font-family: "custom-content1", 'Noto Sans SC', "stsong", Times;
+    font-size: 1.5em;
+    color: #555;
+    height: 1.3em;
+    display: inline-block;
+    vertical-align: bottom;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+    width: calc( 98% - 1.2em );
+}
+.showAndEdit:focus {
+    border-bottom: solid 1px #2196F3;
+    color: #333;
+}
+.showAndEdit:hover, .showAndEdit:active, .showAndEdit:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+}
