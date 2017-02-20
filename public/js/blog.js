@@ -74,6 +74,9 @@ $(document).ready(function()
             refreshData();
         }
     }
+    effect_helper.addShortcut("se", function() {
+        window.location="#-1";
+    });
 
     detQuery();
     if (!isNaN(-(-window.location.hash.substr(1))))
