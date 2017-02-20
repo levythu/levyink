@@ -7,7 +7,8 @@ var blog_js=
     totalblog: 0,
     triggeredMove: false,
     searchStr: "filter=none",
-    search_Res: []
+    search_Res: [],
+    digest: []
 };
 
 $(document).ready(function()
@@ -60,6 +61,9 @@ $(document).ready(function()
     $("#condline").tap(function()
     {
         window.location=function_helper.url_blog;
+    });
+    $("#searchBoxDetail").bind('input propertychange', function() {
+        filterSearch($("#searchBoxDetail")[0].value);
     });
     window.onhashchange=function()
     {
@@ -278,11 +282,22 @@ function showRef()
     $("#refbut").html("&nbsp;&nbsp;&nbsp;&nbsp;<span class='icon-spinner11 inlineb' style='font-size:1.3em'></span>")
     $("#refbut").removeClass("nonexist-noblock");
 }
-function showQuickSearch(entries) {
+function showQuickSearch(entries, isFull=true) {
+    if (isFull) blog_js.digest=entries;
     for (var i=0;i<entries.length;i++) {
         var newNode=$("#qsentry_template > ").clone();
         entries[i]=protocolInfo.ansisecure(entries[i]);
         newNode.find(".qsentry_template_a").text(entries[i].title).attr("href", entries[i].url)
         $("#blogboard").append(newNode);
     }
+}
+function filterSearch(searchKey) {
+    var filteredDigest=[];
+    for (var i=0; i<blog_js.digest.length; i++) {
+        if (blog_js.digest[i].title.indexOf(searchKey)>=0) {
+            filteredDigest.push(blog_js.digest[i]);
+        }
+    }
+    $("#blogboard").html("");
+    showQuickSearch(filteredDigest, false);
 }
