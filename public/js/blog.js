@@ -187,6 +187,8 @@ function hideError()
 
 function refreshData()
 {
+    var prev=$("#contentMain").height();
+    $("#contentMain").css("min-height", prev+"px");
     $("#blogboard").html("");
     $("#lastPage").removeClass("activeButton").addClass("disButton");
     $("#nextPage").removeClass("activeButton").addClass("disButton");
@@ -226,12 +228,14 @@ function analyzeData(data)
     {
         hideLoading();
         showError();
+        $("#contentMain").css("min-height", "0px");
         return;
     }
     if (res.status>=protocolInfo.LEAST_ERR)
     {
         hideLoading();
         showError();
+        $("#contentMain").css("min-height", "0px");
         return;
     }
     blog_js.totalblog=res.blog_in_total;
@@ -301,6 +305,7 @@ function analyzeData(data)
     $("#headline").text(" - Page "+(blog_js.nowPage+1));
     prettyPrint();
 
+    $("#contentMain").css("min-height", "0px");
     $("body").trigger("finishAjaxBlog");
 
     $(window).trigger("resize");
