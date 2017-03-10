@@ -6,7 +6,7 @@ var protocolInfo=require("../models/protocolDeclare");
 
 var bma=require("./blogs/blogmanage_author");
 var ta=require("./tiles/tile_au");
-var dbdump=require("../models/dbdump");
+var dbdump=require("../models/dumpdb");
 
 router.use("/blog",bma);
 router.use("/tiles",ta);
