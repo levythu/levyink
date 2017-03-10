@@ -7,6 +7,7 @@ $(document).ready(function()
 {
     $("body").dblclick(function(e)
     {
+        return; // temporily close the function
         clearTimeout(blog_js.totop_hide_timer);
         $("#toTop").css("top","0em");
         blog_js.totop_hide_timer=setTimeout(function()
@@ -18,6 +19,7 @@ $(document).ready(function()
     {
         $("body").taphold(function()
         {
+            return; // temporily close the function
             clearTimeout(blog_js.totop_hide_timer);
             $("#toTop").css("top","0em");
             blog_js.totop_hide_timer=setTimeout(function()

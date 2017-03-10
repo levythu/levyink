@@ -25,8 +25,11 @@ $(document).ready(function()
         if ($(this).hasClass("disButton")) return;
         if (blog_js.triggeredMove)
             return;
-        showBlack();
+        $("#fullPageFlip").removeClass("nonexist");
         return false;
+    });
+    $("body").tap(function() {
+        $("#fullPageFlip").addClass("nonexist");
     });
     $("#lastPage").tap(function()
     {
@@ -287,6 +290,39 @@ function analyzeData(data)
             refreshData();
         });
         $("#choiceBoxSet").append(newNode);
+    }
+
+    var limit=Math.floor($("#fullPageFlip").width()*1.0/60);
+    var percentage=100.0/(totalPages>0?totalPages:1);
+    var begg=0;
+    var endd=totalPages;
+    if (totalPages>limit) {
+        percentage=100/limit;
+        begg=blog_js.nowPage-Math.floor(limit/2);
+        endd=begg+limit;
+        if (begg<0) {
+            begg=0;
+            endd=begg+limit;
+        } else if (endd>=totalPages) {
+            endd=totalPages;
+            begg=endd-limit;
+        }
+    }
+    $("#fullPageFlip").html("");
+    for (var i=begg;i<endd;i++) {
+        var newNode=$("<div class='noBorderbutton'>");
+        newNode.text(i+1).css("width", percentage+"%");
+        if (i==blog_js.nowPage) {
+            newNode.css("background-color", "#ccc")
+        }
+        newNode.tap((function(num) {
+            return function() {
+                blog_js.nowPage=num;
+                scroll2Top();
+                refreshData();
+            };
+        })(i));
+        $("#fullPageFlip").append(newNode);
     }
 
     if (blog_js.nowPage>0)

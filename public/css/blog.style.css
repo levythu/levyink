@@ -119,6 +119,9 @@
 .em-2-placeholder {
     height: 2em;
 }
+.em-4-placeholder {
+    height: 4em;
+}
 .bigButton {
     border-radius: 0.1em;
     text-align: center;
@@ -128,7 +131,7 @@
     padding-left: 0.7em;
     padding-right: 0.7em;
     padding-top: 0.4em;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.24em;
     position: relative;
     cursor:default;
     transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
@@ -149,9 +152,7 @@
     cursor: pointer;
 }
 .activeButton:hover {
-    top: -0.2em;
-    color: #2484c1;
-    background-color: white;
+    background: #e0e0e0;
 }
 .disButton {
     border-color: #EEEEEE;
@@ -297,4 +298,31 @@
     position: relative;
     width: 100%;
     margin-bottom: 0.5em;
+}
+
+#fullPageFlip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fefefe;
+    z-index: 10;
+    border-radius: 0.1em;
+    border: 1px solid #777;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.noBorderbutton {
+    text-align: center;
+    width: 25%;
+    height: 100%;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    position: relative;
+    cursor:pointer;
+    display: inline-block;
+}
+.noBorderbutton:hover {
+    background: #e0e0e0;
 }
