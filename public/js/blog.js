@@ -8,7 +8,8 @@ var blog_js=
     triggeredMove: false,
     searchStr: "filter=none",
     search_Res: [],
-    digest: []
+    digest: [],
+    lastPage: 0,
 };
 
 $(document).ready(function()
@@ -65,6 +66,23 @@ $(document).ready(function()
     $("#searchBoxDetail").bind('input propertychange', function() {
         filterSearch($("#searchBoxDetail")[0].value);
     });
+    $("#searchBoxDetail").focus(function() {
+        if (blog_js.nowPage>=0) {
+            blog_js.lastPage=blog_js.nowPage;
+            window.location="#-1";
+        }
+    });
+    $("#blogboard").tap(function(e) {
+        e.stopPropagation();
+    });
+    $("#searchBox").tap(function(e) {
+        e.stopPropagation();
+    });
+    $("body").tap(function(e) {
+        if (blog_js.nowPage<0) {
+            window.location="#"+blog_js.lastPage;
+        }
+    });
     window.onhashchange=function()
     {
         var sp;
@@ -79,6 +97,7 @@ $(document).ready(function()
         }
     }
     effect_helper.addShortcut("se", function() {
+        blog_js.lastPage=blog_js.nowPage;
         window.location="#-1";
     });
 
@@ -159,10 +178,14 @@ function refreshData()
     if (blog_js.nowPage>0 || window.location.hash!="")
         window.location.hash=blog_js.nowPage;
     if (blog_js.nowPage<0) {
-        $("#searchBox").removeClass("nonexist");
+        $("#searchBox").removeClass("nonexist-shadow");
         $("#searchBoxDetail")[0].focus();
+        $("#lastPage").css("visibility", "hidden");
+        $("#nextPage").css("visibility", "hidden");
     } else {
-        $("#searchBox").addClass("nonexist");
+        $("#searchBox").addClass("nonexist-shadow");
+        $("#lastPage").css("visibility", "visible");
+        $("#nextPage").css("visibility", "visible");
     }
     $("#potheader").html("");
     fetchData(analyzeData);

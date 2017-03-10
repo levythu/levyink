@@ -84,6 +84,12 @@
     opacity: 0;
     pointer-events:none;
 }
+.nonexist-shadow {
+    opacity: 0;
+}
+.nonexist-shadow:hover {
+    opacity: 0.96;
+}
 .nonexist-noblock {
     opacity: 0;
     pointer-events:none;
