@@ -101,6 +101,20 @@ router.get('/list', function(req, res)
         {
             searchCondition[req.query.filter]=req.query.key;
         }
+        if (req.query.filter=="any") {
+            var searchC=".*"+req.query.key+".*";
+            try {
+                var regC=new RegExp(searchC, "i");
+                searchCondition["$or"]=[
+                    {"title": regC},
+                    {"catalog": regC},
+                    {"author": regC},
+                    {"tag": regC},
+                    {"content": regC}
+                ];
+            } catch (e) { }
+
+        }
         db[model.BLOG].count(searchCondition,function(err, ct)
         {
             if (err)

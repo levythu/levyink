@@ -66,10 +66,23 @@ $(document).ready(function()
     $("#searchBoxDetail").bind('input propertychange', function() {
         filterSearch($("#searchBoxDetail")[0].value);
     });
+    $("#searchBoxDetail").keydown(function(e) {
+        var keyc=e.which;
+        if (keyc===13) {
+            e.preventDefault();
+        }
+    });
+    $("#searchBoxDetail").keyup(function(e) {
+        var keyc=e.which;
+        if (keyc===13) {
+            window.location=function_helper.url_blog+"?searchby=any&key="+$("#searchBoxDetail")[0].value;
+            e.preventDefault();
+        }
+    });
     $("#searchBoxDetail").focus(function() {
         if (blog_js.nowPage>=0) {
             blog_js.lastPage=blog_js.nowPage;
-            window.location="#-1";
+            window.location.hash="-1";
         }
     });
     $("#blogboard").tap(function(e) {
@@ -80,7 +93,7 @@ $(document).ready(function()
     });
     $("body").tap(function(e) {
         if (blog_js.nowPage<0) {
-            window.location="#"+blog_js.lastPage;
+            window.location.hash=blog_js.lastPage;
         }
     });
     window.onhashchange=function()
@@ -127,6 +140,10 @@ function detQuery()
     {
         blog_js.searchStr="filter=author&key="+ct;
         $("#condline_c").html("by <span style='color:#707070'>"+ct+"</span>");
+        $("#condline").removeClass("nonexist-noblock");
+    } else if (sb=="any") {
+        blog_js.searchStr="filter=any&key="+ct;
+        $("#condline_c").html("<span style='color:#707070'>"+ct+"</span>");
         $("#condline").removeClass("nonexist-noblock");
     }
 }
