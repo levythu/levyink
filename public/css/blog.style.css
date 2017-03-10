@@ -14,6 +14,10 @@
     margin-bottom: 0.5em;
     width: 100%;
 }
+.blogentry_tem_con .tem_cont {
+    border-left: 0.5em solid #f9f9f9;
+    padding-left: 1em;
+}
 .leftmost {
     display: inline-block;
     float: left;
@@ -41,8 +45,8 @@
     color: #666666;
     text-align: left;
     line-height: 150%;
-    border-bottom: 1.6em solid transparent;
-    border-top: 2em solid transparent;
+    border-bottom: 2em solid transparent;
+    border-top: 1em solid transparent;
 }
 .line1px {
 }
