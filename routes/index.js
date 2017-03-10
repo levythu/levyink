@@ -13,8 +13,7 @@ var pubRoot={root: path.join(__dirname, '../public')};
 /* GET home page. */
 router.get('/', function(req, res)
 {
-    sta.addTotalVisit();
-    res.sendFile("blog.html",pubRoot);
+    res.redirect("/blog");
 });
 router.use('/blog', r_blog);
 router.get('/login', function(req, res)
