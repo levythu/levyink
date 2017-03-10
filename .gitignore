@@ -3,3 +3,4 @@ node_modules/*
 paperwork/*
 *.exe
 npm-debug.log
+.remote-sync.json

@@ -20,7 +20,7 @@ router.get('/db.json', function(req, res)
 {
     dbdump(function(obj) {
         if (obj==null) res.send("Error in dump.");
-        else res.send(JSON.stringify(obj));
+        else res.json(obj);
     });
 });
 
