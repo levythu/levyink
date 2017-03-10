@@ -3,16 +3,6 @@ var effect_helper=
     FONT_SERVER: "font.levy.at",
     colorlist:
     [
-        "#E53935",
-        "#D81B60",
-        "#8E24AA",
-        "#3F51B5",
-        "#2196F3",
-        "#009688",
-        "#4CAF50",
-        "#FFC107",
-        "#FB8C00",
-        "#FF5722",
         "#607D8B"
     ],
     colorDispense:{},

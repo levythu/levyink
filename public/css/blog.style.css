@@ -46,7 +46,8 @@
     text-align: left;
     line-height: 150%;
     border-bottom: 2em solid transparent;
-    border-top: 1em solid transparent;
+    padding-left: 0.2em;
+    border-top: 0.8em solid transparent;
 }
 .line1px {
 }
