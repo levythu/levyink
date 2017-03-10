@@ -20,14 +20,6 @@ $(document).ready(function()
         return false;
     });
 
-    var bgBW=$(".bigButton")[0].offsetWidth
-    var bgBH=$(".bigButton")[0].offsetHeight
-    $(".bigButton >").each(function(id,dom)
-    {
-        $(dom).css("position","absolute")
-              .css("left",(bgBW-dom.offsetWidth)*0.5)
-              .css("top",(bgBH-dom.offsetHeight)*0.4);
-    });
     $(".dirButton").taphold(function()
     {
         if ($(this).hasClass("disButton")) return;
