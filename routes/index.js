@@ -3,6 +3,7 @@ var path = require('path');
 var router = express.Router();
 
 var r_blog = require("./blog");
+var r_subscribe = require("./subscribe");
 var sta = require("../manage/statistics");
 var url=require("../configure/url");
 var model=require("../models/db");
@@ -65,5 +66,6 @@ router.get('/crawller', function(req, res)
         res.render("crawller", {urllist:ls});
     });
 });
+router.use('/subscribe', r_subscribe);
 
 module.exports = router;
