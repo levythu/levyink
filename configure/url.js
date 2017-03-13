@@ -1,9 +1,9 @@
-exports.hostname="192.168.1.97:2333";
+exports.hostname="levy.at";
 
 exports.blogpage="/blog/%PID%?toTop=1";
 
 exports.genURL
 =function(relURL)
 {
-    return "http://"+exports.hostname+relURL;
+    return "https://"+exports.hostname+relURL;
 }

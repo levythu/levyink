@@ -23,6 +23,7 @@ var protocolInfo=
             DB_ERROR: 17000,
 
             INVALID_CAPTCHA: 18000,
+            ERROR_WHEN_SENDING_EMAIL: 18001,
 
             FRONT_END_ERROR: 65535
         }

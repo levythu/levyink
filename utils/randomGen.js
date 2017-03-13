@@ -10,7 +10,10 @@ exports.GenerateRandomString=function(length) {
 
 var launchTime=Date.now();
 var uidCount=0;
-exports.GenerateUUID=function() {
+exports.GenerateUUID=function(length) {
+    appendix="";
+    if (length==null || length==0) appendix="";
+    else appendix=exports.GenerateRandomString(length)+"-";
     uidCount++;
-    return ""+launchTime+"-"+uidCount;
+    return appendix+launchTime+"-"+uidCount;
 }

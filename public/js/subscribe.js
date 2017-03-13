@@ -1,5 +1,7 @@
 function refreshCaptcha() {
     $("#imgCaptcha").attr("src", "/subscribe/captcha?"+(new Date()).getTime());
+    $("#capArea")[0].value="";
+    $("#capArea")[0].focus();
 }
 
 $(function() {
@@ -15,11 +17,18 @@ $(function() {
         $("#prompt").html("<span style='color:#607d8b'>Waiting for the email to be sent...</span>");
         $.post("/subscribe/register", {
             email: $("#emailArea")[0].value,
-            captcha: $("#capArea")[0].value
+            captcha: $("#capArea")[0].value,
+            name: $("#nameArea")[0].value
         }, function(data) {
             var code=(JSON.parse(data)).status;
             if (code===protocolInfo.generalRes.statusCode.INVALID_CAPTCHA) {
                 $("#prompt").html("<span style='color:#f44336'>Mismatched text.</span>");
+                refreshCaptcha();
+                return;
+            }
+            if (code===protocolInfo.generalRes.statusCode.ERROR_WHEN_SENDING_EMAIL) {
+                $("#prompt").html("<span style='color:#f44336'>Fail to send mail to the address.</span>");
+                refreshCaptcha();
                 return;
             }
             $("#prompt").html("<span style='color:#4caf50'>An email was sent to your mailbox, check it to validate your address.</span>");
