@@ -8,6 +8,8 @@ var bma=require("./blogs/blogmanage_author");
 var ta=require("./tiles/tile_au");
 var dbdump=require("../models/dumpdb");
 
+var mailNotify=require("./subscribe").onNotify;
+
 router.use("/blog",bma);
 router.use("/tiles",ta);
 
@@ -23,5 +25,7 @@ router.get('/db.json', function(req, res)
         else res.json(obj);
     });
 });
+
+router.post("/broadcast", mailNotify);
 
 module.exports = router;

@@ -3,7 +3,7 @@ var path = require('path');
 var router = express.Router();
 
 var r_blog = require("./blog");
-var r_subscribe = require("./subscribe");
+var r_subscribe = require("./subscribe").r;
 var sta = require("../manage/statistics");
 var url=require("../configure/url");
 var model=require("../models/db");

@@ -41,8 +41,8 @@ router.post('/register', function (req, res) {
     transporter.sendMail({
         from: 'Notification <noreply@levy.at>',
         to: email,
-        subject: "Subscription System - Levy's Ink: Please Validate Your Email",
-        text: 'Hi,'+name+'\n     Please follow the following link to validate your email and start receiving updates: '
+        subject: "Please Validate Your Email | Subscription System - Levy's Ink",
+        text: 'Hi, '+name+'\n     Please follow the following link to validate your email and start receiving updates: '
             +url.genURL("/subscribe/validate/"+token)+  "\n After validation, you can manage your subscription at "+
             url.genURL("/subscribe/manage/"+token)
     }, function(error, info) {
@@ -126,4 +126,28 @@ router.get(/^\/manage\/.*$/, function(req, res) {
     );
 });
 
-module.exports = router;
+
+exports.onNotify=function (req, res) {
+    var c=req.body.content;
+    var t=req.body.title;
+    db[model.SUBS].find({valid: 1}, function(err, docs) {
+        if (err || docs.length==0) {
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.DB_ERROR
+            }));
+            return;
+        }
+        for (var i=0; i<docs.length; i++) {
+            transporter.sendMail({
+                from: 'Notification <noreply@levy.at>',
+                to: docs[i].email,
+                subject: t+" | Subscription System - Levy's Ink",
+                text: 'Hi, '+docs[i].name+'\n' +
+                      url.genURL2(c)+"\n\n"+
+                      "To unsubscribe,manage your subscription at "+url.genURL("/subscribe/manage/"+docs[i].token)
+            }, function(error, info) { });
+        }
+    });
+}
+
+exports.r = router;

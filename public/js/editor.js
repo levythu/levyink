@@ -29,7 +29,9 @@ var editor_js=
     API_GET:"/rest/nonauthorized/blog/passage",
 
     tmpToken:"",
-    saved:false
+    saved:false,
+
+    toBroadcast:false
 };
 
 $(document).ready(function()
@@ -87,7 +89,7 @@ $(document).ready(function()
     enableTab('sourceTA');
     $("#saveBut").tap(function()
     {
-        postIt(function(url)
+        postIt(function(url, postBody)
         {
             if (editor_js.docName==="")
             {
@@ -95,6 +97,10 @@ $(document).ready(function()
                 backupContent();
             }
             editor_js.saved=true;
+            if (editor_js.toBroadcast && postBody.order>=0)
+                broadcast("Blog Update", "There's something new posted or updated in the blog:\n"+
+                    "\t> "+postBody.title+":\t$FULLURL$"+url
+                );
             showCover("Post success!",false);
             setTimeout(function()
             {
@@ -350,6 +356,12 @@ function postIt(callb)
             onErr(ps.status);
             return;
         }
-        callb(protocolInfo.ansisecure(ps.content).url);
+        callb(protocolInfo.ansisecure(ps.content).url, postBody);
     });
 }
+
+setShortcut();
+effect_helper.addShortcut("bc", function() {
+    editor_js.toBroadcast=true;
+    alert("Enable broadcast!");
+});

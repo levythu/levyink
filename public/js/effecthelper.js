@@ -6,7 +6,8 @@ var effect_helper=
         "#607D8B"
     ],
     colorDispense:{},
-    colorUsed:0
+    colorUsed:0,
+    shortcutMap: {}
 }
 
 function dispenseColor(token)
@@ -68,7 +69,7 @@ function fetchFont(url)
 
 // start with / and end with enter
 function setShortcut() {
-    var shortcutMap={};
+    var shortcutMap=effect_helper.shortcutMap;
     var expirationTimer=0;
     var nowTyping="";
     var hasStart=false;
@@ -127,5 +128,14 @@ function setShortcut() {
     });
     effect_helper.addShortcut("logout", function() {
         window.location="/logout";
+    });
+}
+
+function broadcast(title, content) {
+    $.post("/rest/authorized/broadcast", {
+        title: title,
+        content: content
+    },function(data) {
+
     });
 }
