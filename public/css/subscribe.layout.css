@@ -32,7 +32,7 @@
     border-radius: 0.1em;
     display: inline-block;
     text-align: center;
-    width: 5em;
+    min-width: 5em;
     height: 2em;
     border: 1px solid #777;
     padding-left: 0.7em;

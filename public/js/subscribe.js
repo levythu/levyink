@@ -31,7 +31,37 @@ $(function() {
                 refreshCaptcha();
                 return;
             }
-            $("#prompt").html("<span style='color:#4caf50'>An email was sent to your mailbox, check it to validate your address.</span>");
+
+            if (code===protocolInfo.generalRes.statusCode.NORMAL)
+                $("#prompt").html("<span style='color:#4caf50'>An email was sent to your mailbox, check it to validate your address.</span>");
+            else {
+                $("#prompt").html("<span style='color:#f44336'>Backend Error:"+code+".</span>");
+                refreshCaptcha();
+                return;
+            }
+        }).fail(function() {
+            $("#prompt").html("<span style='color:#f44336'>Network error.</span>");
+        }).always(function() {
+            onTheWay=false;
+        });
+    });
+
+    var prefixLen_manage=("/subscribe/manage/").length;
+    $("#unsubscribe").tap(function() {
+        if (onTheWay) return;
+        onTheWay=true;
+        $("#prompt").html("<span style='color:#607d8b'>Waiting for the server...</span>");
+        $.post("/subscribe/stop", {
+            token: window.location.pathname.substr(prefixLen_manage),
+        }, function(data) {
+            var code=(JSON.parse(data)).status;
+
+            if (code===protocolInfo.generalRes.statusCode.NORMAL)
+                $("#prompt").html("<span style='color:#4caf50'>You have unsubscribe the blog.</span>");
+            else {
+                $("#prompt").html("<span style='color:#f44336'>Backend Error:"+code+".</span>");
+                return;
+            }
         }).fail(function() {
             $("#prompt").html("<span style='color:#f44336'>Network error.</span>");
         }).always(function() {

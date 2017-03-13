@@ -42,7 +42,9 @@ router.post('/register', function (req, res) {
         from: 'Notification <noreply@levy.at>',
         to: email,
         subject: "Subscription System - Levy's Ink: Please Validate Your Email",
-        text: 'Hi,'+name+'\n     Please follow the following link to validate your email and start receiving updates: '+url.genURL("/subscribe/validate/"+token)
+        text: 'Hi,'+name+'\n     Please follow the following link to validate your email and start receiving updates: '
+            +url.genURL("/subscribe/validate/"+token)+  "\n After validation, you can manage your subscription at "+
+            url.genURL("/subscribe/manage/"+token)
     }, function(error, info) {
         if (error!=null) {
             res.send(JSON.stringify({
@@ -51,10 +53,77 @@ router.post('/register', function (req, res) {
             console.log(error, info);
             return;
         }
-        res.send(JSON.stringify({
-            "status": protocolInfo.generalRes.statusCode.NORMAL
-        }));
+        db[model.SUBS].insert({
+            email: email,
+            name: name,
+            token: token,
+            valid: 0
+        }, function(err,rec) {
+            if (err || rec.length==0) {
+                res.send(JSON.stringify({
+                    "status": protocolInfo.generalRes.statusCode.DB_ERROR
+                }));
+                return;
+            }
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.NORMAL
+            }));
+        });
     });
+});
+
+router.post('/stop', function (req, res) {
+    var token=req.body.token;
+
+    db[model.SUBS].update({token: token},
+        {$set:{valid: -1}}, {}, function(err,result) {
+            if (err || result.n==0) {
+                res.send(JSON.stringify({
+                    "status": protocolInfo.generalRes.statusCode.DB_ERROR
+                }));
+                return;
+            }
+            res.send(JSON.stringify({
+                "status": protocolInfo.generalRes.statusCode.NORMAL
+            }));
+        }
+    );
+});
+
+var prefixLen_validate=("/validate/").length;
+router.get(/^\/validate\/.*$/, function(req, res) {
+    var token=req.path.substr(prefixLen_validate);
+    db[model.SUBS].update({token: token},
+        {$set:{valid: 1}}, {}, function(err,result) {
+            if (err || result.n==0) {
+                res.render("template", {
+                    title: "Oops!",
+                    content: "The token you have provided seems invalid."
+                });
+                return;
+            }
+            res.redirect("/subscribe/manage/"+token);
+        }
+    );
+});
+
+var prefixLen_manage=("/manage/").length;
+router.get(/^\/manage\/.*$/, function(req, res) {
+    var token=req.path.substr(prefixLen_manage);
+    db[model.SUBS].find({token: token, valid: 1}, function(err,docs) {
+            if (err || docs.length==0) {
+                res.render("template", {
+                    title: "Oops!",
+                    content: "The token you have provided seems invalid."
+                });
+                return;
+            }
+            res.render("subscribe_manage", {
+                name: docs[0].name,
+                email: docs[0].email
+            });
+        }
+    );
 });
 
 module.exports = router;
