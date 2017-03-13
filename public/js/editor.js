@@ -98,7 +98,7 @@ $(document).ready(function()
             }
             editor_js.saved=true;
             if (editor_js.toBroadcast && postBody.order>=0)
-                broadcast("Blog Update", "There's something new posted or updated in the blog:\n"+
+                broadcast("Blog Update", "There's something new posted or updated in the blog:\n\n"+
                     "\t> "+postBody.title+":\t$FULLURL$"+url
                 );
             showCover("Post success!",false);

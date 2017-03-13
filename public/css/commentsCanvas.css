@@ -25,6 +25,10 @@ body {
     }
 }
 
+.elemTile a {
+    color: inherit !important;
+    text-decoration: underline !important;
+}
 .elemTile {
     background: white;
     border-radius: 0.2em;

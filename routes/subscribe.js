@@ -142,9 +142,9 @@ exports.onNotify=function (req, res) {
                 from: 'Notification <noreply@levy.at>',
                 to: docs[i].email,
                 subject: t+" | Subscription System - Levy's Ink",
-                text: 'Hi, '+docs[i].name+'\n' +
-                      url.genURL2(c)+"\n\n"+
-                      "To unsubscribe,manage your subscription at "+url.genURL("/subscribe/manage/"+docs[i].token)
+                text: 'Hi, '+docs[i].name+'\n\n' +
+                      url.genURL2(c)+"\n\n\n"+
+                      "To unsubscribe, manage your subscription at "+url.genURL("/subscribe/manage/"+docs[i].token)
             }, function(error, info) { });
         }
     });
