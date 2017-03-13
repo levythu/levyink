@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="js/functionhelper.js"></script>
 	<script type="text/javascript" src="js/rheader.js"></script>
     <script type="text/javascript" src="js/googleSta.js"></script>
+    <script type="text/javascript" src="js/subscribe.js"></script>
 </head>
 <body>
 	<div id="toTop" class="transit_in_position">
@@ -59,10 +60,18 @@
             <p class="byline">Receive via Email notifications in case of blog update.</p>
             <div>
                 Email: <textarea class="showAndEdit" id="emailArea" placeholder="tom@example.com"></textarea>
-            </div>
+            </div><br/>
             <div>
-                Type the text: 
-                <textarea class="showAndEdit" id="emailArea" placeholder="tom@example.com"></textarea>
+                Type the text (Press on image to refresh):
+                <br/>
+                <textarea class="showAndEdit" id="capArea" style="width: 6em;"></textarea>
+                <a href="javascript:refreshCaptcha();"><img id="imgCaptcha" src="/subscribe/captcha" /></a>
+            </div>
+            <div class="spaceHolder-4em"></div>
+            <div id="submit" class="bigButton activeButton right">
+                Submit
+            </div>
+            <div class="afterfloat">
             </div>
 		</div>
 		<div id="footer">

@@ -28,3 +28,37 @@
 .byline {
     color: #888;
 }
+.bigButton {
+    border-radius: 0.1em;
+    display: inline-block;
+    text-align: center;
+    width: 5em;
+    height: 2em;
+    border: 1px solid #777;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-top: 0.4em;
+    padding-bottom: 0.24em;
+    position: relative;
+    cursor:default;
+    transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -webkit-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -ms-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+    -moz-transition: top 0.30s ease-in-out, color 0.30s ease-in-out;
+}
+@media screen and (max-width: 720px) {
+    .bigButton {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+}
+
+.activeButton {
+    top: 0;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+.activeButton:hover {
+    background: #e0e0e0;
+}

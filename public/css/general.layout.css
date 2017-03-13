@@ -70,3 +70,18 @@
 .nowrapper {
     white-space: nowrap;
 }
+
+.spaceHolder-2em {
+    height: 2em;
+}
+.spaceHolder-4em {
+    height: 4em;
+}
+
+.afterfloat {
+    clear:both;
+    border-bottom: 0.1em solid transparent;
+}
+.right {
+    float: right;
+}
