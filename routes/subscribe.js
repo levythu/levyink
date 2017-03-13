@@ -23,4 +23,17 @@ router.get('/captcha', function (req, res) {
     res.status(200).send(captcha.data);
 });
 
+router.post('/register', function (req, res) {
+    var email=req.body.email;
+    if (req.body.captcha!==req.session.captcha) {
+        res.send(JSON.stringify({
+            "status": protocolInfo.generalRes.statusCode.INVALID_CAPTCHA
+        }));
+        return;
+    };
+    res.send(JSON.stringify({
+        "status": protocolInfo.generalRes.statusCode.NORMAL
+    }));
+});
+
 module.exports = router;

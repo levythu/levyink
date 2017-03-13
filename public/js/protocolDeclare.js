@@ -9,6 +9,7 @@ var protocolInfo=
 
             UNAUTHORIZED:1000,
             INVALID_USER:1001,
+            INCORRECT_USER_PASSWD:1002,
 
             INVALID_PARAMETER: 2000,
             INVALID_POST_CONTENT: 2001,
@@ -17,9 +18,11 @@ var protocolInfo=
             CREATION_FAIL: 3001,
             GET_LIST_FAIL: 3002,
             NO_SUCH_DOCS: 3003,
-            UPDATE_FAIL: 3004,         
+            UPDATE_FAIL: 3004,
 
             DB_ERROR: 17000,
+
+            INVALID_CAPTCHA: 18000,
 
             FRONT_END_ERROR: 65535
         }
