@@ -1,6 +1,6 @@
 exports.hostname="levy.at";
 
-exports.blogpage="/blog/%PID%?toTop=1";
+exports.blogpage="/blog/%PID%";
 
 var hnWithSchema="https://"+exports.hostname;
 exports.genURL

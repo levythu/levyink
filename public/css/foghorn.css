@@ -87,3 +87,7 @@ body {
 #contentMain .red {
 	color:#B50000;
 	}
+#contentMain .MathJax_Display {
+    overflow-x: auto;
+    max-width: 100%;
+}
