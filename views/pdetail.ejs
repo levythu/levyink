@@ -84,8 +84,8 @@
 					/* * * CONFIGURATION VARIABLES * * */
 					var disqus_shortname = 'levysink';
                     var disqus_config = function () {
-                        this.page.url = window.location.toString();
-                        this.page.identifier = [location.protocol, '//', location.host, location.pathname].join('');;
+                        this.page.url = [location.protocol, '//', location.host, location.pathname].join('');
+                        this.page.identifier = [location.protocol, '//', location.host, location.pathname].join('');
                     };
 
 					/* * * DON'T EDIT BELOW THIS LINE * * */
