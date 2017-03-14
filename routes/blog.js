@@ -8,6 +8,7 @@ var protocolInfo=require("../models/protocolDeclare");
 var sta = require("../manage/statistics");
 var db=model.db;
 
+var sdmath = require("../public/js/showdown/mathjax");
 var showdown  = require('showdown'),
     sdtable = require('showdown-table'),
     sdprett = require('showdown-prettify'),
@@ -18,7 +19,7 @@ var showdown  = require('showdown'),
         tasklists: true,
         noHeaderId: true,
         parseImgDimensions: true,
-        extensions: [sdtable,sdprett]
+        extensions: [sdmath,sdtable,sdprett]
     });
 
 var pubRoot={root: path.join(__dirname, '../public')}

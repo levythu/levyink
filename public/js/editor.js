@@ -9,7 +9,7 @@ var editor_js=
         tasklists: true,
         noHeaderId: true,
         parseImgDimensions: true,
-        extensions: ['table','prettify']
+        extensions: ['mathjax','table','prettify']
     }),
     mdconverter_abs: new showdown.Converter(
     {
@@ -18,7 +18,7 @@ var editor_js=
         tasklists: true,
         noHeaderId: true,
         parseImgDimensions: true,
-        extensions: ['table','prettify'],
+        extensions: ['mathjax','table','prettify'],
         headerLevelStart: 3
     }),
 
