@@ -15,7 +15,7 @@
     "ejs": "~0.8.5",
     "express-session": "~1.11.3",
     "mongojs": "1.0.2",
-    "mongodb": "2.0.36",
+    "mongodb": "3.6.1",
     "thunky": "0.1.0",
     "showdown": "~1.2.0",
     "showdown-table": "~1.0.1",
