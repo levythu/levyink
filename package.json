@@ -17,7 +17,7 @@
     "mongojs": "1.0.2",
     "mongodb": "2.0.36",
     "thunky": "0.1.0",
-    "showdown": "~1.2.0",
+    "showdown": "~1.9.1",
     "showdown-table": "~1.0.1",
     "showdown-prettify": "~1.0.2",
     "nodemailer": "~1.4.0",
